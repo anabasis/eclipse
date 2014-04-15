@@ -1,9 +1,9 @@
-package com.tg.slug.login;
+package com.slug.login;
 
-import com.tg.slug.dao.DaoHandler;
-import com.tg.slug.exception.PException;
-import com.tg.slug.logging.Logging;
-import com.tg.slug.vo.box.Box;
+import com.slug.dao.DaoHandler;
+import com.slug.exception.PException;
+import com.slug.logging.Logging;
+import com.slug.vo.box.Box;
 
 /***
  * 

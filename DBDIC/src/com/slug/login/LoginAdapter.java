@@ -1,15 +1,15 @@
-package com.tg.slug.login;
+package com.slug.login;
 
 import javax.servlet.http.HttpSession;
 
-import com.tg.slug.dao.DaoHandler;
-import com.tg.slug.dao.sql.StatementManager;
-import com.tg.slug.exception.PException;
-import com.tg.slug.logging.Logging;
-import com.tg.slug.proc.component.FlowComponent;
-import com.tg.slug.proc.msg.ProcessMsg;
-import com.tg.slug.vo.box.Box;
-import com.tg.slug.vo.box.VectorBox;
+import com.slug.dao.DaoHandler;
+import com.slug.dao.sql.StatementManager;
+import com.slug.exception.PException;
+import com.slug.logging.Logging;
+import com.slug.proc.component.FlowComponent;
+import com.slug.proc.msg.ProcessMsg;
+import com.slug.vo.box.Box;
+import com.slug.vo.box.VectorBox;
 
 public class LoginAdapter extends FlowComponent{
 	
