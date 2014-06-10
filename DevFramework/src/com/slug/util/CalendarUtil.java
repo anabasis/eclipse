@@ -88,8 +88,8 @@ public class CalendarUtil
         return curDate;
     }
     /**
-     * 1.���: �����췯���� ��� (���۽ð�)
-     *   - �ú��� �Է¹޾Ƽ� ������ ��� �� ��,�и�������(0000)�� �߰��Ѵ�.
+     * 1.기능: 스케쥴러에서 사용 (시작시각)
+     *   - 시분을 입력받아서 현재의 년월 및 초,밀리세컨드(0000)를 추가한다.
      */
     public static String setStartTime(String hhmm) throws Exception
     {
@@ -101,8 +101,8 @@ public class CalendarUtil
     }
 
      /**
-     * 1.���: �����췯���� ��� (����ð�)
-     *   - �ú��� �Է¹޾Ƽ� ������ ��� �� ��,�и�������(0000)�� �߰��Ѵ�.
+     * 1.기능: 스케쥴러에서 사용 (종료시각)
+     *   - 시분을 입력받아서 현재의 년월 및 초,밀리세컨드(0000)를 추가한다.
      */
     public static String setEndTime(String hhmm) throws Exception
     {
@@ -112,11 +112,11 @@ public class CalendarUtil
 
         String systime = simpletimeformat.format(date);
 
-        //hhmm�� ����ð����� Ŭ��� ���糯¥��
+        //hhmm가 현재시간보다 클경우 현재날짜로
         if ( StringUtil.stoi(hhmm) > StringUtil.stoi(systime)){
              hhmm = simpledateformat.format(date) + hhmm + "0000";
         }
-        //hhmm�� ����ð����� ũ��������� ������¥��
+        //hhmm가 현재시간보다 크지않을경우 다음날짜로
         else{
              hhmm = getDatewithSpan(simpledateformat.format(date),1) + hhmm + "0000";
         }

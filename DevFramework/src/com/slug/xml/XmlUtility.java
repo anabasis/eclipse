@@ -18,12 +18,12 @@ import com.slug.vo.box.VectorBox;
 
 /**
  * @(#) XmlUtility.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
@@ -31,7 +31,7 @@ public class XmlUtility{
 	
 	//public static XmlHandler xmlHandler;
 	/**
-	 * Web Application(WAR) ��� �ȿ� ��ġ�� XML ���� �о� Document ���ϱ�
+	 * Web Application(WAR) 경로 안에 위치한 XML 파일 읽어 Document 생성하기
 	 * @param path
 	 * @return Document
 	 * @throws JDOMException

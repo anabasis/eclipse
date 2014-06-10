@@ -2,32 +2,32 @@ package com.slug.vo.box;
 
 /**
  * @(#) VectorBox.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 import java.util.Vector;
 import java.lang.reflect.Array;
 
 /**
- * Stock�� Vector elements�� ���� ������ �� �ִ� Method�� �����ϴ� Ŭ�����̴�.
+ * Stock의 Vector elements를 쉽게 조작할 수 있는 Method를 제공하는 클래스이다.
  *
  */
 public class VectorBox extends Box implements java.io.Serializable  {
     /**
-     * �Ķ���ͷ� name�� �޾� variable�� setting�Ѵ�.
+     * 파라미터로 name을 받아 variable에 setting한다.
 	 * @param name String
 	 */
 	public VectorBox(String name) {
 		super(name);
 	}
     /**
-    * ��޹��� key(Vector name)�� index�� �ش�Ǵ� Value�� ���ڿ��� return�Ѵ�.
-    * ���ο� getString()�� �̿��Ͽ� �����Ǿ� �ִ�.
+    * 전달받은 key(Vector name)의 index에 해당되는 Value를 문자열로 return한다.
+    * 내부에 getString()을 이용하여 구현되어 있다.
     * @param key Vector name
     * @param index Value index
     * @return java.lang.String
@@ -36,7 +36,7 @@ public class VectorBox extends Box implements java.io.Serializable  {
 		return getString(key, index);
 	}
     /**
-    * ��޹��� key(Vector name)�� index�� �ش�Ǵ� Value�� boolean�� return�Ѵ�.
+    * 전달받은 key(Vector name)의 index에 해당되는 Value를 boolean로 return한다.
     * @param key Vector name
     * @param index Value index
     * @return boolean
@@ -51,7 +51,7 @@ public class VectorBox extends Box implements java.io.Serializable  {
 		return isTrue;
 	}
     /**
-    * ��޹��� key(Vector name)�� index�� �ش�Ǵ� Value�� double�� return�Ѵ�.
+    * 전달받은 key(Vector name)의 index에 해당되는 Value를 double로 return한다.
     * @param key Vector name
     * @param index Value index
     * @return double
@@ -72,7 +72,7 @@ public class VectorBox extends Box implements java.io.Serializable  {
 		return num;
 	}
     /**
-    * ��޹��� key(Vector name)�� index�� �ش�Ǵ� Value�� float�� return�Ѵ�.
+    * 전달받은 key(Vector name)의 index에 해당되는 Value를 float로 return한다.
     * @param key Vector name
     * @param index Value index
     * @return float
@@ -81,7 +81,7 @@ public class VectorBox extends Box implements java.io.Serializable  {
 		return (float)getDouble(key, index);
 	}
     /**
-    * ��޹��� key(Vector name)�� index�� �ش�Ǵ� Value�� int�� return�Ѵ�.
+    * 전달받은 key(Vector name)의 index에 해당되는 Value를 int로 return한다.
     * @param key Vector name
     * @param index Value index
     * @return int
@@ -91,7 +91,7 @@ public class VectorBox extends Box implements java.io.Serializable  {
 		return (int)value;
 	}
     /**
-    * ��޹��� key(Vector name)�� index�� �ش�Ǵ� Value�� long�� return�Ѵ�.
+    * 전달받은 key(Vector name)의 index에 해당되는 Value를 long로 return한다.
     * @param key Vector name
     * @param index Value index
     * @return long
@@ -112,7 +112,7 @@ public class VectorBox extends Box implements java.io.Serializable  {
 		return lvalue;
 	}
     /**
-    * ��޹��� key(Vector name)�� index�� �ش�Ǵ� Value�� ���ڿ��� return�Ѵ�.
+    * 전달받은 key(Vector name)의 index에 해당되는 Value를 문자열로 return한다.
     * @param key Vector name
     * @param index Value index
     * @return java.lang.String
@@ -150,7 +150,7 @@ public class VectorBox extends Box implements java.io.Serializable  {
 		return value;
 	}
     /**
-    * ��޹��� key(Vector name)�� Vector size�� return�Ѵ�.
+    * 전달받은 key(Vector name)의 Vector size를 return한다.
     * @param key Vector name
     * @return int Vector size
     */
@@ -160,7 +160,7 @@ public class VectorBox extends Box implements java.io.Serializable  {
 
     /**
      * Insert the method's description here.
-     * Creation date: (2002-02-21 ���� 12:02:11)
+     * Creation date: (2002-02-21 오후 12:02:11)
      */
     public VectorBox() {}
 }

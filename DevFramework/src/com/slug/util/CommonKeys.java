@@ -1,10 +1,10 @@
 package com.slug.util;
 
 /**
-* 1. ��� : ��ġ�����ӿ����� �������� ����ϴ� ����� ������ Interface
-* 2. ó�� ���� :
+* 1. 기능 : 배치프레임웍에서 공통으로 사용하는 상수를 정의한 Interface
+* 2. 처리 개요 :
 *     -
-* 3. ���ǻ���
+* 3. 주의사항
 *
 * @author  : YCLee 06/01/24
 * @version : v 1.0.0
@@ -13,7 +13,7 @@ package com.slug.util;
 public class CommonKeys
 {
     /* *******************************************************************
-     *  Master Layer ���� ���
+     *  Master Layer 구분 상수
      ******************************************************************* */
 
     /**
@@ -27,27 +27,27 @@ public class CommonKeys
     public static final String LAYER_SOCKETSERVER = "SS";
 
     /**
-     * Scheduler Layer: �����췯 ���
+     * Scheduler Layer: 스케쥴러 관련
      */
     public static final String LAYER_SCHEDULER = "SC";
 
     /**
-     * Flow Controller Layer: ��ü
+     * Flow Controller Layer: 전체
      */
     public static final String LAYER_FLOW_CONTROLLER = "FC";
 
 
     /* *******************************************************************
-     *  Layer ���� ���
+     *  Layer 구분 상수
      ******************************************************************* */
 
     /**
-     * Scheduler Layer: �����췯 ��� - Job Queue ���̺� ���
+     * Scheduler Layer: 스케쥴러 관련 - Job Queue 테이블 관련
      */
     public static final String SUB_LAYER_SCHEDULER_QUEUE = "SQ";
 
     /**
-     * Scheduler Layer: �����췯 ��� - Job Processing ���̺� ���
+     * Scheduler Layer: 스케쥴러 관련 - Job Processing 테이블 관련
      */
     public static final String SUB_LAYER_SCHEDULER_PROCESSING = "SP";
 
@@ -55,35 +55,35 @@ public class CommonKeys
 
 
     /* *******************************************************************
-     *  ���� ���� ���� ���
+     *  업무 유형 구분 상수
      ******************************************************************* */
     /**
-     * �䱸�۽�
+     * 요구송신
      */
     public static final String PROCESS_REQUEST_SEND = "RS";
 
     /**
-     * �䱸����
+     * 요구수신
      */
     public static final String PROCESS_REQUEST_RECEIVE = "RR";
 
     /**
-     * ����۽�
+     * 응답송신
      */
     public static final String PROCESS_RESPONSE_SEND = "AS";
 
     /**
-     * �������
+     * 응답수신
      */
     public static final String PROCESS_RESPONSE_RECEIVE = "AR";
 
     /**
-     * VAN �۽�
+     * VAN 송신
      */
     public static final String PROCESS_VAN_SEND = "VS";
 
     /**
-     * VAN ����
+     * VAN 수신
      */
     public static final String PROCESS_VAN_RECEIVE = "VR";
 

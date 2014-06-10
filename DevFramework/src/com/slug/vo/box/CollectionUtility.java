@@ -2,12 +2,12 @@ package com.slug.vo.box;
 
 /**
  * @(#) CollectionUtility.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
@@ -17,12 +17,12 @@ import javax.servlet.http.*;
 
 
 /**
- * �� Class�� Servlet�� support�ϱ� ���� class�̴�.<br>
- * HttpServletRequest�� ���� request�� name�� value�� <br>
- * HashMap�� Box Object�� �־ ����Ѵ�.<br>
- * ���� String���� �Ǿ��ִ°����� Conversion�ؼ� ����ϴ°���<br>
- * �ƴϰ� �����ϰ� getInt()������ �����ü� �ְ� �Ѵ�.<br>
- * ��� static method�� �����Ǿ� �ִ�.<br>
+ * 이 Class는 Servlet을 support하기 위한 class이다.<br>
+ * HttpServletRequest로 받은 request의 name과 value를 <br>
+ * HashMap에 Box Object로 넣어서 사용한다.<br>
+ * 사용시 String으로 되어있는값들을 Conversion해서 사용하는것이<br>
+ * 아니고 간단하게 getInt()식으로 가져올수 있게 한다.<br>
+ * 모두 static method로 구성되어 있다.<br>
  *
  */
 
@@ -35,9 +35,9 @@ public class CollectionUtility implements  java.io.Serializable  {
     public CollectionUtility() {}
 
     /**
-     * �Ķ���ͷ� HttpServletRequest�� �޾� FORM INPUT Data�� parsing�Ͽ�
-     * Box��ü�� ��� return�Ѵ�.
-     * getParameterValues() ����Ѵ�.
+     * 파라미터로 HttpServletRequest를 받아 FORM INPUT Data를 parsing하여
+     * Box객체에 담아 return한다.
+     * getParameterValues() 사용한다.
      *
      * @param req javax.servlet.http.HttpServletRequest
      * @return Box Input data
@@ -55,9 +55,9 @@ public class CollectionUtility implements  java.io.Serializable  {
         return box;
     }
     /**
-     * �Ķ���ͷ� HttpServletRequest�� �޾� FORM INPUT Data�� parsing�Ͽ�
-     * Box��ü�� ��� return�Ѵ�.
-     * getAttributeNames() ����Ѵ�.
+     * 파라미터로 HttpServletRequest를 받아 FORM INPUT Data를 parsing하여
+     * Box객체에 담아 return한다.
+     * getAttributeNames() 사용한다.
      *
      * @param req javax.servlet.http.HttpServletRequest
      * @return Box attribute data
@@ -75,9 +75,9 @@ public class CollectionUtility implements  java.io.Serializable  {
     }
 
     /**
-     * �Ķ���ͷ� HttpServletRequest�� �޾� FORM INPUT Data�� parsing�Ͽ�
-     * Box��ü�� ��� return�Ѵ�.
-     * getParameterValues() ����Ѵ�.
+     * 파라미터로 HttpServletRequest를 받아 FORM INPUT Data를 parsing하여
+     * Box객체에 담아 return한다.
+     * getParameterValues() 사용한다.
      *
      * @param req javax.servlet.http.HttpServletRequest
      * @return Box Input data
@@ -99,14 +99,14 @@ public class CollectionUtility implements  java.io.Serializable  {
 			Object o = session.getAttribute(key);
 			Class  c = o.getClass();
 			if(!c.isArray()){
-				//Session�� ����ִ� WebLogic Server��ǰ�� Session ���� ����
+				//Session에 담겨있는 WebLogic Server제품의 Session 정보 제외
 				if(!key.startsWith("BEA")){
 					box.put(key,o);
 				}
 			}
 		}// end while
 		
-        // SSO ������ Login ���� �������� ��
+        // SSO 연동시 Login 정보 가져오는 부
 		//box.put("USER",req.getHeader("SM_USER"));
 		
         return box;
@@ -114,9 +114,9 @@ public class CollectionUtility implements  java.io.Serializable  {
 
 
     /**
-     * �Ķ���ͷ� HttpServletRequest�� �޾� cookie�� �����ͼ�
-     * Box��ü�� ��� return�Ѵ�.
-     * getCookies() ����Ѵ�.
+     * 파라미터로 HttpServletRequest를 받아 cookie를 가져와서
+     * Box객체에 담아 return한다.
+     * getCookies() 사용한다.
      *
      * @param req javax.servlet.http.HttpServletRequest
      * @return Box cookies
@@ -141,8 +141,8 @@ public class CollectionUtility implements  java.io.Serializable  {
         return cookieBox;
     }
     /**
-     * HttpServletRequest�� ��� SessionBox�� return�Ѵ�.
-     * getNewSessionBox()�� ����Ѵ�.
+     * HttpServletRequest로 생성된 SessionBox를 return한다.
+     * getNewSessionBox()를 사용한다.
      * @param req javax.servlet.http.HttpServletRequest
      * @return SessionBox
      */
@@ -150,9 +150,9 @@ public class CollectionUtility implements  java.io.Serializable  {
         return getNewSessionBox(req, "shared sessionBox");
     }
     /**
-     * HttpServletRequest�� ��� SessionBox�� return�Ѵ�.
-     * session�� ���ϰ� ���� session�� parameter�� ���� name����
-     * SessionBox�� Value�� �־��ش�.
+     * HttpServletRequest로 생성된 SessionBox를 return한다.
+     * session을 생성하고 생성한 session에 parameter로 받은 name으로
+     * SessionBox를 Value로 넣어준다.
      * @param req javax.servlet.http.HttpServletRequest
      * @param name attribute name
      * @return SessionBox
@@ -181,8 +181,8 @@ public class CollectionUtility implements  java.io.Serializable  {
         return sessionBox;
     }
     /**
-     * HttpServletRequest�� ��� SessionBox�� return�Ѵ�.
-     * getSessionBox()�� ����Ѵ�.
+     * HttpServletRequest로 생성된 SessionBox를 return한다.
+     * getSessionBox()를 사용한다.
      * @param req javax.servlet.http.HttpServletRequest
      * @return SessionBox
      */
@@ -190,9 +190,9 @@ public class CollectionUtility implements  java.io.Serializable  {
         return getSessionBox(req, "shared sessionBox");
     }
     /**
-     * HttpServletRequest�� ��� SessionBox�� return�Ѵ�.
-     * ��Ǿ��ִ� session�� parameter�� ���� name����
-     * SessionBox�� Value�� �־��ش�.
+     * HttpServletRequest로 생성된 SessionBox를 return한다.
+     * 생성되어있는 session에 parameter로 받은 name으로
+     * SessionBox를 Value로 넣어준다.
      * @param req javax.servlet.http.HttpServletRequest
      * @param name attribute name
      * @return SessionBox
@@ -225,9 +225,9 @@ public class CollectionUtility implements  java.io.Serializable  {
     }
 
     /**
-     * �Ķ���ͷ� HttpServletRequest�� �޾� FORM INPUT Data�� parsing�Ͽ�
-     * VectorBox��ü�� ��� return�Ѵ�.
-     * getParameterValues() ����Ѵ�.
+     * 파라미터로 HttpServletRequest를 받아 FORM INPUT Data를 parsing하여
+     * VectorBox객체에 담아 return한다.
+     * getParameterValues() 사용한다.
      *
      * @param req javax.servlet.http.HttpServletRequest
      * @return VectorBox Input multi-data
@@ -244,8 +244,8 @@ public class CollectionUtility implements  java.io.Serializable  {
     }
 
     /**
-     * Client�� Microsoft Internet Explorer5.0�̻� ������
-     * ��û�Ͽ����� Check�Ѵ�.
+     * Client가 Microsoft Internet Explorer5.0이상 브라우저에서
+     * 요청하였는지 Check한다.
      * @param req HttpServletRequest
      * @return boolean
      */
@@ -274,8 +274,8 @@ public class CollectionUtility implements  java.io.Serializable  {
     }
 
     /**
-     * �Ķ���ͷ� x-www-form-urlencoded format�� s�� �޾�
-     * original string���� decoding�Ѵ�.
+     * 파라미터로 x-www-form-urlencoded format의 s를 받아
+     * original string으로 decoding한다.
      *
      * @param   s   an encoded <code>String</code> to be translated.
      * @return  the original <code>String</code>.
@@ -295,7 +295,7 @@ public class CollectionUtility implements  java.io.Serializable  {
     }
     */
     /**
-     * �Ķ���ͷ� s�� �޾� x-www-form-urlencoded format���� encoding�Ѵ�.
+     * 파라미터로 s를 받아 x-www-form-urlencoded format으로 encoding한다.
      *
      * @param   s   <code>String</code> to be translated.
      * @return  the translated <code>String</code>.

@@ -23,7 +23,7 @@ import com.slug.vo.box.VectorBox;
 public class DAORtnObjBuilder {
  
 	/**
-	 * ����
+	 * 생성자
 	 */
 	public DAORtnObjBuilder(){
         super();
@@ -85,7 +85,7 @@ public class DAORtnObjBuilder {
 	    */
 	
 	/**
-	 *  List BO �����͸� json Data �� ��ȯ
+	 *  List BO 데이터를 json Data 로 변환
      * 
      * @param dataBox
      * @return JSONObject
@@ -157,7 +157,7 @@ public class DAORtnObjBuilder {
 
    	/**
    	 * 
-   	 * List BO �����͸� Box Data �� ��ȯ
+   	 * List BO 데이터를 Box Data 로 변환
    	 * 
    	 * @param rs
    	 * @return Box

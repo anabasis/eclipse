@@ -32,7 +32,7 @@ public class cmnUtil
 {
 
     /**
-     * ����� ȭ�鿡 �����ֱ� ���Ͽ� ���� ����� ����� ������ش�.
+     * 전문내역을 화면에 보여주기 위하여 날자 형식의 양식을 만들어준다.
      * 
      * @param String
      *            date
@@ -52,7 +52,7 @@ public class cmnUtil
     }
 
     /**
-     * ����� ȭ�鿡 �����ֱ� ���Ͽ� ���� ����� ����� ������ش�.
+     * 전문내역을 화면에 보여주기 위하여 날자 형식의 양식을 만들어준다.
      * 
      * @param String
      *            date
@@ -140,28 +140,28 @@ public class cmnUtil
 
     protected PrintWriter out      = null;
 
-    // /�Ͽ� String��ȯ
+    // /하여 String반환
 
-    // multiply : * ��,0�̸� /��
+    // multiply : * 값,0이면 /만
 
-    // underNum : �Ҽ��� �Ʒ���
+    // underNum : 소수점 아래값
 
     public String         savePath = "/tmp";
 
-    // /�Ͽ� String��ȯ
+    // /하여 String반환
 
-    // multiply : * ��,0�̸� /��
+    // multiply : * 값,0이면 /만
 
-    // underNum : �Ҽ��� �Ʒ���
+    // underNum : 소수점 아래값
 
     public cmnUtil(){
     }
 
-    // /�Ͽ� String��ȯ
+    // /하여 String반환
 
-    // multiply : * ��,0�̸� /��
+    // multiply : * 값,0이면 /만
 
-    // underNum : �Ҽ��� �Ʒ���
+    // underNum : 소수점 아래값
 
     public String appendHtmlBr(String comment)
 
@@ -201,7 +201,7 @@ public class cmnUtil
 
     }
 
-    // ���๮�ڴ�� <br> ���̱�
+    // 개행문자대신 <br> 붙이기
 
     public String changeLine(String Data, int reqtColumn)
 
@@ -225,11 +225,11 @@ public class cmnUtil
 
             if(len > reqtColumn)
 
-            {// data���̰� �䱸 ���̺��� Ŭ��
+            {// data길이가 요구 길이보다 클때
 
                 if(Data.toLowerCase().indexOf("<br>\r") == -1)
 
-                {// <br>\r�� ������
+                {// <br>\r이 없을때
 
                     int cursor = 0;
 
@@ -241,7 +241,7 @@ public class cmnUtil
 
                         String addStr = Data.substring(i,i + 1);
 
-                        // ���ϴ� ���̰� ������
+                        // 원하는 길이가 됐을때
 
                         if(cursor == reqtColumn)
 
@@ -253,9 +253,9 @@ public class cmnUtil
 
                         }
 
-                        cursor++; // ���� ���� ù������ 1���� ������
+                        cursor++; // 위에 쓰면 첫라인은 1개가 들찍힘
 
-                        // 30���� ������ �ѱ��� 30��,������ 60���� ��������
+                        // 30개로 끊을때 한글은 30개,영문은 60개로 끊기위해
 
                         char c = addStr.charAt(0);
 
@@ -264,7 +264,7 @@ public class cmnUtil
 
                         {
 
-                            engCount++;// ����2���� �Ѱ��� �������
+                            engCount++;// 영문2개를 한개로 잡기위해
 
                             if(engCount == 2)
 
@@ -286,7 +286,7 @@ public class cmnUtil
 
                 else
 
-                {// <br>\r�� ������
+                {// <br>\r이 있을때
 
                     int cursor = 0;
 
@@ -307,23 +307,23 @@ public class cmnUtil
 
                         if(currStr.toLowerCase().equals("<br>\r"))
 
-                        {// <br>�� ������
+                        {// <br>이 있을때
 
                             addStr = currStr;
 
                             i += 4;
 
-                            cursor = 0;// cursor���߿� <br>\r������ 0���� �ʱ�ȭ
+                            cursor = 0;// cursor도중에 <br>\r있으면 0으로 초기화
 
                         }
 
                         else
 
-                        {// <br>�� ������
+                        {// <br>이 없을때
 
                             addStr = Data.substring(i,i + 1);
 
-                            // ���ϴ� ���̰� ������
+                            // 원하는 길이가 됐을때
 
                             if(cursor == reqtColumn)
 
@@ -335,9 +335,9 @@ public class cmnUtil
 
                             }
 
-                            cursor++; // ���� ���� ù������ 1���� ������
+                            cursor++; // 위에 쓰면 첫라인은 1개가 들찍힘
 
-                            // 30���� ������ �ѱ��� 30��,������ 60���� ��������
+                            // 30개로 끊을때 한글은 30개,영문은 60개로 끊기위해
 
                             char c = addStr.charAt(0);
 
@@ -346,7 +346,7 @@ public class cmnUtil
 
                             {
 
-                                engCount++;// ����2���� �Ѱ��� �������
+                                engCount++;// 영문2개를 한개로 잡기위해
 
                                 if(engCount == 2)
 
@@ -360,19 +360,19 @@ public class cmnUtil
 
                             }
 
-                        }// - br�� �ְ� ������
+                        }// - br이 있고 없을때
 
                         newStr += addStr;
 
                     }// for
 
-                } // br�� �ְ� ������
+                } // br이 있고 없을때
 
             }
 
             else
 
-            {// data���̰� �䱸 ���̺��� ������
+            {// data길이가 요구 길이보다 작을때
 
                 newStr = Data;
 
@@ -392,11 +392,11 @@ public class cmnUtil
 
     }
 
-    // reqtColumn�� �ѱ۱��� (30�̸� ������ 60��
+    // reqtColumn은 한글기준 (30이면 영문은 60개
 
-    // \r \n: ���� 1 ,<br>���� 4
+    // \r \n: 길이 1 ,<br>길이 4
 
-    // ���ϴ� ���̿��� <br>�� �߰��� ���� �ٲٱ�
+    // 원하는 길이에서 <br>을 추가해 라인 바꾸기
 
     public String checkBlank2Nbsp(String string)
 
@@ -420,7 +420,7 @@ public class cmnUtil
 
     }
 
-    // blank Check�Ͽ� &nbsp; ��ȯ
+    // blank Check하여 &nbsp; 반환
 
     public String checkNull2Blank(String nullString)
 
@@ -444,7 +444,7 @@ public class cmnUtil
 
     }
 
-    // NullCheck�Ͽ� ��� ��ȯ
+    // NullCheck하여 공백 반환
 
     public String checkNull2Dash(String nullString)
 
@@ -468,15 +468,15 @@ public class cmnUtil
 
     }
 
-    // NullCheck�Ͽ� - ��ȯ
+    // NullCheck하여 - 반환
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // Null Check�Ͽ� &nbsp; ��ȯ
+    // Null Check하여 &nbsp; 반환
     public String checkNull2Space(String nullString)
 
     {
@@ -521,7 +521,7 @@ public class cmnUtil
 
     }
 
-    // String �迭�� �Է¹޾� NullCheck�Ͽ� ���ϴ� �� ��ȯ
+    // String 배열을 입력받아 NullCheck하여 원하는 값 반환
 
     public String checkNull2Value(String[] nullArray, int i, String value)
 
@@ -553,7 +553,7 @@ public class cmnUtil
 
     }
 
-    // NullCheck�Ͽ� ���ϴ� �� ��ȯ
+    // NullCheck하여 원하는 값 반환
 
     public String checkNull2Zero(String nullString)
 
@@ -577,15 +577,15 @@ public class cmnUtil
 
     }
 
-    // NullCheck�Ͽ� "0" ��ȯ
+    // NullCheck하여 "0" 반환
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // null�̳� ����� 0�� setting
+    // null이나 빈공백시 0로 setting
     public String checkReturnZero(String str)
 
     {
@@ -609,7 +609,7 @@ public class cmnUtil
 
     {
 
-        // Html textarea���� enterġ�� \r\n
+        // Html textarea에서 enter치면 \r\n
 
         if(data == null || data.equals("")) return "";
 
@@ -637,15 +637,15 @@ public class cmnUtil
 
     }
 
-    // ���������
+    // 파일지우기
 
-    // Html Textarea���� ���� ���� Sql�� in���� ���� �ֵ��� ����
+    // Html Textarea에서 오는 값에 Sql의 in문에 쓸수 있도록 정의
     // _find_str : "\r\n" ,"_"
     public String conditionToTextArea(String data, String _find_str)
 
     {
 
-        // Html textarea���� enterġ�� \r\n
+        // Html textarea에서 enter치면 \r\n
 
         if(data == null || data.equals("")) return "";
 
@@ -673,23 +673,23 @@ public class cmnUtil
 
     }
 
-    // ���������
+    // 파일지우기
 
-    // /�Ͽ� String��ȯ
-    // multiply : * ��,0�̸� /��
-    // underNum : �Ҽ��� �Ʒ���
+    // /하여 String반환
+    // multiply : * 값,0이면 /만
+    // underNum : 소수점 아래값
     public HttpServletResponse Convert(HttpServletResponse res){
         res.setContentType("application/msexcel; charset=EUC_KR");
         return res;
     }
 
-    // ���������
+    // 파일지우기
 
     public void Convert2(HttpServletResponse res){
         res.setContentType("application/msexcel; charset=EUC_KR");
     }
 
-    // �����̸� ������ �ٲٱ�
+    // 파일이름 실제로 바꾸기
 
     public String deleteFile(String file)
 
@@ -699,7 +699,7 @@ public class cmnUtil
 
     }
 
-    // �����̸� �ٲٱ�
+    // 파일이름 바꾸기
 
     public String deleteFile(String path, String fileName)
 
@@ -719,7 +719,7 @@ public class cmnUtil
 
     }
 
-    // �����̸� �ٲٱ�
+    // 파일이름 바꾸기
 
     public String division(double above, double down, long multiply, int underNum)
 
@@ -785,7 +785,7 @@ public class cmnUtil
 
     }
 
-    // Ȯ���� ��ȯ
+    // 확장자 반환
 
     public String division(long above, long down, long multiply, int underNum)
 
@@ -819,9 +819,9 @@ public class cmnUtil
 
     }
 
-    // ���ϴ� ���ڷ� ���ϴ� ����(totalLength-dataũ��)��ŭ ä���ش�
+    // 원하는 문자로 원하는 갯수(totalLength-data크기)만큼 채워준다
 
-    // ��ȯ ũ�� data length
+    // 반환 크기 data length
 
     public String division(String aboveStr, String downStr, long multiply, int underNum)
 
@@ -867,22 +867,22 @@ public class cmnUtil
 
     }
 
-    // ���ϴ� ���ڷ� ���ϴ� ����(totalLength)��ŭ ä���ش�
+    // 원하는 문자로 원하는 갯수(totalLength)만큼 채워준다
 
-    // ��ȯ ũ�� data length +totalLength
+    // 반환 크기 data length +totalLength
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // Ȯ���ڿ� �� �̹��� �Ѹ���
+    // 확장자에 따른 이미지 뿌리기
     public String fileImage(String attc_file, String imgPath)
 
     {
 
-        // Ȯ����
+        // 확장자
 
         String file_type = fileType(attc_file).toLowerCase();
 
@@ -981,13 +981,13 @@ public class cmnUtil
 
     }
 
-    // �������� : ���ڿ�+���ϴ� �����̽�ũ��
+    // 좌측정렬 : 문자열+원하는 스페이스크기
 
-    // ������ ���� : ���ϴ� �����̽�ũ�� + ���ڿ�
+    // 오른쪽 정렬 : 원하는 스페이스크기 + 문자열
 
-    // �߰� ���� : ���ϴ� �����̽�ũ��/2 + ���ڿ� + ���ϴ� �����̽�ũ��/2
+    // 중간 정렬 : 원하는 스페이스크기/2 + 문자열 + 원하는 스페이스크기/2
 
-    // ��ȯ ũ�� SpaceNum
+    // 반환 크기 SpaceNum
 
     public String fillChar2StringSumSize(String str, int totalLength, String data, String align)
 
@@ -1013,7 +1013,7 @@ public class cmnUtil
 
     }
 
-    // �ݿø�
+    // 반올림
 
     public String fillSpace2String(String Data, int SpaceNum, String Align)
 
@@ -1039,15 +1039,15 @@ public class cmnUtil
 
             }
 
-            // ������ �����Ͱ� �����ְ����ϴ� ���̺��� Ŭ ��� �����ְ����ϴ� ���̸�ŭ �߶��ش�.
+            // 가져온 데이터가 보여주고자하는 길이보다 클 경우 보여주고자하는 길이만큼 잘라준다.
 
             if(toCode(Data).length() > SpaceNum)
 
             {
 
-                // �߸��� �κп� �ѱ��� ���� �� �÷� ��ü�� ����
+                // 잘리는 부분에 한글이 들어가면 그 컬럼 전체가 빠짐
 
-                // �׷��� �ѱ��� ��� �� �� �ڸ�
+                // 그래서 한글일 경우 그 전에서 자름
 
                 if(Data.length() == toCode(Data).length())
 
@@ -1115,7 +1115,7 @@ public class cmnUtil
 
             }
 
-            // �������� ����
+            // 왼쪽으로 정렬
 
             if(Align.toUpperCase().equals("LEFT"))
 
@@ -1125,7 +1125,7 @@ public class cmnUtil
 
             }
 
-            // ���������� ����
+            // 오른쪽으로 정렬
 
             else if(Align.toUpperCase().equals("RIGHT"))
 
@@ -1135,7 +1135,7 @@ public class cmnUtil
 
             }
 
-            // ����� ����
+            // 가운데로 정렬
 
             else if(Align.toUpperCase().equals("CENTER"))
 
@@ -1159,7 +1159,7 @@ public class cmnUtil
 
     }
 
-    // �ݿø�
+    // 반올림
 
     public String formatNum(double num, int underNum)
 
@@ -1173,7 +1173,7 @@ public class cmnUtil
 
     }
 
-    // �ݿø�
+    // 반올림
 
     public String formatNum(int num, int underNum)
 
@@ -1187,7 +1187,7 @@ public class cmnUtil
 
     }
 
-    // �ݿø�
+    // 반올림
 
     public String formatNum(long num, int underNum)
 
@@ -1201,7 +1201,7 @@ public class cmnUtil
 
     }
 
-    // format��ȯ
+    // format반환
 
     public String formatNum(String num, int underNum)
 
@@ -1238,17 +1238,17 @@ public class cmnUtil
         if(underNum == 0)
             formats = "###,###,###,##0";
 
-        else formats = "###,###,###,##0." + setChar(underNum,"0");// 0�� ������ŭ
-                                                                    // ä��� ,#:0��
-                                                                    // �ѹ�
+        else formats = "###,###,###,##0." + setChar(underNum,"0");// 0의 갯수만큼
+                                                                    // 채운다 ,#:0을
+                                                                    // 한번만
 
         return formats;
 
     }
 
-    // String ����� 8�ڸ�or10�ڸ� �Է��� ���Ͽ� �����Ͽ� �����8�ڸ� ���
+    // String 년월일 8자리or10자리 입력해 월일에 가감하여 년월일8자리 출력
 
-    // ����� �Է��� ���� �� ������ ������ ��¥ ���ϱ�
+    // 현재월에서 입력한 개월 수 이전의 마지막 날짜 구하기
     public String getBeforeMonthK(int mm){
         GregorianCalendar cal = new GregorianCalendar();
 
@@ -1260,13 +1260,13 @@ public class cmnUtil
             beforeMonth = 12 + ((cal.get(Calendar.MONTH) + 1) - 8);
         }
 
-        return toLen(beforeYear,4) + "�� " + beforeMonth + "��";
+        return toLen(beforeYear,4) + "년 " + beforeMonth + "월";
 
     }
 
-    // ������Է��� �Ͽ� �����Ͽ� ����� ���
+    // 년월일입력해 일에 가감하여 년월일 출력
 
-    // ����� �Է��� ���� �� ������ ������ ��¥ ���ϱ�
+    // 현재월에서 입력한 개월 수 이전의 마지막 날짜 구하기
     public String getBeforeMonthLastDay(int mm){
         GregorianCalendar cal = new GregorianCalendar();
 
@@ -1283,15 +1283,15 @@ public class cmnUtil
 
     }
 
-    // String ����� 8�ڸ�or10�ڸ� �Է��� �Ͽ� �����Ͽ� �����8�ڸ� ���
+    // String 년월일 8자리or10자리 입력해 일에 가감하여 년월일8자리 출력
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // ������Է��� ���Ͽ� �����Ͽ� ����� ���
+    // 년월일입력해 월일에 가감하여 년월일 출력
     public String getChangeBoth(int year, int month, int day, int addmonth, int addday)
 
     {
@@ -1311,13 +1311,13 @@ public class cmnUtil
     }
 
     /*
-     * �� ������ ���Ѿ� �� ��� �Ʒ��� ������ ��Ȯ�� ���̰� �ִ�
+     * 월만 변경을 시켜야 할 경우 아래의 내용은 명확한 차이가 있다
      * 
-     * �� ���� ��¥�� 2000�� 12�� 30���� ���
+     * 즉 현재 날짜가 2000년 12월 30일인 경우
      * 
-     * getChangeMonth(getCurrDate(),2) -> 2001�� 3�� 2��
+     * getChangeMonth(getCurrDate(),2) -> 2001년 3월 2일
      * 
-     * getChangeMonth(getYYYYMM()+"01",2) -> 2001�� 2�� 1��
+     * getChangeMonth(getYYYYMM()+"01",2) -> 2001년 2월 1일
      * 
      */
 
@@ -1341,9 +1341,9 @@ public class cmnUtil
 
         if(pointDash == -1 && pointSlash == -1)
 
-        {// 20001212�Է�
+        {// 20001212입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             year = Integer.valueOf(date.substring(0,4)).intValue();
 
@@ -1355,9 +1355,9 @@ public class cmnUtil
 
         else
 
-        {// 2000-12-12,2000/12/12�Է�
+        {// 2000-12-12,2000/12/12입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             year = Integer.valueOf(date.substring(0,4)).intValue();
 
@@ -1397,7 +1397,7 @@ public class cmnUtil
 
     }
 
-    // YYYYMMDD 20000427 ��ȯ
+    // YYYYMMDD 20000427 반환
 
     public String getChangeDay(String date, int addday)
 
@@ -1419,9 +1419,9 @@ public class cmnUtil
 
         if(pointDash == -1 && pointSlash == -1)
 
-        {// 20001212�Է�
+        {// 20001212입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             year = Integer.valueOf(date.substring(0,4)).intValue();
 
@@ -1433,9 +1433,9 @@ public class cmnUtil
 
         else
 
-        {// 2000-12-12,2000/12/12�Է�
+        {// 2000-12-12,2000/12/12입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             year = Integer.valueOf(date.substring(0,4)).intValue();
 
@@ -1457,9 +1457,9 @@ public class cmnUtil
 
     }
 
-    // YYYYMMDDHHmm 200004272109 ��ȯ
+    // YYYYMMDDHHmm 200004272109 반환
 
-    // ������Է��� �� �����Ͽ� ����� ���
+    // 년월일입력해 월에 가감하여 년월일 출력
     public String getChangeMonth(int year, int month, int day, int addmonth)
 
     {
@@ -1478,15 +1478,15 @@ public class cmnUtil
 
     }
 
-    // YYYYMMDDHHmm 2000��04��27��21��09�� ��ȯ
+    // YYYYMMDDHHmm 2000년04월27일21시09분 반환
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // String ����� 8�ڸ�or10�ڸ� �Է��� �� �����Ͽ� �����8�ڸ� ���
+    // String 년월일 8자리or10자리 입력해 월에 가감하여 년월일8자리 출력
     public String getChangeMonth(String date, int addmonth)
 
     {
@@ -1507,9 +1507,9 @@ public class cmnUtil
 
         if(pointDash == -1 && pointSlash == -1)
 
-        {// 20001212�Է�
+        {// 20001212입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             year = Integer.valueOf(date.substring(0,4)).intValue();
 
@@ -1521,9 +1521,9 @@ public class cmnUtil
 
         else
 
-        {// 2000-12-12,2000/12/12�Է�
+        {// 2000-12-12,2000/12/12입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             year = Integer.valueOf(date.substring(0,4)).intValue();
 
@@ -1545,7 +1545,7 @@ public class cmnUtil
 
     }
     /***
-     * �Է� ������ ����
+     * 입력 일자의 차이
      * @param args
      */
     public long getDateFromTo(String from, String to)  
@@ -1623,7 +1623,7 @@ public class cmnUtil
 	    return diffDays;
     }  
 
-    // ���� �� ��ȯ
+    // 현재 일 반환
 
     public String getCurrDate()
 
@@ -1685,23 +1685,23 @@ public class cmnUtil
 
         StringBuffer date = new StringBuffer();
 
-        date.append(cal.get(1) + "��");
+        date.append(cal.get(1) + "년");
 
         if(cal.get(2) < 9) date.append('0');
 
-        date.append(cal.get(2) + 1 + "��");
+        date.append(cal.get(2) + 1 + "월");
 
         if(cal.get(5) < 10) date.append('0');
 
-        date.append(cal.get(5) + "��");
+        date.append(cal.get(5) + "일");
 
         if(cal.get(11) < 10) date.append('0');
 
-        date.append(cal.get(11) + "��");
+        date.append(cal.get(11) + "시");
 
         if(cal.get(12) < 10) date.append('0');
 
-        date.append(cal.get(12) + "��");
+        date.append(cal.get(12) + "분");
 
         return date.toString();
 
@@ -1719,15 +1719,15 @@ public class cmnUtil
 
     }
 
-    // ���� ��������
+    // 현재 월가져오기
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // ������ ���� ��������
+    // 오늘의 요일 가져오기
     public String getCurrDayOfWeek()
 
     {
@@ -1739,30 +1739,30 @@ public class cmnUtil
         String days = "";
 
         if(day == 1)
-            days = "��";
+            days = "일";
 
         else if(day == 2)
-            days = "��";
+            days = "월";
 
         else if(day == 3)
-            days = "ȭ";
+            days = "화";
 
         else if(day == 4)
-            days = "��";
+            days = "수";
 
         else if(day == 5)
-            days = "��";
+            days = "목";
 
         else if(day == 6)
-            days = "��";
+            days = "금";
 
-        else if(day == 7) days = "��";
+        else if(day == 7) days = "토";
 
         return days;
 
     }
 
-    // ��:��:��
+    // 시:분:초
 
     public String getCurrMonth()
 
@@ -1778,7 +1778,7 @@ public class cmnUtil
 
     }
 
-    // ��:��
+    // 시:분
 
     public String getCurrTime()
 
@@ -1799,7 +1799,7 @@ public class cmnUtil
 
     }
 
-    // �⵵ ��ȯ
+    // 년도 반환
 
     public String getCurrTimeNoSec()
 
@@ -1819,7 +1819,7 @@ public class cmnUtil
 
     }
 
-    // YYYYMMDDHHmmss 20000427210948 ��ȯ
+    // YYYYMMDDHHmmss 20000427210948 반환
 
     public String getCurrYear()
 
@@ -1833,7 +1833,7 @@ public class cmnUtil
 
     }
 
-    // �������� ���������� yyyymmdd��ȯ
+    // 현재년월의 마지막날인 yyyymmdd반환
 
     public String getDateTimeSec()
 
@@ -1843,35 +1843,35 @@ public class cmnUtil
 
         StringBuffer date = new StringBuffer();
 
-        // ��
+        // 년
 
         date.append(cal.get(1));
 
-        // ��
+        // 월
 
         if(cal.get(2) < 9) date.append('0');
 
         date.append(cal.get(2) + 1);
 
-        // ��
+        // 일
 
         if(cal.get(5) < 10) date.append('0');
 
         date.append(cal.get(5));
 
-        // ��
+        // 시
 
         if(cal.get(11) < 10) date.append('0');
 
         date.append(cal.get(11));
 
-        // ��
+        // 분
 
         if(cal.get(12) < 10) date.append('0');
 
         date.append(cal.get(12));
 
-        // ��
+        // 초
 
         if(cal.get(13) < 10) date.append('0');
 
@@ -1889,7 +1889,7 @@ public class cmnUtil
         return curDate;
     }
     
-    // ����� ���������� yyyymmdd��ȯ
+    // 년월의 마지막날인 yyyymmdd반환
 
     public String getEndDate()
 
@@ -1903,7 +1903,7 @@ public class cmnUtil
 
     }
 
-    // ����� ���������� yyyymmdd��ȯ
+    // 년월의 마지막날인 yyyymmdd반환
 
     public String getEndDate(int year, int month)
 
@@ -1913,7 +1913,7 @@ public class cmnUtil
 
     }
 
-    // �������� ���ϱ�
+    // 마지막날 구하기
 
     public String getEndDate(String date)
 
@@ -1927,7 +1927,7 @@ public class cmnUtil
 
     }
 
-    // �������� ���ϱ�
+    // 마지막날 구하기
 
     public int getEndOfMonthDay(int year, int month)
 
@@ -1956,7 +1956,7 @@ public class cmnUtil
 
     }
 
-    // 2000��04��22�� 12:13:23��ȯ
+    // 2000년04월22일 12:13:23반환
 
     public int getEndOfMonthDay(String date)
 
@@ -1989,13 +1989,13 @@ public class cmnUtil
 
     }
 
-    // ����ð��� ���ϴ� �������
+    // 현재시간을 원하는 형식으로
 
     // format "YYYYMMDD hh:mm:ss
 
     // format "YYYYMMDDhhmmssms
 
-    // format "YYYY�� MM�� DD�� hh-mm-ss ���
+    // format "YYYY년 MM월 DD일 hh-mm-ss 등등
 
     // format YYYY
 
@@ -2034,7 +2034,7 @@ public class cmnUtil
 
     }
 
-    // ������� ���ϴ� �������
+    // 년월일을 원하는 형식으로
 
     public long getFileSize(String path, String fileName)
 
@@ -2054,7 +2054,7 @@ public class cmnUtil
 
     }
 
-    // ����� 8�ڸ�or10�ڸ� �Է¹޾� �� ���� �Ϸ� ǥ��
+    // 년월일 8자리or10자리 입력받아 그 차를 일로 표시
 
     // public long getDiffDay(String from_date,String to_date)
 
@@ -2080,15 +2080,15 @@ public class cmnUtil
 
         date.append(year);
 
-        date.append("��");
+        date.append("년");
 
         date.append(toLen2(month));
 
-        date.append("��");
+        date.append("월");
 
         date.append(toLen2(day));
 
-        date.append("��");
+        date.append("일");
 
         date.append(" ");
 
@@ -2106,11 +2106,11 @@ public class cmnUtil
 
     }
 
-    // ����� 8�ڸ��Ǵ� 6�ڸ����� �Է¹޾� �� ���� ���� ǥ��
+    // 년월일 8자리또는 6자리씩을 입력받아 그 월의 차를 표시
 
-    // ��������� 199903���� 199904�� ���� 1���������� ���⼭�� 2�����
+    // 통상적으로 199903에서 199904의 차는 1개월이지만 여기서는 2개월로
 
-    // ����� 8�ڸ��Ǵ� 6�ڸ����� �Է¹޾� �� ���� ���� ǥ��
+    // 년월일 8자리또는 6자리씩을 입력받아 그 월의 차를 표시
 
     // public int getDiffMonth(String from_date,String toxx_date)
 
@@ -2154,9 +2154,9 @@ public class cmnUtil
 
     }
 
-    // ��� ���� ���� ��/��/�� �̸� üũ ���
+    // 사용 주의 사항 년/월/일 미리 체크 요망
 
-    // �Է��ѳ��� ���� ��������
+    // 입력한날의 요일 가져오기
 
     public String getFormatDate(String date, String flag)
 
@@ -2181,11 +2181,11 @@ public class cmnUtil
 
                 {
 
-                    newDate.insert(8,"��");
+                    newDate.insert(8,"일");
 
-                    newDate.insert(6,"��");
+                    newDate.insert(6,"월");
 
-                    newDate.insert(4,"��");
+                    newDate.insert(4,"년");
 
                 }else{
 
@@ -2203,9 +2203,9 @@ public class cmnUtil
 
                 {
 
-                    newDate.insert(6,"��");
+                    newDate.insert(6,"월");
 
-                    newDate.insert(4,"��");
+                    newDate.insert(4,"년");
 
                 }else{
 
@@ -2223,9 +2223,9 @@ public class cmnUtil
 
                 {
 
-                    newDate.insert(4,"��");
+                    newDate.insert(4,"일");
 
-                    newDate.insert(2,"��");
+                    newDate.insert(2,"월");
 
                 }else{
 
@@ -2261,7 +2261,7 @@ public class cmnUtil
 
     }
 
-    // 200003��ȯ
+    // 200003반환
 
     public String getHalfOfWeek(int year, int month, int day, int destday, String format)
 
@@ -2271,11 +2271,11 @@ public class cmnUtil
 
         calendar.set(year,month - 1,day);
 
-        // (1-��,2-��,...7-��)
+        // (1-일,2-월,...7-토)
 
         int dayofweek = calendar.get(calendar.DAY_OF_WEEK);
 
-        // ������ ������� �޾ƿ���
+        // 그주의 월요일을 받아오기
 
         GregorianCalendar cal = new GregorianCalendar();
 
@@ -2299,13 +2299,13 @@ public class cmnUtil
 
     }
 
-    // nareadme.htm�Է¹޾� 20000614090248_nareadme.htm��ȯ
+    // nareadme.htm입력받아 20000614090248_nareadme.htm반환
 
     public String getHalfOfWeek(String date, int destday, String format)
 
     {
 
-        // �Է¹��� ���� ���� ��ȯ
+        // 입력받은 날의 요일 반환
 
         int year = Integer.valueOf(date.substring(0,4)).intValue();
 
@@ -2351,7 +2351,7 @@ public class cmnUtil
 
         // var arg = getUserDate1( oneday )
 
-        // arg - date���
+        // arg - date형식
 
         int year = Integer.valueOf(date.substring(0,4)).intValue();
 
@@ -2365,15 +2365,15 @@ public class cmnUtil
 
     }
 
-    // file����� output��Ʈ�� �����
+    // file만들고 output스트림 만들기
 
     public long getSubtractDay(String from_date, String to_date)
 
     {
 
-        long diff_day = 0; // ���� �Ϸ� ǥ��
+        long diff_day = 0; // 차를 일로 표시
 
-        // �� ,�� ,��
+        // 년 ,월 ,일
 
         int from_year = 0;
 
@@ -2381,7 +2381,7 @@ public class cmnUtil
 
         int from_day = 0;
 
-        // �� ,�� ,��
+        // 년 ,월 ,일
 
         int to_year = 0;
 
@@ -2395,9 +2395,9 @@ public class cmnUtil
 
         if(pointDash == -1 && pointSlash == -1)
 
-        {// 20001212�Է�
+        {// 20001212입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             from_year = Integer.valueOf(from_date.substring(0,4)).intValue();
 
@@ -2409,9 +2409,9 @@ public class cmnUtil
 
         else
 
-        {// 2000-12-12,2000/12/12�Է�
+        {// 2000-12-12,2000/12/12입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             from_year = Integer.valueOf(from_date.substring(0,4)).intValue();
 
@@ -2427,9 +2427,9 @@ public class cmnUtil
 
         if(pointDash == -1 && pointSlash == -1)
 
-        {// 20001212�Է�
+        {// 20001212입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             to_year = Integer.valueOf(to_date.substring(0,4)).intValue();
 
@@ -2441,9 +2441,9 @@ public class cmnUtil
 
         else
 
-        {// 2000-12-12,2000/12/12�Է�
+        {// 2000-12-12,2000/12/12입력
 
-            // �� ,�� ,��
+            // 년 ,월 ,일
 
             to_year = Integer.valueOf(to_date.substring(0,4)).intValue();
 
@@ -2465,7 +2465,7 @@ public class cmnUtil
 
         java.util.Date endDate = cal_of_end.getTime();
 
-        // 1970.1.1������ ��
+        // 1970.1.1부터의 초
 
         long msec1 = startDate.getTime();
 
@@ -2479,7 +2479,7 @@ public class cmnUtil
 
             msec3 = msec2 - msec1;
 
-            // msec�� �ش��ϴ� ��¥ ���� ����Ѵ�
+            // msec에 해당하는 날짜 수를 계산한다
 
             diff_day = msec3 / (24 * 60 * 60 * 1000L);
 
@@ -2491,7 +2491,7 @@ public class cmnUtil
 
             msec3 = msec1 - msec2;
 
-            // msec�� �ش��ϴ� ��¥ ���� ����Ѵ�
+            // msec에 해당하는 날짜 수를 계산한다
 
             diff_day = -(msec3 / (24 * 60 * 60 * 1000L));
 
@@ -2503,9 +2503,9 @@ public class cmnUtil
 
     }
 
-    // file����� output��Ʈ�� �����
+    // file만들고 output스트림 만들기
 
-    // appent�� true�� �� ���̱� ,false�� �����
+    // appent가 true시 덧 붙이기 ,false시 덮어쓰기
 
     public int getSubtractMonth(String from_date, String toxx_date)
 
@@ -2513,27 +2513,27 @@ public class cmnUtil
 
     {
 
-        // �ѷ��� ����� �÷�����
+        // 뿌려질 결과의 컬럼개수
 
         int diff_month = 0;
 
         int END_MONTH = 12;
 
-        int start_mon_of_from_date = 0;// ���۳���� ���ۿ�
+        int start_mon_of_from_date = 0;// 시작년월의 시작월
 
-        int start_mon_of_toxx_date = 0;// ������� ���ۿ�
+        int start_mon_of_toxx_date = 0;// 끝년월의 시작월
 
-        int loop_of_from_date = 0;// ���۳���� loop ��
+        int loop_of_from_date = 0;// 시작년월의 loop 수
 
-        int loop_of_toxx_date = 0;// ������� loop ��
+        int loop_of_toxx_date = 0;// 끝년월의 loop 수
 
         int loop_of_year = 0;
 
-        // ���� ����� ���۳�
+        // 시작 년월의 시작년
 
         int year_of_from_date = Integer.valueOf(from_date.substring(0,4)).intValue();
 
-        // �� ����� ����
+        // 끝 년월의 끝년
 
         int year_of_toxx_date = Integer.valueOf(toxx_date.substring(0,4)).intValue();
 
@@ -2543,7 +2543,7 @@ public class cmnUtil
 
         if(year_of_from_date == year_of_toxx_date)
 
-        {// ���� ��� �� ���� ������
+        {// 시작 년과 끝 년이 같을때
 
             pointDash = from_date.lastIndexOf("-");
 
@@ -2575,7 +2575,7 @@ public class cmnUtil
 
             loop_of_toxx_date = 0;
 
-            // �÷��� ���� = toxx_date �� from_date �÷� ���� +1
+            // 컬럼에 개수 = toxx_date 와 from_date 컬럼 격차 +1
 
             if(start_mon_of_toxx_date >= start_mon_of_from_date)
 
@@ -2599,7 +2599,7 @@ public class cmnUtil
 
             {
 
-                // ���۴�
+                // 시작달
 
                 start_mon_of_from_date = Integer.valueOf(from_date.substring(4,6)).intValue();
 
@@ -2658,7 +2658,7 @@ public class cmnUtil
 
             {
 
-                // ���۴�
+                // 시작달
 
                 start_mon_of_from_date = Integer.valueOf(toxx_date.substring(4,6)).intValue();
 
@@ -2676,7 +2676,7 @@ public class cmnUtil
 
             {
 
-                // ���۴�
+                // 시작달
 
                 start_mon_of_from_date = Integer.valueOf(toxx_date.substring(5,7)).intValue();
 
@@ -2718,24 +2718,24 @@ public class cmnUtil
         day = calendar.get(calendar.DAY_OF_WEEK);
 
         if(day == 1)
-            days = "��";
+            days = "일";
 
         else if(day == 2)
-            days = "��";
+            days = "월";
 
         else if(day == 3)
-            days = "ȭ";
+            days = "화";
 
         else if(day == 4)
-            days = "��";
+            days = "수";
 
         else if(day == 5)
-            days = "��";
+            days = "목";
 
         else if(day == 6)
-            days = "��";
+            days = "금";
 
-        else if(day == 7) days = "��";
+        else if(day == 7) days = "토";
 
         return days;
 
@@ -2759,15 +2759,15 @@ public class cmnUtil
 
     }
 
-    // �����б�
+    // 파일읽기
 
-    // ���� readFile2("c:\\","autoexec.bat")
+    // 가능 readFile2("c:\\","autoexec.bat")
 
-    // ���� readFile2("c:\\osdk\\sam001\\htdocs\\","Ws_ftp.log")
+    // 가능 readFile2("c:\\osdk\\sam001\\htdocs\\","Ws_ftp.log")
 
-    // �Ұ��� readFile2("\\","Ws_ftp.log")
+    // 불가능 readFile2("\\","Ws_ftp.log")
 
-    // �Ұ��� readFile2("/","Ws_ftp.log")
+    // 불가능 readFile2("/","Ws_ftp.log")
 
     public String makeFileName(String srcfile)
 
@@ -2777,35 +2777,35 @@ public class cmnUtil
 
         GregorianCalendar cal = new GregorianCalendar();
 
-        // ��
+        // 년
 
         filename.append(cal.get(1));
 
-        // ��
+        // 월
 
         if(cal.get(2) < 9) filename.append('0');
 
         filename.append(cal.get(2) + 1);
 
-        // ��
+        // 일
 
         if(cal.get(5) < 10) filename.append('0');
 
         filename.append(cal.get(5));
 
-        // ��
+        // 시
 
         if(cal.get(11) < 10) filename.append('0');
 
         filename.append(cal.get(11));
 
-        // ��
+        // 분
 
         if(cal.get(12) < 10) filename.append('0');
 
         filename.append(cal.get(12));
 
-        // ��
+        // 초
 
         if(cal.get(13) < 10) filename.append('0');
 
@@ -2813,7 +2813,7 @@ public class cmnUtil
 
         filename.append('_');
 
-        // �����̸��� ��鿡 _��
+        // 파일이름중 공백에 _로
 
         srcfile = replaceStringAll(srcfile," ","_");
 
@@ -2845,17 +2845,17 @@ public class cmnUtil
 
     }
 
-    // ���� �б�
+    // 파일 읽기
 
-    // ����
+    // 사용법
 
-    // ���� readFile2("c:\\","autoexec.bat")
+    // 가능 readFile2("c:\\","autoexec.bat")
 
-    // ���� readFile2("c:\\osdk\\sam001\\htdocs\\","Ws_ftp.log")
+    // 가능 readFile2("c:\\osdk\\sam001\\htdocs\\","Ws_ftp.log")
 
-    // �Ұ��� readFile2("\\","Ws_ftp.log")
+    // 불가능 readFile2("\\","Ws_ftp.log")
 
-    // �Ұ��� readFile2("/","Ws_ftp.log")
+    // 불가능 readFile2("/","Ws_ftp.log")
 
     public PrintWriter openLog(String filename)
 
@@ -2891,15 +2891,15 @@ public class cmnUtil
 
     }
 
-    // �����б�
+    // 파일읽기
 
-    // ���� readFile2("c:\\","autoexec.bat")
+    // 가능 readFile2("c:\\","autoexec.bat")
 
-    // ���� readFile2("c:\\osdk\\sam001\\htdocs\\","Ws_ftp.log")
+    // 가능 readFile2("c:\\osdk\\sam001\\htdocs\\","Ws_ftp.log")
 
-    // �Ұ��� readFile2("\\","Ws_ftp.log")
+    // 불가능 readFile2("\\","Ws_ftp.log")
 
-    // �Ұ��� readFile2("/","Ws_ftp.log")
+    // 불가능 readFile2("/","Ws_ftp.log")
 
     public PrintWriter openLog(String path, String fileName, boolean append)
 
@@ -2953,15 +2953,15 @@ public class cmnUtil
 
     }
 
-    // ȭ�� �б�
+    // 화일 읽기
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // file upload�� ���
+    // file upload시 사용
     public Hashtable parseMulti(HttpServletRequest req, long maxSize)
 
     throws IOException
@@ -3036,15 +3036,15 @@ public class cmnUtil
 
     }
 
-    // ���ϴ� ���� ����
+    // 원하는 문자 삭제
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // file upload�� ���
+    // file upload시 사용
     Hashtable parseMulti(String boundary, ServletInputStream in)
 
     throws IOException
@@ -3254,7 +3254,7 @@ public class cmnUtil
 
             if(filename == null)
 
-            {// file�±װ� �ƴҶ�
+            {// file태그가 아닐때
 
                 if(hash.get(name) == null)
 
@@ -3299,11 +3299,11 @@ public class cmnUtil
 
             else
 
-            {// file�±��϶�
+            {// file태그일때
 
                 if(hash.get(name) == null)
 
-                {// hash�� ��ٸ�
+                {// hash에 없다면
 
                     Hashtable filehash = new Hashtable(5);
 
@@ -3329,7 +3329,7 @@ public class cmnUtil
 
                 else
 
-                {// hash�� �̹� �ִٸ�
+                {// hash에 이미 있다면
 
                     Object prevobj = hash.get(name);
 
@@ -3370,7 +3370,7 @@ public class cmnUtil
 
                 }
 
-            }// file�±����� �ƴ����϶�
+            }// file태그인지 아닌지일때
 
         }while(true);
 
@@ -3422,7 +3422,7 @@ public class cmnUtil
 
     }
 
-    // ������ ����
+    // 점이하 제거
 
     public String readFile(String path_file)
 
@@ -3460,9 +3460,9 @@ public class cmnUtil
 
     }
 
-    // makefilename�� ���� ���ϸ?������
+    // makefilename중 실제 파일명가져오기
 
-    // 20000614090248_nareadme.htm��nareadme.htm
+    // 20000614090248_nareadme.htm중nareadme.htm
 
     public String readFile(String path, String fileName)
 
@@ -3512,7 +3512,7 @@ public class cmnUtil
 
     }
 
-    // ���������� ��ġ�ϴ� ���ڿ� ��ü
+    // 마지막으로 일치하는 문자열 교체
 
     public String readFile2(String path, String fileName)
 
@@ -3560,7 +3560,7 @@ public class cmnUtil
 
     }
 
-    // Ư�����ڸ� ������ ��ȣ��
+    // 특수문자를 임의의 기호로
 
     public String readFile3(String path, String fileName) throws IOException
 
@@ -3611,7 +3611,7 @@ public class cmnUtil
 
     }
 
-    // ������ ��ȣ�� Ư�����ڷ�
+    // 임의의 기호를 특수문자로
 
     public String removeChar(String str, String deli)
 
@@ -3640,11 +3640,11 @@ public class cmnUtil
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // comma����
+    // comma제거
     public String removeComma(String s)
 
     {
@@ -3699,7 +3699,7 @@ public class cmnUtil
 
     }
 
-    // �Լ��߰� : ������ 2004.03.05 replaceStringAll2 ���� synchronized ����
+    // 함수추가 : 방윤옥 2004.03.05 replaceStringAll2 에서 synchronized 제거
 
     public String renameFile(String file, String new_file)
 
@@ -3711,7 +3711,7 @@ public class cmnUtil
 
     }
 
-    // ���ڿ��� ����ȯ(��ü���ڿ����� �������)
+    // 문자열의 색깔변환(전체문자열에는 영향없음)
 
     public String renameFile(String path, String fileName, String newName)
 
@@ -3750,15 +3750,15 @@ public class cmnUtil
      * 
      * newDoub = Math.floor(doub * round +.5)/round;
      * 
-     * ��
+     * 즉
      * 
-     * �Ҽ� 2°�ڸ� �ݿø���
+     * 소수 2째자리 반올림은
      * 
      * y= Math.floor(x*100+.5)/100;
      * 
      * 
      * 
-     * �����ڸ��� �Ѿ�� 4.7*E07������ ����
+     * 일정자리수 넘어가면 4.7*E07식으로 나옴
      * 
      */
 
@@ -3851,7 +3851,7 @@ public class cmnUtil
         return replaceStr;
 
         /*
-         * ���๮�ڵ� ����
+         * 개행문자도 가능
          * 
          * }else if( currStr.equals("\n"))
          *  {
@@ -3974,7 +3974,7 @@ public class cmnUtil
         return replaceStr;
 
         /*
-         * ���๮�ڵ� ����
+         * 개행문자도 가능
          * 
          * 
          * 
@@ -3987,9 +3987,9 @@ public class cmnUtil
 
     }
 
-    // byte������ �Ѿ�� data�� ������ ����
+    // byte단위로 넘어온 data를 서버에 저장
 
-    // ������ ���� ����
+    // 파일의 실제 저장
 
     public String replaceSignSave(String orgstr)
 
@@ -4112,15 +4112,15 @@ public class cmnUtil
 
     }
 
-    // ���ϴ� �����ŭ�� char�ֱ�
+    // 원하는 사이즈만큼의 char넣기
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // String Replace ��Ŵ - ���ڿ��� ��ȯ(��ü���ڿ����� �������)
+    // String Replace 시킴 - 문자열의 변환(전체문자열에는 영향없음)
     public String replaceStringAll(String in, String find, String replace)
 
     {
@@ -4148,15 +4148,15 @@ public class cmnUtil
 
     }
 
-    // comma����
+    // comma세팅
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // ���ڿ��� ��ȯ(��ü���ڿ����� �������)
+    // 문자열의 변환(전체문자열에는 영향없음)
     public synchronized String replaceStringAll2(String Source, String FindText, String replace)
 
     {
@@ -4166,7 +4166,7 @@ public class cmnUtil
 
         int FindLength = Source.length();
 
-        // ã�� ���� ����
+        // 찾을 문자 길이
 
         int FindTextLength = FindText.length();
 
@@ -4211,7 +4211,7 @@ public class cmnUtil
 
     }
 
-    // comma����
+    // comma세팅
 
     public String replaceStringAll3(String Source, String FindText, String replace)
 
@@ -4220,7 +4220,7 @@ public class cmnUtil
         String rtnSource = "";
         String rtnCheck = "";
         int FindLength = Source.length();
-        // ã�� ���� ����
+        // 찾을 문자 길이
         int FindTextLength = FindText.length();
 
         char SourceArrayChar[] = new char[FindLength];
@@ -4251,7 +4251,7 @@ public class cmnUtil
         return rtnSource;
     }
 
-    // comma����
+    // comma세팅
 
     public String replaceStringColor(String Source, String FindText, String Color,
                                      String replaceFlag)
@@ -4266,7 +4266,7 @@ public class cmnUtil
 
         int FindIndex = Source.indexOf(FindText);
 
-        // ã�� ���� ����
+        // 찾을 문자 길이
 
         int FindTextLength = FindText.length();
 
@@ -4289,7 +4289,7 @@ public class cmnUtil
 
             if(replaceFlag.equals("BOTH"))
 
-            {// �빮���̰� �ҹ����̰�
+            {// 대문자이건 소문자이건
 
                 if(rtnCheck.equals(FindText.toUpperCase())
                         || rtnCheck.equals(FindText.toLowerCase()))
@@ -4314,7 +4314,7 @@ public class cmnUtil
 
             else
 
-            {// ��ġ�ϴ� �͸� - ONLY
+            {// 일치하는 것만 - ONLY
 
                 if(rtnCheck.equals(FindText))
 
@@ -4342,9 +4342,9 @@ public class cmnUtil
 
     }
 
-    // comma����
+    // comma세팅
 
-    // �Ҽ� �ݿø�
+    // 소수 반올림
     public double roundDouble(double num, int underNum)
 
     {
@@ -4383,7 +4383,7 @@ public class cmnUtil
 
     }
 
-    // jsp���� �������� out�����
+    // jsp에서 쓰기위한 out만들기
 
     /*
      * 
@@ -4395,7 +4395,7 @@ public class cmnUtil
      * try {
      * 
      * this.out = new java.io.PrintWriter(res.getOutputStream(),true);//false -
-     * ����
+     * 에러
      *  // this.out = res.getWriter();
      *  } catch(Throwable e) {
      * 
@@ -4433,7 +4433,7 @@ public class cmnUtil
 
     }
 
-    // ���ϴ� �����ŭ�� space�ֱ�
+    // 원하는 사이즈만큼의 space넣기
 
     public String runDeleteFile(String path_file)
 
@@ -4475,9 +4475,9 @@ public class cmnUtil
 
     }
 
-    // �־��� ���ڿ�(str)�� double �� ���ڷ� ��ȯ�Ѵ�.
+    // 주어진 문자열(str)을 double 형 숫자로 변환한다.
 
-    // ��, ���� ���ڿ��μ� ��ȿ���� ���� ���ڿ��� 0 �� �����Ѵ�.
+    // 단, 숫자 문자열로서 유효하지 않은 문자열은 0 을 리턴한다.
 
     public String runRenameFile(String path_file, String new_path_file)
 
@@ -4494,7 +4494,7 @@ public class cmnUtil
 
             File newfile = new File(new_path_file);
 
-            // ���̸����� �̹� ���� �ϸ� ���� - �ǹ� ����
+            // 새이름으로 이미 존재 하면 삭제 - 의미 없음
 
             // if (newfile.exists()) newfile.delete();
 
@@ -4548,9 +4548,9 @@ public class cmnUtil
 
     }
 
-    // �־��� ���ڿ�(str)�� Integer �� ���ڷ� ��ȯ�Ѵ�.
+    // 주어진 문자열(str)을 Integer 형 숫자로 변환한다.
 
-    // ��, ���� ���ڿ��μ� ��ȿ���� ���� ���ڿ��� 0 �� �����Ѵ�.
+    // 단, 숫자 문자열로서 유효하지 않은 문자열은 0 을 리턴한다.
 
     public String saveFile(String path, String file, byte bytes[])
 
@@ -4600,9 +4600,9 @@ public class cmnUtil
 
     }
 
-    // �־��� ���ڿ�(str)�� long �� ���ڷ� ��ȯ�Ѵ�.
+    // 주어진 문자열(str)을 long 형 숫자로 변환한다.
 
-    // ��, ���� ���ڿ��μ� ��ȿ���� ���� ���ڿ��� 0 �� �����Ѵ�.
+    // 단, 숫자 문자열로서 유효하지 않은 문자열은 0 을 리턴한다.
 
     public String setChar(int loopNum, String fillChar)
 
@@ -4618,7 +4618,7 @@ public class cmnUtil
 
     }
 
-    // �ѱ��� �Ϲ��ڵ�� �ٲٱ� ���ؼ�
+    // 한글을 일반코드로 바꾸기 위해서
 
     public String setComma(double num)
 
@@ -4646,7 +4646,7 @@ public class cmnUtil
 
     }
 
-    // �����ڵ带 �ѱ۷�
+    // 유니코드를 한글로
 
     public String setComma(int num)
 
@@ -4674,7 +4674,7 @@ public class cmnUtil
 
     }
 
-    // lengthũ�⿡ ���߾� 0�� �ٿ� ��ȯ
+    // length크기에 맞추어 0을 붙여 반환
 
     public String setComma(long num)
 
@@ -4710,22 +4710,22 @@ public class cmnUtil
 
         data = data.trim();
 
-        // .���ϸ� ������ ����
+        // .이하를 제외한 길이
 
         int strLen = 0;
 
-        // -�� ������ �߶�´� ��ȯ�� �ٿ� �ش�
+        // -가 있으면 잘라냈다 반환시 붙여 준다
 
         int dash = data.indexOf('-');
 
-        // - �� ��ġ�� �� ã������
+        // - 의 위치를 못 찾았으면
 
         if(dash == -1)
             data = data;
 
         else data = data.substring(dash + 1);
 
-        // .�� ������ ��ȯ�� �ٿ� �ش�
+        // .가 있으면 반환시 붙여 준다
 
         int point = data.indexOf('.');
 
@@ -4765,11 +4765,11 @@ public class cmnUtil
 
         String commaStr = df.format(d);
 
-        // �Ҽ������� ���� ������ �������� �ٿ� �ش�.
+        // 소숫점이하 값이 있으면 마지막에 붙여 준다.
 
         if(point > -1) commaStr += data.substring(point,data.length());
 
-        // - �� ������ �տ� �ٿ��ش�
+        // - 가 있으면 앞에 붙여준다
 
         if(dash > -1) commaStr = '-' + commaStr;
 
@@ -4777,9 +4777,9 @@ public class cmnUtil
 
     }
 
-    // ������ ���Ͽ� ����
+    // 실제로 파일에 쓰기
 
-    // Ŭ���̾�Ʈ�� ������ cache���
+    // 클라이언트의 브라우저 cache못쓰게
     public void setResponse(HttpServletResponse response)
 
     throws UnsupportedEncodingException, IOException
@@ -4833,7 +4833,7 @@ public class cmnUtil
 
     }
 
-    // �� ���� ����Ϻ��� �Ͽ����� �����ϰ� 3�Ͼ� ���� Format��� ��ȯ
+    // 그 주의 월요일부터 일요일을 제외하고 3일씩 끊어 Format대로 반환
 
     public int string2Int(String str)
 
@@ -4879,7 +4879,7 @@ public class cmnUtil
 
     }
 
-    // �� ���� ����Ϻ��� �Ͽ����� �����ϰ� 3�Ͼ� ���� Format��� ��ȯ
+    // 그 주의 월요일부터 일요일을 제외하고 3일씩 끊어 Format대로 반환
 
     public long string2Long(String str)
 
@@ -4925,7 +4925,7 @@ public class cmnUtil
 
     }
 
-    // ���� ��¥���� ���� ���� Format��� ��ȯ
+    // 현재 날짜에서 월을 더해 Format대로 반환
 
     public String subString(String str, int i)
 
@@ -4953,7 +4953,7 @@ public class cmnUtil
 
     }
 
-    // ���� ��¥���� ���� ���� Format��� ��ȯ
+    // 현재 날짜에서 월을 더해 Format대로 반환
 
     public String toCode(String kscode)// throws UnsupportedEncodingException
 
@@ -4991,7 +4991,7 @@ public class cmnUtil
 
     }
 
-    // ���ϴ� ũ��� �ڸ���
+    // 원하는 크기로 자르기
 
     public String toHangul(String str) // throws
                                         // java.io.UnsupportedEncodingException
@@ -5028,7 +5028,7 @@ public class cmnUtil
 
         return data;
 
-        // �ѱ��ε� �ѹ� �� ���� ??? ǥ��
+        // 한글인데 한번 더 쓰면 ??? 표시
 
     }
 
@@ -5054,15 +5054,15 @@ public class cmnUtil
 
     }
 
-    // ���ϻ����� ���
+    // 파일사이즈 얻기
 
     /**
      * 
-     * �� �޼ҵ�� VisualAge���� �ۼ��Ǿ���ϴ�.
+     * 이 메소드는 VisualAge에서 작성되었습니다.
      * 
      */
 
-    // 02��
+    // 02로
     public String toLen2(int nums)
 
     {
@@ -5077,11 +5077,11 @@ public class cmnUtil
 
     }
 
-    // ���ϻ����� ���
+    // 파일사이즈 얻기
 
     /*--------------------------------------------------
-     ' ==> &rsquo; �� ��ȯ
-     " ==> &rdquo; �� ��ȯ
+     ' ==> &rsquo; 로 변환
+     " ==> &rdquo; 로 변환
      --------------------------------------------------*/
     public String unReplaced(String str){
         String rtnStr = new String();
@@ -5093,7 +5093,7 @@ public class cmnUtil
         if(str == null || str.equals("NULL")){
             rtnStr = "";
         }else{
-            // ' ==> &rsquo; �� ��ȯ
+            // ' ==> &rsquo; 로 변환
             last_idx = str.length();
             while(-1 != str.indexOf('\'')){
                 start_idx = 0;
@@ -5109,7 +5109,7 @@ public class cmnUtil
             str = rtnStr + str;
             rtnStr = "";
 
-            // " ==> &rdquo; �� ��ȯ
+            // " ==> &rdquo; 로 변환
             last_idx = str.length();
             while(-1 != str.indexOf('"')){
                 start_idx = 0;

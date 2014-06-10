@@ -2,35 +2,35 @@ package com.slug.io;
 
 /**
  * @(#) NullPrintWriter.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
 import java.io.*;
 
 /**
- * UNIX�� /dev/null�� java version�̴�.
- * ��¹����� NullPrintWriter�� �ϸ� ����δ�
- * �ƹ��ϵ� �Ͼ�� �ʴ´�. ��, ���ʿ��� �����
- * ����� �� �� ����� �� �ִ�.
+ * UNIX의 /dev/null의 java version이다.
+ * 출력방향을 NullPrintWriter로 하면 실재로는
+ * 아무일도 일어나지 않는다. 즉, 불필요한 출력을
+ * 없에고자 할 때 사용할 수 있다.
  *
  */
 public class NullPrintWriter extends PrintWriter {
 
     /**
-     * PrintWriter�� ���� ��� constructor�� ��� ������ ���Ƿ�
-     * super( new LNullWriter() )�� ȣ�����ش�.
+     * PrintWriter에 인자 없는 constructor가 없기 때문에 임의로
+     * super( new LNullWriter() )을 호출해준다.
      */
     public NullPrintWriter() {
         super( new NullWriter() );
     }
     /**
-     * false�� return�Ѵ�.
+     * false를 return한다.
      *
      * @return false.
      */
@@ -38,157 +38,157 @@ public class NullPrintWriter extends PrintWriter {
         return false;
     }
     /**
-     * �ƹ��͵� �������� �ʴ´�.
+     * 아무것도 수행하지 않는다.
      */
     public void close() { }
     /**
-     * �ƹ��͵� �������� �ʴ´�.
+     * 아무것도 수행하지 않는다.
      */
     public void flush() { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
-     * @param s char�迭.
+     * @param s char배열.
      */
     public void print(char[] s) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param c char.
      */
     public void print(char c) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param d double.
      */
     public void print(double d) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param f float.
      */
     public void print(float f) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param i int.
      */
     public void print(int i) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param l long.
      */
     public void print(long l) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param obj Object.
      */
     public void print(Object obj) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
-     * @param s String���ڿ�.
+     * @param s String문자열.
      */
     public void print(String s) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param b boolean.
      */
     public void print(boolean b) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      */
     public void println() { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
-     * @param x char���ڿ�.
+     * @param x char문자열.
      */
     public void println(char[] x) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param x char.
      */
     public void println(char x) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param x double.
      */
     public void println(double x) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param x float.
      */
     public void println(float x) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param x int.
      */
     public void println(int x) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param x long.
      */
     public void println(long x) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param x Object.
      */
     public void println(Object x) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
-     * @param x String���ڿ�.
+     * @param x String문자열.
      */
     public void println(String x) { }
     /**
-     * �ƹ��͵� print���� �ʴ´�.
+     * 아무것도 print하지 않는다.
      *
      * @param x boolean.
      */
     public void println(boolean x) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
-     * @param buf char�迭.
+     * @param buf char배열.
      */
     public void write(char[] buf) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
-     * @param buf char�迭.
-     * @param off char�迭 ���۽��������� offset.
-     * @param len char�迭 ����.
+     * @param buf char배열.
+     * @param off char배열 시작시점에서의 offset.
+     * @param len char배열 길이.
      */
     public void write(char[] buf, int off, int len) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
      * @param b int.
      */
     public void write(int b) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
-     * @param s String���ڿ�.
+     * @param s String문자열.
      */
     public void write(String s) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
-     * @param s String���ڿ�.
-     * @param off String���ڿ� ���۽��������� offset.
-     * @param len String���ڿ� ����.
+     * @param s String문자열.
+     * @param off String문자열 시작시점에서의 offset.
+     * @param len String문자열 길이.
      */
     public void write(String s, int off, int len) { }
 }

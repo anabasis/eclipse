@@ -2,22 +2,22 @@ package com.slug.logging;
 
 /**
  * @(#) LoggingFormat.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
 import java.text.SimpleDateFormat;
 
 /**
- * �⺻������ ����Ǵ� Log format�� ���� Class�̴�.
- * Log ���� ����ϰ��� �ϴ� ���ڿ� �տ� prefix�� �ٰ� �ڿ�
- * postfix�� �ٴ´�. �⺻���� ���õǴ� ����� '[����][����]'
- * �̰� ���ڴ� 'yyyyMMdd'�� prefix�̰�postfix�� ���.
+ * 기본적으로 제공되는 Log format에 관한 Class이다.
+ * Log 사용시 출력하고자 하는 문자열 앞에 prefix가 붙고 뒤에
+ * postfix가 붙는다. 기본으로 제시되는 모습은 '[일자][내용]'
+ * 이고 일자는 'yyyyMMdd'의 prefix이고postfix는 없다.
  *
  */
 public class LoggingFormat {
@@ -26,11 +26,11 @@ public class LoggingFormat {
 
     public LoggingFormat() { }
     /**
-     * HttpServletRequest�� �Ϲ� Object�� �����Ͽ� ������
-     * String���� ����� �����Ѵ�
+     * HttpServletRequest와 일반 Object를 구분하여 정보를
+     * String으로 만들어 리턴한다
      *
-     * @param o ������ ����� �ϴ� Object.
-     * @return object�� information.
+     * @param o 정보를 얻고자 하는 Object.
+     * @return object의 information.
      */
     public static String getObjectInfo(Object o) {
         StringBuffer info = new StringBuffer();
@@ -67,8 +67,8 @@ public class LoggingFormat {
         return info.toString();
     }
     /**
-     * Log������ �ںκп� �� String ���� ����� �ش�.
-     * ����� �ƹ����뵵 return���� �ʴ´�.
+     * Log내용의 뒤부분에 들어갈 String 값을 만들어 준다.
+     * 현재는 아무내용도 return하지 않는다.
      *
      * @return "".
      */
@@ -76,19 +76,19 @@ public class LoggingFormat {
         return "";
     }
     /**
-     * Log������ �պκп� �� String ���� ����� �ش�.
-     * ���� 'yyyyMMdd'�� ������� �Ǿ� �ִ�.
+     * Log내용의 앞부분에 들어갈 String 값을 만들어 준다.
+     * 현재 'yyyyMMdd'의 형식으로 되어 있다.
      *
-     * @return ��������(yyyyMMdd).
+     * @return 현재일자(yyyyMMdd).
      */
     public String prefix() {
         SimpleDateFormat dateFormat = new SimpleDateFormat ("[ yyyyMMdd HH:mm:ss ]", java.util.Locale.KOREA);
         return dateFormat.format(new java.util.Date()) + ' ';
     }
     /**
-     * Object������ �������ڿ� �Բ� ������� ����Ѵ�.
+     * Object정보를 현재일자와 함께 얻을경우 사용한다.
      *
-     * @return ��������(yyyyMMdd)�� Object ����.
+     * @return 현재일자(yyyyMMdd)와 Object 정보.
      */
     public String prefix( Object o ) {
         return prefix() + getObjectInfo( o );
@@ -96,8 +96,8 @@ public class LoggingFormat {
 
 
     /**
-     * Log������ �ںκп� �� String ���� ����� �ش�.
-     * ����� �ƹ����뵵 return���� �ʴ´�.
+     * Log내용의 뒤부분에 들어갈 String 값을 만들어 준다.
+     * 현재는 아무내용도 return하지 않는다.
      *
      * @return "".
      */
@@ -105,10 +105,10 @@ public class LoggingFormat {
 		return "";
     }
     /**
-     * Log������ �պκп� �� String ���� ����� �ش�.
-     * ���� 'yyyyMMdd'�� ������� �Ǿ� �ִ�.
+     * Log내용의 앞부분에 들어갈 String 값을 만들어 준다.
+     * 현재 'yyyyMMdd'의 형식으로 되어 있다.
      *
-     * @return ��������(yyyyMMdd).
+     * @return 현재일자(yyyyMMdd).
      */
     public String stdPreFix(String mode) {
         SimpleDateFormat dateFormat = new SimpleDateFormat ("< yyyy. MM. dd. HH:mm:ss >", java.util.Locale.KOREA);
@@ -118,9 +118,9 @@ public class LoggingFormat {
         return rtnStr;
     }
     /**
-     * Object������ �������ڿ� �Բ� ������� ����Ѵ�.
+     * Object정보를 현재일자와 함께 얻을경우 사용한다.
      *
-     * @return ��������(yyyyMMdd)�� Object ����.
+     * @return 현재일자(yyyyMMdd)와 Object 정보.
      */
     public String stdPreFix( Object o,String mode ) {
         return stdPreFix(mode) + getObjectInfo( o );

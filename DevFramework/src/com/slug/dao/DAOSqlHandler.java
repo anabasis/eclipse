@@ -1,17 +1,16 @@
 package com.slug.dao;
 /**
  * @(#) DAOSqlHandler.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
 import java.sql.*;
-
 import javax.sql.DataSource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -22,7 +21,7 @@ import com.slug.exception.*;
 
 /**
  * Insert the type's description here.
- * Creation date: (2002-03-05 ���� 4:04:50)
+ * Creation date: (2002-03-05 오후 4:04:50)
  * @author: Administrator
  */
 

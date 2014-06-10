@@ -2,46 +2,46 @@ package com.slug.logging;
 
 /**
  * @(#) LoggingException.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
 import com.slug.exception.PException;
 /**
- * �� Ŭ������ FRAME WORK�� Log Component�� ����Ҷ� �߻��ϴ�
- * Exception�� �ڵ鸵�ϱ� ���� ���ȴ�.
+ * 이 클래스는 FRAME WORK의 Log Component를 사용할때 발생하는
+ * Exception을 핸들링하기 위해 사용된다.
  *
  */
 public class LoggingException extends PException {
     /**
-     * Ư���� �޽��� ���� LoggingException�� ���Ѵ�.
+     * 특정한 메시지 없이 LoggingException을 생성한다.
      */
     public LoggingException() {
         super();
     }
     /**
-     * Ư���� �޽����� ���� LoggingException�� ���Ѵ�.
-     * @param s �޽���
+     * 특정한 메시지를 갖는 LoggingException을 생성한다.
+     * @param s 메시지
      */
     public LoggingException(String s) {
         super(s);
     }
     /**
-     * Ư���� �޽����� Throwable�� ���� LoggingException�� ���Ѵ�.
-     * @param s �޽���
-     * @param rootCause exception chaining�� �ʿ��� Throwable
+     * 특정한 메시지와 Throwable을 갖는 LoggingException을 생성한다.
+     * @param s 메시지
+     * @param rootCause exception chaining에 필요한 Throwable
      */
     public LoggingException(String message, Throwable rootCause) {
         super(message, rootCause);
     }
     /**
-     * Ư���� Throwable�� ���� LoggingException�� ���Ѵ�.
-     * @param rootCause exception chaining�� �ʿ��� Throwable
+     * 특정한 Throwable을 갖는 LoggingException을 생성한다.
+     * @param rootCause exception chaining에 필요한 Throwable
      */
     public LoggingException(Throwable rootCause) {
         super(rootCause);

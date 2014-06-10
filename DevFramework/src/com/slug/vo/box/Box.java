@@ -4,9 +4,9 @@ package com.slug.vo.box;
  * @version 1.0 - 20040305
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
@@ -20,11 +20,11 @@ import java.lang.reflect.Field;
 import com.slug.logging.Logging;
 
 /**
- * �� Class�� HashMap�� extend�Ͽ� key/value pair�� �����ϴ� class�̴�.<br>
- * Object�� store, retrieve�� �����Ͽ� servlet request�� parsing�ϰų�, <br>
- * session�� �̿��� ��� ���Ǵ� class�̴�.<br>
- * HashMap�� �⺻����� ����Ͽ� Data�� �ڵ鸵�� �� �ִ� ����� �����Ѵ�.<br>
- * JFoundEntity Class�� �ڵ����� �� �� �� �ִ� ��ɵ� �����Ѵ�.<br>
+ * 이 Class는 HashMap을 extend하여 key/value pair를 저장하는 class이다.<br>
+ * Object의 store, retrieve가 용이하여 servlet request를 parsing하거나, <br>
+ * session을 이용할 경우 사용되는 class이다.<br>
+ * HashMap의 기본기능을 비롯하여 Data를 핸들링할 수 있는 기능을 제공한다.<br>
+ * JFoundEntity Class를 자동으로 생성 할 수 있는 기능도 제공한다.<br>
  *
  */
 public class Box extends java.util.HashMap implements java.io.Serializable {
@@ -33,7 +33,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     protected String name = null;
 
     /**
-     * �Ķ���ͷ� name�� �޾� variable�� setting�Ѵ�.
+     * 파라미터로 name을 받아 variable에 setting한다.
      * @param name String
      */
 
@@ -43,7 +43,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-     * Box ��ü�� ������ ���ο� Box��ü�� ���Ͽ� return�Ѵ�.
+     * Box 객체의 복사한 새로운 Box객체를 생성하여 return한다.
      * @return Box Instance
      */
     public Object clone() {
@@ -65,9 +65,9 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
         return newbox;
     }
     /**
-     * Box��ü�� EntityClass �� ������� �Ҷ� �����ϴ�.
-     * Box��ü�� Attribute name�� entity Ŭ������ �ʵ���� ������
-     * �ʵ� type�� �´� Data�� ��� entity Ŭ������ �ʵ带 ä���.
+     * Box객체로 EntityClass 를 만들고자 할때 유용하다.
+     * Box객체의 Attribute name과 entity 클래스의 필드명이 같으면
+     * 필드 type에 맞는 Data를 얻어 entity 클래스의 필드를 채운다.
      * @param entity JFoundEntity Object
      */
     public void copyToEntity(Object entity) {
@@ -105,8 +105,8 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
         }
     }
     /**
-    * ��޹��� key���� �ش�Ǵ� Value�� ���ڿ��� return�Ѵ�.
-    * ���ο� getString()�� �̿��Ͽ� �����Ǿ� �ִ�.
+    * 전달받은 key값에 해당되는 Value를 문자열로 return한다.
+    * 내부에 getString()을 이용하여 구현되어 있다.
     * @param key String
     * @return java.lang.String
     */
@@ -115,7 +115,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� key���� �ش�Ǵ� Value�� boolean����return�Ѵ�.
+    * 전달받은 key값에 해당되는 Value를 boolean으로return한다.
     * @param key String
     * @return boolean
     */
@@ -130,7 +130,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� key���� �ش�Ǵ� Value�� double�� return�Ѵ�.
+    * 전달받은 key값에 해당되는 Value를 double로 return한다.
     * @param key String
     * @return double
     */
@@ -151,7 +151,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� key���� �ش�Ǵ� Value�� float�� return�Ѵ�.
+    * 전달받은 key값에 해당되는 Value를 float로 return한다.
     * @param key String
     * @return float
     */
@@ -160,7 +160,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� key���� �ش�Ǵ� Value�� Int�� return�Ѵ�.
+    * 전달받은 key값에 해당되는 Value를 Int로 return한다.
     * @param key String
     * @return int
     */
@@ -170,7 +170,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� key���� �ش�Ǵ� Value�� long���� return�Ѵ�.
+    * 전달받은 key값에 해당되는 Value를 long으로 return한다.
     * @param key String
     * @return long
     */
@@ -191,7 +191,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� key���� �ش�Ǵ� Value�� String���� return�Ѵ�.
+    * 전달받은 key값에 해당되는 Value를 String으로 return한다.
     * @param key String
     * @return java.lang.String
     */
@@ -228,7 +228,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� key���� �ش�Ǵ� Value�� Vector type���� return�Ѵ�.
+    * 전달받은 key값에 해당되는 Value를 Vector type으로 return한다.
     * @param key String
     * @return java.util.Vector
     */
@@ -263,7 +263,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� key���� value�� �����Ѵ�.
+    * 전달받은 key값과 value를 설정한다.
     * @param key String
     * @param value String
     */
@@ -271,7 +271,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
         super.put(key, value);
     }
     /**
-    * ��޹��� Vector�� key���� Vector�� �����Ѵ�.
+    * 전달받은 Vector의 key값과 Vector를 설정한다.
     * @param key java.lang.String
     * @param vector java.util.Vector
     */
@@ -284,8 +284,8 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * ��޹��� String������ ','���� �����Ѵ��� ����� ���ڿ��� ��ȯ�Ѵ�.
-    * �ݾ������� DATAó���� �����ϴ�.
+    * 전달받은 String값에서 ','값을 제거한다음 변경된 문자열을 반환한다.
+    * 금액형태의 DATA처리시 유용하다.
     * @param s String
     * @return java.lang.String
     */
@@ -309,7 +309,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * �ش� key���� value�� �����Ѵ�.
+    * 해당 key값에 value를 설정한다.
     * @param key String
     * @param value String
     */
@@ -318,7 +318,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * �ش� key���� Vector�� �����Ѵ�.
+    * 해당 key값에 Vector를 설정한다.
     * @param key java.lang.String
     * @param vector java.util.Vector
     */
@@ -330,8 +330,8 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
     }
 
     /**
-    * HttpServletRequest�� request�� ���� HashMap�� �о
-    * name�� value�� ���ڿ��� ����� return�Ѵ�.
+    * HttpServletRequest의 request로 만든 HashMap을 읽어서
+    * name과 value로 문자열을 만들어 return한다.
     * @return java.lang.String
     */
     public synchronized String toString() {
@@ -403,13 +403,13 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
 
     /**
      * Insert the method's description here.
-     * Creation date: (2002-02-21 ���� 12:01:55)
+     * Creation date: (2002-02-21 오후 12:01:55)
      */
     public Box() {}
 
     /**
      * Insert the method's description here.
-     * Creation date: (2002-04-24 ���� 2:15:10)
+     * Creation date: (2002-04-24 오후 2:15:10)
      * @param size int
      */
     public Box(int size) {
@@ -418,7 +418,7 @@ public class Box extends java.util.HashMap implements java.io.Serializable {
 
     /**
      * Insert the method's description here.
-     * Creation date: (2002-04-24 ���� 1:16:25)
+     * Creation date: (2002-04-24 오후 1:16:25)
      * @return com.solupia.edu.jsp2Servlet.Box
      * @param newBox com.solupia.edu.jsp2Servlet.Box
      */

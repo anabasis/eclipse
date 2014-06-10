@@ -14,31 +14,31 @@ import org.apache.log4j.Priority;
 public class log4jHandler {
 
 	/**
-	 * ����
+	 * 생성자
 	 */
     private log4jHandler() {}
     
     /**
-     * Logger Single instacne ����.
+     * Logger Single instacne 변수.
      */
     private static log4jHandler logger_ins = null;
     
     
     protected static Hashtable loggers = new Hashtable(5);
 
-    //Default Console Logger ��
+    //Default Console Logger 명
 	private static String defConLoggerName = "DefaultConsoleLogger";
 	
 	//static org.apache.log4j.Logger defConLogger;
 
-    //Log4j Looger ��ü
+    //Log4j Looger 객체
     private static org.apache.log4j.Logger logger;
 	/**
-     * SingleTon���� Logger�� ���Ѵ�. Logger�� null�� ��쿡��
-     * Logger�� ���Ͽ� return�Ѵ�.
+     * SingleTon으로 Logger를 생성한다. Logger가 null일 경우에만
+     * Logger를 생성하여 return한다.
      *
-     * @return AppConfig�� instance.
-     * @throws AppConfigException configuration error�� �߻��� ���.
+     * @return AppConfig의 instance.
+     * @throws AppConfigException configuration error가 발생할 경우.
      */
     public static synchronized log4jHandler getInstance(String loggername) {
     	
@@ -68,10 +68,10 @@ public class log4jHandler {
     
     
 	/**
-     * 1. ��� : Logger factory method
-     * 2. ó�� ���� :
-     *    - Logger Factory�� ���Ѵ�.
-     * 3. ���ǻ���
+     * 1. 기능 : Logger factory method
+     * 2. 처리 개요 :
+     *    - Logger Factory를 생성한다.
+     * 3. 주의사항
      *
      * @param	name	Logger name
 	 * @return	Logger object
@@ -86,15 +86,15 @@ public class log4jHandler {
         Logger logger = (Logger) loggers.get(loggerName);
         if (logger==null) {
 			logger = (Logger) loggers.get(defConLoggerName);
-			//logger.warn("****** '"+ loggerName +"' �̸��� Logger �� ���ǵ��� �ʾ���. ��ġ ����Ʈ �ܼ� Logger ����.");
+			//logger.warn("****** '"+ loggerName +"' 이름의 Logger 가 정의되지 않았음. 배치 디폴트 콘솔 Logger 리턴.");
 		}
 		return logger;
     }
 	/**
-     * 1. ��� : Banner ������ �α׸� ���
-     * 2. ó�� ���� :
-     *    - Banner ������ �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : Banner 형태의 로그를 출력
+     * 2. 처리 개요 :
+     *    - Banner 형태의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg	Object
      * @exception
@@ -110,10 +110,10 @@ public class log4jHandler {
     }
 
 	/**
-     * 1. ��� : debug Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg	Object
      * @exception
@@ -127,10 +127,10 @@ public class log4jHandler {
     }
 
 	/**
-     * 1. ��� : debug Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg	Object
@@ -145,10 +145,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : debug Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -163,10 +163,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : debug Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -182,10 +182,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @exception
@@ -199,10 +199,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -217,10 +217,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -235,10 +235,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -254,10 +254,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @exception
@@ -271,10 +271,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -289,10 +289,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -307,10 +307,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -326,10 +326,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : error Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - error Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : error Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - error Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @exception
@@ -344,10 +344,10 @@ public class log4jHandler {
     }
 
      /**
-     * 1. ��� : error Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - error Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : error Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - error Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -363,10 +363,10 @@ public class log4jHandler {
     }
 
      /**
-     * 1. ��� : error Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - error Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : error Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - error Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -382,10 +382,10 @@ public class log4jHandler {
     }
 
      /**
-     * 1. ��� : error Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - error Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : error Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - error Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -402,10 +402,10 @@ public class log4jHandler {
     }
 
      /**
-     * 1. ��� : fatal Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - fatal Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : fatal Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - fatal Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @exception
@@ -420,10 +420,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : fatal Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - fatal Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : fatal Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - fatal Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -439,10 +439,10 @@ public class log4jHandler {
     }
 
          /**
-     * 1. ��� : fatal Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - fatal Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : fatal Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - fatal Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -458,10 +458,10 @@ public class log4jHandler {
     }
 
 	/**
-     * 1. ��� : fatal Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - fatal Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : fatal Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - fatal Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -478,10 +478,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : debug Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력 가능여부 확인
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력 가능여부 확인
+     * 3. 주의사항
      *
      * @return	boolean
      * @exception
@@ -491,10 +491,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력 가능여부 확인
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력 가능여부 확인
+     * 3. 주의사항
      *
      * @return	boolean
      * @exception
@@ -504,10 +504,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력 가능여부 확인
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력 가능여부 확인
+     * 3. 주의사항
      *
      * @return	boolean
      * @exception
@@ -517,10 +517,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : Log4j�� ���� �α׸� ���� �� ��� ��� ǥ����� ����
-     * 2. ó�� ���� :
-     *    - Log4j�� ���� �α׸� ���� �� ��� ��� ǥ����� ����
-     * 3. ���ǻ���
+     * 1. 기능 : Log4j를 통해 로그를 남길 수 없는 경우 표준출력 제공
+     * 2. 처리 개요 :
+     *    - Log4j를 통해 로그를 남길 수 없는 경우 표준출력 제공
+     * 3. 주의사항
      *
      * @param	t	Throwable
      * @param	msg Object
@@ -533,10 +533,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : Log4j�� ���� �α׸� ���� �� ��� ��� ǥ����� ����
-     * 2. ó�� ���� :
-     *    - Log4j�� ���� �α׸� ���� �� ��� ��� ǥ����� ����
-     * 3. ���ǻ���
+     * 1. 기능 : Log4j를 통해 로그를 남길 수 없는 경우 표준출력 제공
+     * 2. 처리 개요 :
+     *    - Log4j를 통해 로그를 남길 수 없는 경우 표준출력 제공
+     * 3. 주의사항
      *
      * @param	t	Throwable
      * @param	th	Throwable
@@ -551,10 +551,10 @@ public class log4jHandler {
     }
 
     /**
-     * 1. ��� : ErrorCode�� �޽����� ��� ������ ����
-     * 2. ó�� ���� :
-     *    - ErrorCode�� �޽����� ��� ������ ����
-     * 3. ���ǻ���
+     * 1. 기능 : ErrorCode와 메시지의 출력 포맷을 정의
+     * 2. 처리 개요 :
+     *    - ErrorCode와 메시지의 출력 포맷을 정의
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object

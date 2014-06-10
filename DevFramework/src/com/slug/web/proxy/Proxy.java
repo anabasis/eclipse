@@ -5,19 +5,16 @@ package com.slug.web.proxy;
  * @version webApp
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
 import javax.naming.*;
 import javax.ejb.*;
-
 import java.util.*;
-
 import javax.rmi.PortableRemoteObject;
-
 import java.rmi.RemoteException;
 
 import com.slug.config.*;
@@ -25,7 +22,7 @@ import com.slug.exception.PException;
 import com.slug.logging.*;
 
 /**
- * JNDI Look up �� narrow ���񽺸� �����ϴ� Ŭ�����̴�.
+ * JNDI Look up 및 narrow 서비스를 제공하는 클래스이다.
  *
  */
 public class Proxy {
@@ -33,22 +30,22 @@ public class Proxy {
     private String provider = null;
 
 	/**
-	 * default ��ǰ�� url/context�� Remote handle�� ���Ѵ�.
+	 * default 제품의 url/context로 Remote handle를 생성한다.
 	 */
 	public Proxy() {
 		this("default");
 	}
 
 	/**
-	 * Ư�� ��ǰ�� url/context�� Remote handle�� ���Ѵ�.
+	 * 특정 제품의 url/context로 Remote handle를 생성한다.
 	 */
 	public Proxy(String newProvider) {
 		this.provider = newProvider;
 	}
 
 	/**
-	 * JNDI Look up �� remote object�� �䱸�ϴ� Ÿ������ cast�� �� �ִ� object��
-	 * narrow �Ѵ�.
+	 * JNDI Look up 및 remote object를 요구하는 타입으로 cast할 수 있는 object로
+	 * narrow 한다.
 	 * @return java.lang.Object
 	 * @param  jndiNm  java.lang.String
 	 * @param  classNm java.lang.Class
@@ -100,8 +97,8 @@ public class Proxy {
     }
 
     /**
-     * JNDI Look up �� local object�� �䱸�ϴ� Ÿ������ cast�� �� �ִ� object��
-     * narrow �Ѵ�.
+     * JNDI Look up 및 local object를 요구하는 타입으로 cast할 수 있는 object로
+     * narrow 한다.
      * @return java.lang.Object
      * @param  jndiNm  java.lang.String
      * @param  classNm java.lang.Class

@@ -2,18 +2,18 @@ package com.slug.exception;
 
 /**
  * @(#) SysException.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
     /**
      * Insert the type's description here.
-     * Creation date: (2002-01-30 ���� 12:34:49)
+     * Creation date: (2002-01-30 오후 12:34:49)
      * @author: Administrator
      */
     public class SysException extends PException {

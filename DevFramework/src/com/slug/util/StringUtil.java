@@ -8,14 +8,14 @@ import java.util.Vector;
 public class StringUtil
 {
     /**
-	* 1. ��� : �����ڰ� �� ��Ʈ���� �����ڱ������� �߶� String Array�� ������ִ� Method
-    * 2. ó�� ���� :
-    *     - �����ڰ� �� ��Ʈ���� �����ڱ������� �߶� String Array�� ������ִ� Method
-    * 3. ���ǻ���
+	* 1. 기능 : 구분자가 들어간 스트링을 구분자기준으로 잘라 String Array를 만들어주는 Method
+    * 2. 처리 개요 :
+    *     - 구분자가 들어간 스트링을 구분자기준으로 잘라 String Array를 만들어주는 Method
+    * 3. 주의사항
 	*
-	*	@param inStr ��� ��Ʈ��
-    *   @param delim �߶� ���� ���� ������
-    *   @return �߶� ��Ʈ���� ��� �ִ� String Array
+	*	@param inStr 대상 스트링
+    *   @param delim 잘라낼 때의 기준 구분자
+    *   @return 잘라낸 스트링을 담고 있는 String Array
 	*/
     public static String[] getStrArray(String inStr, String delim) {
         String[] retStr = null;
@@ -31,13 +31,13 @@ public class StringUtil
 
     
     /**
-	 * 1. ��� : �־��� ���ڿ��� ���ڷθ� �����Ǿ� �ִ��� Ȯ���Ѵ�.
-	 *           ����� ������ false�� ��ȯ�Ѵ�.
-	 * 2. ó�� ���� :
-     *    - char���� 48���� 57�����̸� �����̴�.
+	 * 1. 기능 : 주어진 문자열이 숫자로만 구성되어 있는지 확인한다.
+	 *           공백이 있으면 false를 반환한다.
+	 * 2. 처리 개요 :
+     *    - char값이 48에서 57사이이면 숫자이다.
 	 *
-	 * @param	str			���ڿ�
-	 * @return 	���ڿ��� ��� ���ڷθ� �̷������ true
+	 * @param	str			문자열
+	 * @return 	문자열이 모두 숫자로만 이루어진경우 true
 	 */
 	public static boolean isNumeric(String str) {
 		if (str==null || str.equals("")) return false;
@@ -49,14 +49,14 @@ public class StringUtil
 	}
 
     /**
-	 * 1. ��� : �־��� ���ڿ��� ���ڷθ� �����Ǿ� �ִ��� Ȯ���Ѵ�.
-	 *           ����� true�� ��ȯ�Ѵ�.
-	 * 2. ó�� ���� :
-     *    - �Էµ� String�� �빮�ڷ� ��� ��ȯ�Ѵ�. (���ĺ��� 65(A)���� 90(Z)�����̴�.)
-     *    - char���� 65�̻��̸� �����̴�.
+	 * 1. 기능 : 주어진 문자열이 문자로만 구성되어 있는지 확인한다.
+	 *           공백은 true를 반환한다.
+	 * 2. 처리 개요 :
+     *    - 입력된 String을 대문자로 모두 변환한다. (알파벳은 65(A)에서 90(Z)까지이다.)
+     *    - char값이 65이상이면 문자이다.
 	 *
-	 * @param	str			���ڿ�
-	 * @return 	���ڿ��� ��� ���ڷθ� �̷������ true
+	 * @param	str			문자열
+	 * @return 	문자열이 모두 문자로만 이루어진경우 true
 	 */
 	public static boolean isAlpha(String str) {
 		if (str==null || str.equals("")) return true;
@@ -68,7 +68,7 @@ public class StringUtil
 	}
 
     /**
-     * 1.���: Delimiter�� ���е� String�� �޾Ƶ鿩 String[]�� ��ȯ�Ѵ�.
+     * 1.기능: Delimiter로 구분된 String을 받아들여 String[]을 반환한다.
      */
     public String[] parseStringWithDelimiter(String str, String delim)
     {
@@ -93,7 +93,7 @@ public class StringUtil
     private int getMissSeqNoCnt(String str, char delim)
     {
         /**
-         * 1.���: �Էµ� String���� 0�� ������ ��ȯ�Ѵ�.
+         * 1.기능: 입력된 String에서 0의 갯수만 반환한다.
          */
         int patternMatchCnt = 0;
 		//System.out.println(str.length());
@@ -159,13 +159,13 @@ public class StringUtil
 
 	/**
 	 * <pre>
-	 * ���ڿ��� �־��� �������� ��ġ��Ų��.
-	 * ���) matchFormat("20010101", "####/##/##") -> "2001/01/01"
+	 * 문자열을 주어진 포맷으로 일치시킨다.
+	 * 용례) matchFormat("20010101", "####/##/##") -> "2001/01/01"
 	 *       matchFormat("12345678", "##/## : ##") -> "12/34 : 56"
 	 * </pre>
-	 * @param	str			���ڿ�
-	 * @param	format		��� ��������('#'���ڿ� �� ���ڰ� ��ġ, �׿� ���ڴ� �״�� ǥ��)
-	 * @return 	�������� ��ȯ�� ���ڿ�
+	 * @param	str			원본문자열
+	 * @param	format		결과 포맷형태('#'문자에 원본 문자가 위치, 그외 문자는 그대로 표시)
+	 * @return 	포맷으로 변환된 문자열
 	 */
 	public static String matchFormat(String str, String format) {
 		if(str == null || str.length() == 0 ) return str;
@@ -187,7 +187,7 @@ public class StringUtil
 	}
 
     /*
-     * UTF8 > KSC5601�� ��ȯ
+     * UTF8 > KSC5601로 변환
     */
     public static String _K(String s)
     {
@@ -199,7 +199,7 @@ public class StringUtil
     }
 
     /*
-     * KSC5601 > UTF8  �� ��ȯ
+     * KSC5601 > UTF8  로 변환
     */
     public static String _K2(String s)
     {
@@ -211,7 +211,7 @@ public class StringUtil
     }
 
 		/**
-	*	���ʿ� ����� ä�� ��ü width���� ��ŭ�� ���ڿ��� ��ȯ�Ѵ�.
+	*	왼쪽에 공백을 채워 전체 width길이 만큼의 문자열을 반환한다.
 	*/
 	public static String rpad( String origin, int width ) {
 		return lpad(origin, width, ' ');
@@ -229,7 +229,7 @@ public class StringUtil
 	}
 
 	/**
-	*	���ڿ��� �����ʿ� ����� ä�� ��ü width���� ��ŭ�� ���ڿ��� ��ȯ�Ѵ�.
+	*	문자열의 오른쪽에 공백을 채워 전체 width길이 만큼의 문자열을 반환한다.
 	*/
 	public static String lpad(String origin, int width) {
 		return rpad(origin, width, ' ');
@@ -254,29 +254,29 @@ public class StringUtil
 	}
 	
 	/**
-     * 1. ��� : byte array�� ���ϴ� Encoding�� ��Ʈ������ ��ȯ�ϴ� Method
-     * 2. ó�� ���� :
+     * 1. 기능 : byte array를 원하는 Encoding의 스트링으로 변환하는 Method
+     * 2. 처리 개요 :
      *
-	 *   �ֿ� Character Set( Parameter�� Name�Ǵ� Alias �Է� )
+	 *   주요 Character Set( Parameter로 Name또는 Alias 입력 )
 	 *   Name                    Alias                                   Description
 	 *   --------------------    -------------------------------------   ----------------------------
-	 *   ANSI_X3.4-1968          ASCII, US-ASCII, IBM367, cp367          ���� ASCII
-	 *   KS_C_5601-1987          KSC_5601                                �ѱ� �ϼ���
-	 *   EUC-KR                  csEUCKR                                 �ѱ� ������
-	 *   ISO-2022-JP             csISO2022JP                             �Ͼ�
-	 *   ISO-2022-JP-2           csISO2022JP2                            �Ͼ�
-	 *   GB_2312-80              csISO58GB231280                         �߱���
-	 *   ISO_8859-1:1987         ISO_8859-1, ISO-8859-1, IBM819, CP819   ���� ��ƾ1
-	 *   UTF-8                                                           �����ڵ�(8��Ʈ)
-	 *   UTF-16                                                          �����ڵ�(16��Ʈ)
+	 *   ANSI_X3.4-1968          ASCII, US-ASCII, IBM367, cp367          영문 ASCII
+	 *   KS_C_5601-1987          KSC_5601                                한글 완성형
+	 *   EUC-KR                  csEUCKR                                 한글 조합형
+	 *   ISO-2022-JP             csISO2022JP                             일어
+	 *   ISO-2022-JP-2           csISO2022JP2                            일어
+	 *   GB_2312-80              csISO58GB231280                         중국어
+	 *   ISO_8859-1:1987         ISO_8859-1, ISO-8859-1, IBM819, CP819   영문 라틴1
+	 *   UTF-8                                                           유니코드(8비트)
+	 *   UTF-16                                                          유니코드(16비트)
 
-	 * 3. ���ǻ���
+	 * 3. 주의사항
 	 *
-	 *   ��� : http://www.iana.org/assignments/character-sets
+	 *   참고 : http://www.iana.org/assignments/character-sets
 	 *
-	 *	@param bytes ��ȯ��� byte array
-	 *  @param charsetName byte array decoding�� character set
-	 *  @return byte array�� ��ȯ�� ��� ��Ʈ��
+	 *	@param bytes 변환대상 byte array
+	 *  @param charsetName byte array decoding용 character set
+	 *  @return byte array를 변환한 결과 스트링
 	 */
     public static java.lang.String bytes2String(byte[] bytes, String charsetName) {
         StringBuffer strBuffer = new StringBuffer(30);
@@ -290,13 +290,13 @@ public class StringUtil
 
 
 	/**
-     * 1. ��� : ��罺Ʈ��(16���)�� byte arrary�� ��ȯ�ϴ� Method
-     * 2. ó�� ���� :
-     *     - ��罺Ʈ��(16���)�� byte arrary�� ��ȯ�ϴ� Method
-     * 3. ���ǻ���
+     * 1. 기능 : 헥사스트링(16진수)을 byte arrary로 변환하는 Method
+     * 2. 처리 개요 :
+     *     - 헥사스트링(16진수)을 byte arrary로 변환하는 Method
+     * 3. 주의사항
 	*
-    *   @param hexStr ��ȯ��� 16��� ��Ʈ��
-    *   @return 16��� ��Ʈ���� ��ȯ�� ��� byte array
+    *   @param hexStr 변환대상 16진수 스트링
+    *   @return 16진수 스트링을 변환한 결과 byte array
 	*/
     public static byte[] hex2Bytes(String hexStr) {
         byte retByte[] = new byte[hexStr.length() / 2];
@@ -307,13 +307,13 @@ public class StringUtil
 
 
 	/**
-    * 1. ��� : byte arrary�� ��罺Ʈ��(16���)���� ��ȯ�ϴ� Method
-    * 2. ó�� ���� :
-    *     - byte arrary�� ��罺Ʈ��(16���)���� ��ȯ�ϴ� Method
-    * 3. ���ǻ���
+    * 1. 기능 : byte arrary를 헥사스트링(16진수)으로 변환하는 Method
+    * 2. 처리 개요 :
+    *     - byte arrary를 헥사스트링(16진수)으로 변환하는 Method
+    * 3. 주의사항
 	*
-	*	@param inBytes ��ȯ��� byte array
-    *   @return byte array�� ��ȯ�� 16��� ��� ��Ʈ��
+	*	@param inBytes 변환대상 byte array
+    *   @return byte array를 변환한 16진수 결과 스트링
 	*/
     public static String bytes2Hex(byte inBytes[]) {
         String s = "";
@@ -325,13 +325,13 @@ public class StringUtil
 
 
    /**
-	* 1. ��� : String�� ��罺Ʈ��(16���)���� ��ȯ�ϴ� Method
-    * 2. ó�� ���� :
-    *     - String�� ��罺Ʈ��(16���)���� ��ȯ�ϴ� Method
-    * 3. ���ǻ���
+	* 1. 기능 : String을 헥사스트링(16진수)으로 변환하는 Method
+    * 2. 처리 개요 :
+    *     - String을 헥사스트링(16진수)으로 변환하는 Method
+    * 3. 주의사항
 	*
-	*	@param inStr ��ȯ��� ��Ʈ��
-    *   @return ��ȯ���Ʈ���� ��ȯ�� 16��� ��� ��Ʈ��
+	*	@param inStr 변환대상 스트링
+    *   @return 변환대상스트링을 변환한 16진수 결과 스트링
 	*/
     public static String str2Hex(String inStr) {
         if ( inStr == null || inStr.equals("") )
@@ -344,14 +344,14 @@ public class StringUtil
 
 
    /**
-	* 1. ��� : ��Ʈ������ Ư�� ���� ������ ��ȯ�ϴ� Method(����ڵ��� ����� �����Ǿ���� Ȯ���� �� ���)
-    * 2. ó�� ���� :
-    *     - ��Ʈ������ Ư�� ���� ������ ��ȯ�ϴ� Method(����ڵ��� ����� �����Ǿ���� Ȯ���� �� ���)
-    * 3. ���ǻ���
+	* 1. 기능 : 스트링에서 특정 문자 개수를 반환하는 Method(제어문자등이 전송중 누락되었는지 확인할 때 사용)
+    * 2. 처리 개요 :
+    *     - 스트링에서 특정 문자 개수를 반환하는 Method(제어문자등이 전송중 누락되었는지 확인할 때 사용)
+    * 3. 주의사항
 	*
-	*	@param inStr ������ ��Ʈ��
-    *   @param ch ����� ����
-    *   @return int ������(���ڰ���)
+	*	@param inStr 계수대상 스트링
+    *   @param ch 계수할 문자
+    *   @return int 계수결과(문자개수)
 	*/
     public static int getCharCount(String inStr, char ch) {
 		char[] arrChar	= inStr.toCharArray();
@@ -365,13 +365,13 @@ public class StringUtil
 
 
     /**
-     * 1. ��� : String �� null �̸� ""(Null String)�� �����ϴ� Method
-     * 2. ó�� ���� :
-     *     - String �� null �̸� ""(Null String)�� �����ϴ� Method
-     * 3. ���ǻ���
+     * 1. 기능 : String 이 null 이면 ""(Null String)을 리턴하는 Method
+     * 2. 처리 개요 :
+     *     - String 이 null 이면 ""(Null String)을 리턴하는 Method
+     * 3. 주의사항
 	 *
-     * @param inStr �Է� ��Ʈ��
-     * @return Null ó���� ��Ʈ��
+     * @param inStr 입력 스트링
+     * @return Null 처리된 스트링
      */
     public static String getNullStr( String inStr )
     {
@@ -379,13 +379,13 @@ public class StringUtil
     }
 
     /**
-     * 1. ��� : Object�� null �̸� ""(Null String)�� �����ϴ� Method
-     * 2. ó�� ���� :
-     *     - Object�� null �̸� ""(Null String)�� �����ϴ� Method
-     * 3. ���ǻ���
+     * 1. 기능 : Object가 null 이면 ""(Null String)을 리턴하는 Method
+     * 2. 처리 개요 :
+     *     - Object가 null 이면 ""(Null String)을 리턴하는 Method
+     * 3. 주의사항
 	 *
-     * @param inObj �Է� Object
-     * @return Null ó���� ��Ʈ��
+     * @param inObj 입력 Object
+     * @return Null 처리된 스트링
      */
     public static String getNullStr( Object inObj )
     {
@@ -393,16 +393,16 @@ public class StringUtil
     }
 
     /**
-     * 1. ��� : �־��� String���� �־��� ���̸�ŭ Padding/Trim�Ѵ�.
-     * 2. ó�� ���� :
-     *     - �־��� String���� �־��� ���̸�ŭ Padding/Trim�Ѵ�.
-     * 3. ���ǻ���
+     * 1. 기능 : 주어진 String값을 주어진 길이많큼 Padding/Trim한다.
+     * 2. 처리 개요 :
+     *     - 주어진 String값을 주어진 길이많큼 Padding/Trim한다.
+     * 3. 주의사항
 	 *
-     * @param svalue - �Է½�Ʈ��
-     * @param isRightJustify - true�̸� RIGHT JUSTIFY, false�̸� LEFT JUSTIFY
-     * @param padding - Padding ����
-     * @param length - ������ ��Ʈ���� ����Ʈ��
-     * @return �����õ� String���
+     * @param svalue - 입력스트링
+     * @param isRightJustify - true이면 RIGHT JUSTIFY, false이면 LEFT JUSTIFY
+     * @param padding - Padding 문자
+     * @param length - 리턴할 스트링의 바이트수
+     * @return 포맷팅된 String결과
      */
     public static String stringFormat(String svalue, boolean isRightJustify, char padding, int length) {
         if ( svalue == null ) return svalue;
@@ -442,14 +442,14 @@ public class StringUtil
     }
 
     /**
-     * 1. ��� : �־��� String���� �־��� ���̸�ŭ �ڸ���.
-     * 2. ó�� ���� :
-     *     - �־��� String���� �־��� ���� ��ŭ �ڸ���.
-     * 3. ���ǻ���
+     * 1. 기능 : 주어진 String값을 주어진 길이많큼 자른다.
+     * 2. 처리 개요 :
+     *     - 주어진 String값을 주어진 길이 많큼 자른다.
+     * 3. 주의사항
 	 *
-     * @param svalue - �Է½�Ʈ��
-     * @param length - ������ ��Ʈ���� ����Ʈ��
-     * @return �����õ� String���� ���� String
+     * @param svalue - 입력스트링
+     * @param length - 리턴할 스트링의 바이트수
+     * @return 포맷팅된 String결과와 남은 String
      */
     public static String[] chunkString(String sValue, int length)
     {
@@ -488,14 +488,14 @@ public class StringUtil
     }
 
     /**
-     * 1. ��� : �־��� String���� �־��� ���̸�ŭ �Ȱ��� �߶� �迭�� �ִ´�.
-     * 2. ó�� ���� :
-     *     - �־��� String���� �־��� ���̸�ŭ �ڸ���.
-     * 3. ���ǻ���
+     * 1. 기능 : 주어진 String값을 주어진 길이많큼 똑같이 잘라서 배열에 넣는다.
+     * 2. 처리 개요 :
+     *     - 주어진 String값을 주어진 길이많큼 자른다.
+     * 3. 주의사항
 	 *
-     * @param svalue - �Է½�Ʈ��
-     * @param length - ������ ��Ʈ���� ����Ʈ��
-     * @return �����õ� String����ǹ迭
+     * @param svalue - 입력스트링
+     * @param length - 리턴할 스트링의 바이트수
+     * @return 포맷팅된 String결과의배열
      */
     public static String[] chunkStringTotal(String sValue, int length){
         String[] data =null;
@@ -524,14 +524,14 @@ public class StringUtil
     }
 
     /**
-     * 1. ��� : �־��� String���� delimeter�� ������ String[]�� ���Ѵ�
-     * 2. ó�� ���� :
-     *     - �־��� String���� delimeter�� ������ String[]�� ���Ѵ�
-     * 3. ���ǻ���
+     * 1. 기능 : 주어진 String값을 delimeter로 나누어 String[]를 생성한다
+     * 2. 처리 개요 :
+     *     - 주어진 String값을 delimeter로 나누어 String[]를 생성한다
+     * 3. 주의사항
 	 *
-     * @param input - �Է½�Ʈ��
+     * @param input - 입력스트링
      * @param delimeter - delimeter
-     * @return �����õ� String����ǹ迭
+     * @return 포맷팅된 String결과의배열
      */
     public static String[] stringTokenizer(String input, String delimeter)
     {
@@ -553,15 +553,15 @@ public class StringUtil
     }
 
     /**
-     * 1. ��� : �־��� String���� delimeter�� ������ XML Tag�� �߰��Ѵ�.
-     * 2. ó�� ���� :
-     *     - �־��� String���� delimeter�� ������ tag Prefix�� �������� ���Ͽ� XML ������ String�� ���Ѵ�.
-     * 3. ���ǻ���
+     * 1. 기능 : 주어진 String값을 delimeter로 나누어 XML Tag를 추가한다.
+     * 2. 처리 개요 :
+     *     - 주어진 String값을 delimeter로 나누어 tag Prefix에 순차값을 생성하여 XML 형태의 String을 생성한다.
+     * 3. 주의사항
 	 *
-     * @param input - �Է½�Ʈ��
+     * @param input - 입력스트링
      * @param delimeter - delimeter
      * @param tagPrefix - tag Prefix
-     * @return XML���·� �����õ� String���
+     * @return XML형태로 포맷팅된 String결과
      */
     public static String delimeterToXml(String input, String delimeter, String tagPrefix)
     {
@@ -577,15 +577,15 @@ public class StringUtil
     }
 
     /**
-     * 1. ��� : �־��� byte[]���� delimeter�� ������ XML Tag�� �߰��Ѵ�.
-     * 2. ó�� ���� :
-     *     - �־��� byte[]���� delimeter�� ������ tag Prefix�� �������� ���Ͽ� XML ������ byte[]�� ���Ѵ�.
-     * 3. ���ǻ���
+     * 1. 기능 : 주어진 byte[]값을 delimeter로 나누어 XML Tag를 추가한다.
+     * 2. 처리 개요 :
+     *     - 주어진 byte[]값을 delimeter로 나누어 tag Prefix에 순차값을 생성하여 XML 형태의 byte[]을 생성한다.
+     * 3. 주의사항
 	 *
-     * @param input - �Է� byte[]
+     * @param input - 입력 byte[]
      * @param delimeter - delimeter
      * @param tagPrefix - tag Prefix
-     * @return XML���·� �����õ� byte[]���
+     * @return XML형태로 포맷팅된 byte[]결과
      */
     public static byte[] delimeterToXmlBytes(byte[] input, String delimeter, String tagPrefix) {
         if(input == null) return new byte[0];

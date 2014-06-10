@@ -2,12 +2,12 @@ package com.slug.web;
 
 /**
  * @(#) BaseAbstractServlet.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
  * 작성 :
- * @author 김동식, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * @author
+ *         
  *
  */
 

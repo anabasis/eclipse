@@ -2,12 +2,12 @@ package com.slug.exception;
 
 /**
  * @(#) PException.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
@@ -15,8 +15,8 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 
 /**
- * Project���� ����ϴ� ��� Exception�� �ֻ��� Ŭ�����̴�.
- * �̴� Exception chaining�� �ʿ��� �⺻���� �۾��� �����Ѵ�.
+ * Project에서 사용하는 모든 Exception의 최상위 클래스이다.
+ * 이는 Exception chaining에 필요한 기본적인 작업을 수행한다.
  *
  */
 public class PException extends Exception {
@@ -24,22 +24,22 @@ public class PException extends Exception {
     private boolean isFirst = true;
 
     /**
-     * Ư���� �޽��� ���� PException�� ���Ѵ�.
+     * 특정한 메시지 없이 PException을 생성한다.
      */
     public PException() {
         super();
     }
     /**
-     * Ư���� �޽����� ���� PException�� ���Ѵ�.
-     * @param s �޽���
+     * 특정한 메시지를 갖는 PException을 생성한다.
+     * @param s 메시지
      */
     public PException(String s) {
         super(s);
     }
     /**
-     * Ư���� �޽����� Throwable�� ���� PException�� ���Ѵ�.
-     * @param s �޽���
-     * @param rootCause exception chaining�� �ʿ��� Throwable
+     * 특정한 메시지와 Throwable을 갖는 PException을 생성한다.
+     * @param s 메시지
+     * @param rootCause exception chaining에 필요한 Throwable
      */
     public PException(String message, Throwable rootCause) {
         super(message);
@@ -47,8 +47,8 @@ public class PException extends Exception {
         this.isFirst = false;
     }
     /**
-     * Ư���� Throwable�� ���� PException�� ���Ѵ�.
-     * @param rootCause exception chaining�� �ʿ��� Throwable
+     * 특정한 Throwable을 갖는 PException을 생성한다.
+     * @param rootCause exception chaining에 필요한 Throwable
      */
     public PException(Throwable rootCause) {
         this();
@@ -56,15 +56,15 @@ public class PException extends Exception {
         this.isFirst = false;
     }
     /**
-     * PException�� rootCause�� �����ϴ� �޼ҵ��̴�.
-     * @return Throwable�� rootCause�� ����
+     * PException의 rootCause를 리턴하는 메소드이다.
+     * @return Throwable인 rootCause를 리턴
      */
     public Throwable getRootCause() {
         return rootCause;
     }
     /**
-     * Stack Trace�� string���·� �����ϴ� �޼ҵ��̴�.
-     * @return Stack Trace�� string ���·� ����
+     * Stack Trace를 string형태로 리턴하는 메소드이다.
+     * @return Stack Trace를 string 형태로 리턴
      */
     public String getStackTraceString() {
         StringWriter s = new StringWriter();
@@ -72,16 +72,16 @@ public class PException extends Exception {
         return s.toString();
     }
     /**
-     * Throwable�� exception chaining�� �޽����� stack trace��
-     * ������ error output stream�� System.err�� ����Ѵ�.
+     * Throwable과 exception chaining한 메시지의 stack trace를
+     * 지정한 error output stream인 System.err에 출력한다.
      * @see java.lang.Throwable
      */
     public void printStackTrace() {
         printStackTrace( System.err );
     }
     /**
-     * Throwable�� exception chaining�� �޽����� stack trace��
-     * ������ error output stream�� PrintStream�� ����Ѵ�.
+     * Throwable과 exception chaining한 메시지의 stack trace를
+     * 지정한 error output stream인 PrintStream에 출력한다.
      * @param PrintStream
      * @see java.lang.Throwable
      */
@@ -99,8 +99,8 @@ public class PException extends Exception {
         }
     }
     /**
-     * Throwable�� exception chaining�� �޽����� stack trace��
-     * ������ error output stream�� PrintWriter�� ����Ѵ�.
+     * Throwable과 exception chaining한 메시지의 stack trace를
+     * 지정한 error output stream인 PrintWriter에 출력한다.
      * @param s PrintWriter
      * @see java.lang.Throwable
      */
@@ -118,7 +118,7 @@ public class PException extends Exception {
         }
     }
 	public String prefix() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat ("<yyyy-MM-dd aaa hh�� mm�� ss�� >", java.util.Locale.KOREA);
+        SimpleDateFormat dateFormat = new SimpleDateFormat ("<yyyy-MM-dd aaa hh시 mm분 ss초 >", java.util.Locale.KOREA);
 		String prfixStr = dateFormat.format(new java.util.Date()) + " ";
         return prfixStr;
     }

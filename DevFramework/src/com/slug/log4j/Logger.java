@@ -8,7 +8,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Properties;
-
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Category;
 import org.apache.log4j.ConsoleAppender;
@@ -21,10 +20,10 @@ import org.apache.log4j.Priority;
 import org.apache.log4j.PropertyConfigurator;
 
 /**
- * 1. ��� : Log4j�� ���� ȭ�Ϸα׸� ���ϴ� Utility Class
- * 2. ó�� ���� :
+ * 1. 기능 : Log4j을 통한 화일로그를 관리하는 Utility Class
+ * 2. 처리 개요 :
  *
- * 3. ���ǻ���
+ * 3. 주의사항
  *
  * @author  :
  * @version : v 1.0.0
@@ -33,17 +32,17 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public class Logger  implements LogKeys {
 
-	//Logger list (������Ƽ�� ������ Logger �� Dafault Console Logger �� ��´�.)
+	//Logger list (프라퍼티에 설정된 Logger 및 Dafault Console Logger 를 담는다.)
     protected static Hashtable loggers = new Hashtable(5);
 
-	//Default Console Logger ��
+	//Default Console Logger 명
 	private static String defConLoggerName = "DefaultConsoleLogger";
 
-    //Log4j Looger ��ü
+    //Log4j Looger 객체
     private org.apache.log4j.Logger logger;
 
 
-	//Default Console Logger �� (DEBUG ���� ����)
+	//Default Console Logger 생성 (DEBUG 레벨 설정)
     static {
 
 		org.apache.log4j.Logger defConLogger = org.apache.log4j.Logger.getLogger(defConLoggerName);
@@ -56,18 +55,18 @@ public class Logger  implements LogKeys {
 		loggers.put(defConLoggerName, new Logger(defConLogger));
     }
 
-	//�� Logger Ŭ�������� System.out ��� ����� Default Console Logger ��ü ����
+	//당 Logger 클래스에서 System.out 대신 사용할 Default Console Logger 객체 정의
 	private static Logger selfLogger = getLogger();
 
 
-	//�⺻ �α� ���� ���
+	//기본 로그 정보 출력
 	static {
 		
-        selfLogger.banner("EAI �����ӿ� log4j Logger �⺻����");
-        selfLogger.debug("�� EAI Logger�� 1 (Logger.LOGGER_DEFAULT)   : " + LOGGER_DEFAULT);
-        //selfLogger.debug("�� EAI Logger�� 2 (Logger.LOGGER_EXCEPTION) : " + LOGGER_EXCEPTION);
-        selfLogger.debug("�� log4j ROOT LOGGER LEVEL                  : " + org.apache.log4j.Logger.getRootLogger().getLevel());
-        selfLogger.debug("�� ����Ʈ �ܼ� Logger LEVEL                 : " + selfLogger.getLevel());
+        selfLogger.banner("EAI 프레임웍 log4j Logger 기본정보");
+        selfLogger.debug("※ EAI Logger명 1 (Logger.LOGGER_DEFAULT)   : " + LOGGER_DEFAULT);
+        //selfLogger.debug("※ EAI Logger명 2 (Logger.LOGGER_EXCEPTION) : " + LOGGER_EXCEPTION);
+        selfLogger.debug("※ log4j ROOT LOGGER LEVEL                  : " + org.apache.log4j.Logger.getRootLogger().getLevel());
+        selfLogger.debug("※ 디폴트 콘솔 Logger LEVEL                 : " + selfLogger.getLevel());
 	}
 
 
@@ -77,10 +76,10 @@ public class Logger  implements LogKeys {
 	}
 
 	/**
-     * 1. ��� : Logger factory method
-     * 2. ó�� ���� :
-     *    - Logger Factory�� ���Ѵ�.
-     * 3. ���ǻ���
+     * 1. 기능 : Logger factory method
+     * 2. 처리 개요 :
+     *    - Logger Factory를 생성한다.
+     * 3. 주의사항
      *
      * @param	name	Logger name
 	 * @return	Logger object
@@ -95,7 +94,7 @@ public class Logger  implements LogKeys {
         Logger logger = (Logger) loggers.get(loggerName);
         if (logger==null) {
 			logger = (Logger) loggers.get(defConLoggerName);
-			logger.warn("****** '"+ loggerName +"' �̸��� Logger �� ���ǵ��� �ʾ���. ��ġ ����Ʈ �ܼ� Logger ����.");
+			logger.warn("****** '"+ loggerName +"' 이름의 Logger 가 정의되지 않았음. 배치 디폴트 콘솔 Logger 리턴.");
 		}
 		return logger;
     }
@@ -112,10 +111,10 @@ public class Logger  implements LogKeys {
 	}
 
     /**
-     * 1. ��� : PropManager�� ���� Log4j�� ȯ���� ����
-     * 2. ó�� ���� :
-     *    - PropManager�� ���� Log4j�� ȯ���� ����
-     * 3. ���ǻ���
+     * 1. 기능 : PropManager를 통해 Log4j의 환경을 설정
+     * 2. 처리 개요 :
+     *    - PropManager를 통해 Log4j의 환경을 설정
+     * 3. 주의사항
      *
      * @exception
      **/
@@ -124,37 +123,37 @@ public class Logger  implements LogKeys {
         try
         {
 			//========================================================
-			//1. ���� Logger �⺻ ������Ƽ ���� üũ
+			//1. 파일 Logger 기본 프라퍼티 정보 체크
 			//========================================================
 			PropManager pmanager = PropManager.getInstance();
             Properties loggerInfo= pmanager.getProperties(LOGGER_INFO);
 
-			//�ʱ�ȭ�� �޸𸮿� ������ Logger �̸� ����Ʈ
+			//초기화시 메모리에 적재할 Logger 이름 리스트
             String loggerList    = loggerInfo.getProperty(INITIAL_LOGGER_LIST);
             if(loggerList==null || loggerList.equals("")) throw new RuntimeException("RECEAICUL005");
 
-			//�ʱ�ȭ�� Logger �� �������� ���� Appender �̸� ����Ʈ
+			//초기화시 Logger 에 설정해줄 파일 Appender 이름 리스트
             String appenderList  = loggerInfo.getProperty(INITIAL_APPENDER_LIST);
             System.out.println("appenderList : " + appenderList);
             if(appenderList==null || appenderList.equals("")) throw new RuntimeException("RECEAICUL006");
 
 
 			//========================================================
-			//2. ������Ƽ�� ������ ��� Appender �� �� HashMap�� ����
+			//2. 프라퍼티에 설정된 모든 Appender 생성 후 HashMap에 저장
 			//========================================================
-			//���� Logger ��� �ʿ��� Appender ã�Ƽ� �ٿ���
+			//이후 Logger 생성시 필요한 Appender 찾아서 붙여줌
             String[] appenderNameList = StringUtil.getStrArray(appenderList, ",");
             HashMap appenderPool = new HashMap();
 
             for (int i=0; i<appenderNameList.length; i++) {
-                FileAppender appender = createFileAppender(appenderNameList[i]);	//Appender ��
+                FileAppender appender = createFileAppender(appenderNameList[i]);	//Appender 생성
                 appenderPool.put( appenderNameList[i], appender );
             }
 
 			//========================================================
-			//3. ������Ƽ�� ������ ��� ���� Logger ��
+			//3. 프라퍼티에 설정된 모든 파일 Logger 생성
 			//========================================================
-            String[] loggerNameList = StringUtil.getStrArray(loggerList, ",");		//log4j Logger ��
+            String[] loggerNameList = StringUtil.getStrArray(loggerList, ",");		//log4j Logger 생성
             org.apache.log4j.Logger logger = null;
 
             for(int i=0; i<loggerNameList.length; i++) {
@@ -167,7 +166,7 @@ public class Logger  implements LogKeys {
 					FileAppender appender = (FileAppender)appenderPool.get(loggerAppenderNameList[j]);
 					if (appender==null) continue;
 					logger.addAppender(appender);
-					selfLogger.debug("  - ���Ϸΰ� '"+ logger.getName() +"' �� '"+ loggerAppenderNameList[j] +"' Appender ����.");
+					selfLogger.debug("  - 파일로거 '"+ logger.getName() +"' 에 '"+ loggerAppenderNameList[j] +"' Appender 설정.");
 				}
 
 				loggers.put(loggerNameList[i], new Logger(logger));
@@ -181,10 +180,10 @@ public class Logger  implements LogKeys {
 
 
     /**
-     * 1. ��� : Log4j�� FileAppender�� �߰�
-     * 2. ó�� ���� :
-     *    - Log4j API�� ���� FileAppender�� �߰�
-     * 3. ���ǻ���
+     * 1. 기능 : Log4j의 FileAppender를 추가
+     * 2. 처리 개요 :
+     *    - Log4j API를 통해 FileAppender를 추가
+     * 3. 주의사항
      *
      * @exception
      **/
@@ -192,25 +191,25 @@ public class Logger  implements LogKeys {
 
 		PropManager pmanager = PropManager.getInstance();
 
-		//�α����� ���� ���丮 �����
+		//로그파일 저장 디렉토리 절대경로
     System.out.println("#### appenderName : " + appenderName);        
 		String logDirectory  = pmanager.getProperty(appenderName, APPENDER_LOG_DIRECOTRY);
     System.out.println("#### logDirectory : " + logDirectory);
 		if (logDirectory==null || logDirectory.equals("")) throw new RuntimeException("RECEAICUL004");
 
-		//�α����� ��
+		//로그파일 명
         String logFilename = pmanager.getProperty(appenderName, APPENDER_LOG_FILENAME);
         if (logFilename==null || logFilename.equals("")) throw new RuntimeException("RECEAICUL007");
 
-		//�α����� ���ں� �� ��Ģ
+		//로그파일 날자별 생성 규칙
         String datePattern = pmanager.getProperty(appenderName, APPENDER_DATE_PATTERN);
         if (datePattern==null || datePattern.equals("")) datePattern = "'.'yyyy-MM-dd";
 
-		//�α� ���� ���ڿ�
+		//로그 패턴 문자열
 		String patternLayout = pmanager.getProperty(appenderName, APPENDER_PATTERN_LAYOUT);
 		if (patternLayout==null || patternLayout.equals("")) patternLayout = "<%d{yyyy-MM-dd HH:mm:ss.SSS}> %-5p %m%n";
 
-		//�α����� �α�Append ����
+		//로그파일 로그Append 여부
         String fileAppend = pmanager.getProperty(appenderName, APPENDER_FILE_APPEND);
         if (fileAppend==null || fileAppend.equals("")) fileAppend = "true";
 
@@ -241,16 +240,16 @@ public class Logger  implements LogKeys {
         }
 		appender.setFile(f.getAbsolutePath());
 		appender.activateOptions();
-		selfLogger.debug("  - ���Ϸΰ� '"+ appenderName +"' Appender ���.");
+		selfLogger.debug("  - 파일로거 '"+ appenderName +"' Appender 생성됨.");
 
         return appender;
     }
 
    /**
-     * 1. ��� : Log4j�� logger�� �߰�
-     * 2. ó�� ���� :
-     *    - Log4j API�� ���� logger�� �߰�
-     * 3. ���ǻ���
+     * 1. 기능 : Log4j의 logger를 추가
+     * 2. 처리 개요 :
+     *    - Log4j API를 통해 logger를 추가
+     * 3. 주의사항
      *
      * @exception
      **/
@@ -259,22 +258,22 @@ public class Logger  implements LogKeys {
 		PropManager pmanager = PropManager.getInstance();
 
 
-		//log4j Logger �α׷��� �Ӽ�
+		//log4j Logger 로그레벨 속성
         String logLevel = pmanager.getProperty(loggerName, LOGGER_LEVEL);
         if (logLevel==null || logLevel.equals("")) logLevel = "debug";
 
-		//log4j Logger �ܼ� ��¿���
+		//log4j Logger 콘솔 출력여부
 		String console = pmanager.getProperty(loggerName, LOGGER_CONSOLE);
 		if (console==null || console.equals("")) console = "on";
 
-		//log4j Logger aditivity �Ӽ�
+		//log4j Logger aditivity 속성
         String aditivity = pmanager.getProperty(loggerName, LOGGER_ADITIVITY);
         if (aditivity==null || aditivity.equals("")) aditivity = "false";
 
 
         //String localServer = EAIServerManager.getInstance().getLocalServerName();
         org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(loggerName);
-		selfLogger.debug("  - ���Ϸΰ� '"+ logger.getName() +"' Logger ���.");
+		selfLogger.debug("  - 파일로거 '"+ logger.getName() +"' Logger 생성됨.");
 
        logger.removeAllAppenders();
 
@@ -287,7 +286,7 @@ public class Logger  implements LogKeys {
 		if ((console!=null) && console.equals("on")) {
 			ConsoleAppender conAppender = new ConsoleAppender(new PatternLayout("<%d{yyyy-MM-dd HH:mm:ss.SSS}> %-5p ["+ loggerName +"] %m%n"));
 			logger.addAppender(conAppender);
-			selfLogger.debug("  - ���Ϸΰ� '"+ logger.getName() +"' Logger �� �ܼ� Appender ����.");
+			selfLogger.debug("  - 파일로거 '"+ logger.getName() +"' Logger 에 콘솔 Appender 설정.");
 		}
 
 		logger.setPriority (logLevel.toLowerCase().equals("debug")? Level.DEBUG :
@@ -304,10 +303,10 @@ public class Logger  implements LogKeys {
 
 
 	/**
-     * 1. ��� : Banner ������ �α׸� ���
-     * 2. ó�� ���� :
-     *    - Banner ������ �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : Banner 형태의 로그를 출력
+     * 2. 처리 개요 :
+     *    - Banner 형태의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg	Object
      * @exception
@@ -323,10 +322,10 @@ public class Logger  implements LogKeys {
     }
 
 	/**
-     * 1. ��� : debug Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg	Object
      * @exception
@@ -340,10 +339,10 @@ public class Logger  implements LogKeys {
     }
 
 	/**
-     * 1. ��� : debug Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg	Object
@@ -358,10 +357,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : debug Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -376,10 +375,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : debug Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -395,10 +394,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @exception
@@ -412,10 +411,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -430,10 +429,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -448,10 +447,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -467,10 +466,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @exception
@@ -484,10 +483,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -502,10 +501,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -520,10 +519,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -539,10 +538,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : error Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - error Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : error Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - error Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @exception
@@ -557,10 +556,10 @@ public class Logger  implements LogKeys {
     }
 
      /**
-     * 1. ��� : error Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - error Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : error Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - error Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -576,10 +575,10 @@ public class Logger  implements LogKeys {
     }
 
      /**
-     * 1. ��� : error Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - error Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : error Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - error Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -595,10 +594,10 @@ public class Logger  implements LogKeys {
     }
 
      /**
-     * 1. ��� : error Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - error Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : error Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - error Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -615,10 +614,10 @@ public class Logger  implements LogKeys {
     }
 
      /**
-     * 1. ��� : fatal Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - fatal Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : fatal Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - fatal Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @exception
@@ -633,10 +632,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : fatal Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - fatal Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : fatal Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - fatal Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -652,10 +651,10 @@ public class Logger  implements LogKeys {
     }
 
          /**
-     * 1. ��� : fatal Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - fatal Level�� �α׸� ���
-     * 3. ���ǻ���
+     * 1. 기능 : fatal Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - fatal Level의 로그를 출력
+     * 3. 주의사항
      *
      * @param	msg Object
      * @param	t	Throwable
@@ -671,10 +670,10 @@ public class Logger  implements LogKeys {
     }
 
 	/**
-     * 1. ��� : fatal Level�� �α׸� ���
-     * 2. ó�� ���� :
-     *    - fatal Level�� �α׸� ��� (ErrorCode�� ����� ���)
-     * 3. ���ǻ���
+     * 1. 기능 : fatal Level의 로그를 출력
+     * 2. 처리 개요 :
+     *    - fatal Level의 로그를 출력 (ErrorCode를 사용할 경우)
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object
@@ -691,10 +690,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : debug Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 2. ó�� ���� :
-     *    - debug Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 3. ���ǻ���
+     * 1. 기능 : debug Level의 로그를 출력 가능여부 확인
+     * 2. 처리 개요 :
+     *    - debug Level의 로그를 출력 가능여부 확인
+     * 3. 주의사항
      *
      * @return	boolean
      * @exception
@@ -704,10 +703,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : info Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 2. ó�� ���� :
-     *    - info Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 3. ���ǻ���
+     * 1. 기능 : info Level의 로그를 출력 가능여부 확인
+     * 2. 처리 개요 :
+     *    - info Level의 로그를 출력 가능여부 확인
+     * 3. 주의사항
      *
      * @return	boolean
      * @exception
@@ -717,10 +716,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : warn Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 2. ó�� ���� :
-     *    - warn Level�� �α׸� ��� ���ɿ��� Ȯ��
-     * 3. ���ǻ���
+     * 1. 기능 : warn Level의 로그를 출력 가능여부 확인
+     * 2. 처리 개요 :
+     *    - warn Level의 로그를 출력 가능여부 확인
+     * 3. 주의사항
      *
      * @return	boolean
      * @exception
@@ -730,10 +729,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : Log4j�� ���� �α׸� ���� �� ��� ��� ǥ����� ����
-     * 2. ó�� ���� :
-     *    - Log4j�� ���� �α׸� ���� �� ��� ��� ǥ����� ����
-     * 3. ���ǻ���
+     * 1. 기능 : Log4j를 통해 로그를 남길 수 없는 경우 표준출력 제공
+     * 2. 처리 개요 :
+     *    - Log4j를 통해 로그를 남길 수 없는 경우 표준출력 제공
+     * 3. 주의사항
      *
      * @param	t	Throwable
      * @param	msg Object
@@ -746,10 +745,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : Log4j�� ���� �α׸� ���� �� ��� ��� ǥ����� ����
-     * 2. ó�� ���� :
-     *    - Log4j�� ���� �α׸� ���� �� ��� ��� ǥ����� ����
-     * 3. ���ǻ���
+     * 1. 기능 : Log4j를 통해 로그를 남길 수 없는 경우 표준출력 제공
+     * 2. 처리 개요 :
+     *    - Log4j를 통해 로그를 남길 수 없는 경우 표준출력 제공
+     * 3. 주의사항
      *
      * @param	t	Throwable
      * @param	th	Throwable
@@ -764,10 +763,10 @@ public class Logger  implements LogKeys {
     }
 
     /**
-     * 1. ��� : ErrorCode�� �޽����� ��� ������ ����
-     * 2. ó�� ���� :
-     *    - ErrorCode�� �޽����� ��� ������ ����
-     * 3. ���ǻ���
+     * 1. 기능 : ErrorCode와 메시지의 출력 포맷을 정의
+     * 2. 처리 개요 :
+     *    - ErrorCode와 메시지의 출력 포맷을 정의
+     * 3. 주의사항
      *
      * @param	code String
      * @param	msg Object

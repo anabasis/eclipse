@@ -1,11 +1,11 @@
 package com.slug.log4j;
 
 /*
- * @Project  �ŷ�ó ���հ� �ý��� (Smile Power of Sale - POS)
+ * @Project  거래처 통합관리 시스템 (Smile Power of Sale - POS)
  * @File     GLogger.java
  * @Version  1.0
  * @Date     2004. 5. 25.
- * @Author   �ǿ��� R & D Team
+ * @Author   권영우 R & D Team
  * Copyright (c) 2003-2004 by GM Solution.Ltd.
  * All rights reserved.
  */
@@ -26,17 +26,17 @@ import org.apache.log4j.xml.XMLLayout;
 //import com.gm.framework.util.CommUtils;
 
 /** 
-* DEBUG,WARN,INFO,ERROR,FATAL���� �ΰ? Console,HTML,XML,Text File�� ����� ����� �����Ѵ�
+* DEBUG,WARN,INFO,ERROR,FATAL등의 로고를 Console,HTML,XML,Text File로 남기는 기능을 제공한다
 * 
 * <PRE> 
 * </PRE> 
 * 
 * <PRE> 
 * <B>History:</B> 
-*       �ǿ���, 1.0, 2004/05/25 - �ʱ� �ۼ� 
+*       권영우, 1.0, 2004/05/25 - 초기 작성 
 * </PRE> 
 * 
-* @author  �ǿ��� R & D Team
+* @author  권영우 R & D Team
 * @version 1.0, 2004/05/25  
 * @see     NONE 
 */
@@ -47,13 +47,13 @@ public class GLogger
 
 	/**
 	*	Log4j Layout              
-	*   iLogLevel = 0 : DateLayout : ������
+	*   iLogLevel = 0 : DateLayout : 사용안함
 	*   iLogLevel = 1 : HTMLLayout,WriterAppender
 	*   iLogLevel = 2 : PatternLayout,ConsoleAppender
 	*   iLogLevel = 3 : SimpleLayout,FileAppender
 	*   iLogLevel = 4 : XMLLayout,FileAppender
-	*   iLogLevel = 5 : PatternLayout,DailyRollingFileAppender(PatternLayout �� Ȯ������ ������ �ð� format �� ���� log ������ �ڵ���ȴ�)
-	*   iLogLevel = 6 : DB �α�
+	*   iLogLevel = 5 : PatternLayout,DailyRollingFileAppender(PatternLayout 의 확장으로 정해진 시간 format 에 의해 log 파일이 자동생성된다)
+	*   iLogLevel = 6 : DB 로그
 	*/
 	private int    iLogLevel  = 0;
 
@@ -68,12 +68,12 @@ public class GLogger
 	private int    iLogType   = 0;
 	
 	/**
-	* ����� �α� �޽���
+	* 출력할 로그 메시지
 	*/
 	private String strMsg   = null;	
 
     /**
-     * ����
+     * 생성자
 	 */
     public GLogger() 
     {
@@ -81,11 +81,11 @@ public class GLogger
 	}
 
     /**
-     * Parameter���� ��� �α� �۾��� �����Ѵ�.
+     * Parameter값에 따라 로그 작업을 수행한다.
      *
      * @param     Log Layout
      * @param     Log Type
-     * @param     �α� �޽���
+     * @param     로그 메시지
      * @return    none
      * @exception none
      * @see       none
@@ -93,7 +93,7 @@ public class GLogger
     public void logWrite(int p_iLogLevel, int p_iLogType, String p_strMsg) 
     {           
 		//CommUtils commutils = new CommUtils();
-		//�α� ������ ������ ���丮�� �о�´�.
+		//로그 파일을 저장할 디렉토리를 읽어온다.
     	logDirectory = "/temp";//commutils.getProperties("LOGPATH");
     	
     	//layout
@@ -104,7 +104,7 @@ public class GLogger
 		strMsg    = p_strMsg;
     	switch(iLogLevel)
     	{            
-    		//DateLayout : ������
+    		//DateLayout : 사용안함
     		case 0 : break;    
 		    //HTMLLayout,WriterAppender
     		case 1 : {

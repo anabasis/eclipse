@@ -12,7 +12,7 @@ import com.slug.logging.Logging;
 
 public class MailProxy
 {
-	// �������� ���� ������ �ΰ� �Ұ�쿡�� static �� ������ ������ �κ��� �����ؾ� �Ѵ�.
+	// 여러개의 메일 서버를 두고 할경우에는 static 전역 변수로 선언한 부분을 변경해야 한다.
 	private static InitialContext ctx = null;
 	private static Session mailsession = null;
 

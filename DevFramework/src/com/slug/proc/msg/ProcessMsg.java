@@ -23,15 +23,15 @@ public class ProcessMsg implements java.io.Serializable{
 	private Document   rtnXml;
 	private String     rtnXmlStr;
 	/**
-	 * JSON �߰�
+	 * JSON 추가
 	 * 
 	 */
 	private String     classTyp; // return type 'STRING' , 'JSON'
-    private String     rtnStr;   // String Type�ϰ���� Value
-    private JSONObject jsonObj;  // JSON Type�ϰ���� value
+    private String     rtnStr;   // String Type일경우의 Value
+    private JSONObject jsonObj;  // JSON Type일경우의 value
     
 	/**
-	 * ���� Type1
+	 * 생성자 Type1
 	 */
 	public ProcessMsg(){}
 
@@ -66,18 +66,18 @@ public class ProcessMsg implements java.io.Serializable{
 
 	public String  getResString(){return this.resString;}
 	public void   setResString(String temp ){this.resString = temp;}
-	// �����ڵ�
+	// 응답코드
 	public void  setResCode(String temp){ this.resCode = temp; }
 	public String getResCode(){return this.resCode;}
 	
-	// ���� �޼���
+	// 응답 메세지
 	public void  setResMsg(String temp){ this.resMsg = temp; }
 	public String getResMsg(){return this.resMsg;}
 	
 	public void  setRtnUri(String temp){ this.rtnUri = temp; }
 	public String getRtnUri(){return this.rtnUri;}
 	
-	// ���� �迭
+	// 응답 배열
 	public void  setReqArray(String[] temp){ this.reqArray = temp; }
 	public String[] getReqArrayCode(){return this.reqArray;}
 

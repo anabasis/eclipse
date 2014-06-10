@@ -13,12 +13,11 @@ import com.slug.web.MultipartRequest;
 
 /**
  * @(#) BaseMultipartChannelServlet.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author 
  *
  */
 
@@ -26,31 +25,31 @@ import com.slug.web.MultipartRequest;
 
 
 /**
- * DBaseServlet�� ��ӹ޾� ������ Base Mutltipart Channel Servlet.
- * <BR> channel-command ����� �����ϵ��� �����Ǿ� ������, Multipart��� servlet�̴�.
- * <BR> form processing���� enctype�� multipart/form-data�� �����ϴ� ��� �̶� ����� �� �ִ� ���� servlet�̴�.
- * <BR> form processing���� enctype�� ������ �������� ������ content-type�� application/x-www-form-urlencoded���� �����Ǵµ� �̶��� BaseChannelServlet�� ����ؾ� �Ѵ�.
+ * DBaseServlet를 상속받아 구현된 Base Mutltipart Channel Servlet.
+ * <BR> channel-command 방식을 지원하도록 구성되어 있으며, Multipart전용 servlet이다.
+ * <BR> form processing에서 enctype을 multipart/form-data로 지정하는 경우 이때 사용할 수 있는 공통 servlet이다.
+ * <BR> form processing에서 enctype을 별도로 지정하지 않으면 content-type은 application/x-www-form-urlencoded으로 지정되는데 이때는 BaseChannelServlet을 사용해야 한다.
  * <BR>
- * <BR> BaseChannelServlet�� �Ʒ��� ���� ��� ����ȴ�.
- * <BR> 1. http request�� �˻��Ͽ� multipart������ �Ǵ��ϰ� multipart�� �ƴ� ��� DContentTypeException�� �߻��Ų��.
- * <BR> 2. multipart request���� upload�� ���ϵ��� ������ directory�� �����Ѵ�. �̶� ������ ����� directory�� properties.conf ���Ͽ� "properties.upload.dir"�μ� �����Ǿ� �־�� �Ѵ�.
- * <BR> 3. multipart request���� debug=true�� �����Ǿ� �ִ��� ã�� �����Ǿ� �ִٸ� command�� ã�� �ʰ� ���������� BaseMultipartShowGpcCommand�� ����Ͽ� ��޵� form�� ��� ������ �����ִ� page�� �б��Ѵ�.
- * <BR> 4. �����Ǿ� ���� �ʴٸ� multipart request���� target_command�� ã�� �ش� command�� ������ ���� class�� ã�´�.
- * <BR> 5. command��  execute()�Ѵ�.
- * <BR> 6. ���� page�� dispatch�Ѵ�.
+ * <BR> BaseChannelServlet은 아래와 같은 순서로 진행된다.
+ * <BR> 1. http request를 검사하여 multipart인지를 판단하고 multipart가 아닌 경우 DContentTypeException을 발생시킨다.
+ * <BR> 2. multipart request에서 upload된 파일들을 지정된 directory에 저장한다. 이때 파일이 저장될 directory는 properties.conf 파일에 "properties.upload.dir"로서 지정되어 있어야 한다.
+ * <BR> 3. multipart request에서 debug=true로 지정되어 있는지 찾고 지정되어 있다면 command를 찾지 않고 내부적으로 BaseMultipartShowGpcCommand를 사용하여 전달된 form의 모든 내용을 보여주는 page로 분기한다.
+ * <BR> 4. 지정되어 있지 않다면 multipart request에서 target_command를 찾아 해당 command를 수행할 실제 class를 찾는다.
+ * <BR> 5. command를  execute()한다.
+ * <BR> 6. 다음 page로 dispatch한다.
  * <BR>
- * <BR> ���� command�� ã�� ����� form���� target_command�� ������ command Ŭ������ package������ class �̸��� ��޹޾� �̸� Class.forName(className).newInstance() �ϴ� ����� ���Ѵ�.
- * <BR> BaseChannelServlet���� ���� command�� �ݵ�� com.solupia.jfound.servlet.channel.DBaseMultipartCommand�� implements �� class�̾�� �Ѵ�.
+ * <BR> 현재 command를 찾는 방식은 form에서 target_command의 값으로 command 클래스의 package포함한 class 이름을 전달받아 이를 Class.forName(className).newInstance() 하는 방식을 취한다.
+ * <BR> BaseChannelServlet으로 사용될 command는 반드시 com.solupia.jfound.servlet.channel.DBaseMultipartCommand를 implements 한 class이어야 한다.
  * <BR>
- * <BR> ��Ӱ��� BaseMultipartChannelServlet�� �Ʒ��� method���� �����Ͽ���.
+ * <BR> 상속관계상 BaseMultipartChannelServlet는 아래의 method들을 구현하였다.
  * <BR> protected void catchService(HttpServletRequest req, HttpServletResponse res)
  * <BR> protected DBaseMultipartCommand getCommand(com.solupia.jfound.servlet.MultipartRequest mReq) throws CommandException
  * <BR>
- * <BR> (���) DBaseServlet�� ��ӹ޴� servelt�� ���� BaseChannelServlet�� BaseMultipartChannelServlet���� ����������
- *      ���� ������ ��� �����̴�. ��� DBaseServlet���� �����ϴ� protected boolean isMultipart(HttpServletRequest req) method�� �����ϸ�
- *      �� �ϳ��� servlet���� multipart�� ó���ϵ��� ������ �� ������, ��ü project�� ���Ҷ� Multipart�� ����ϴ� form processing�� ��ü�� ���� �Ϻκ��̶�� ��ȴ�.
- *      ���� thread�� �����ϴ� servlet���忡�� ��뷮�� upload�� ��� ���, �ش� servlet�� ���ϸ� �����̶� �л��ϱ� ���Ͽ� �̷��� ����� ����Ͽ���.
- *      Project���� file�� upload�� �ſ� ����ϰ� �ִٰų�, �ΰ��� servlet�� ����� ������ ��ٰų� �ϴ� ����� 1���� servlet���� ó���� �� �������̴�.
+ * <BR> (참고) DBaseServlet를 상속받는 servelt을 굳이 BaseChannelServlet과 BaseMultipartChannelServlet으로 나눈이유는
+ *      단지 성능적 측면 때문이다. 사실 DBaseServlet에서 제공하는 protected boolean isMultipart(HttpServletRequest req) method를 응용하면
+ *      단 하나의 servlet에서 multipart를 처리하도록 구현할 수 있으나, 전체 project로 생각할때 Multipart를 사용하는 form processing은 전체의 극히 일부분이라고 생각된다.
+ *      또한 thread로 동작하는 servlet입장에서 대용량의 upload가 생길 경우, 해당 servlet의 부하를 조금이라도 분산하기 위하여 이러한 방식을 사용하였다.
+ *      Project에서 file의 upload가 매우 빈번하게 있다거나, 두개의 servlet을 사용할 이유가 없다거나 하는 경우라면 1개의 servlet으로 처리할 수 있을것이다.
  *
  *  @see BaseChannelServlet
  *  @see BaseMultipartShowGpcCommand
@@ -64,17 +63,17 @@ import com.slug.web.MultipartRequest;
 
 public class BaseMultipartChannelServlet extends BaseAbstractServlet {
 /**
- * BaseMultipartChannelServlet�� �⺻ ����.
+ * BaseMultipartChannelServlet의 기본 생성자.
  */
 public BaseMultipartChannelServlet() {
     super();
 }
 /**
- * DBaseServlet�� ��ӹ��� servlet���� entry-point. main()������ �ϴ� �Լ�.
- * <BR> DBaseServlet�� ��ӹ����� �ݵ�� �����Ͽ��� �Ѵ�. ������ servlet���� �� �Ͽ� ��õ� logic�� �����Ѵ�.
- * <BR> ��κ� form processing�� ���� �غ��۾� / ���� logic ȣ�� / result page�� redirect������ �������� �����ȴ�.
- * @param req servlet���� ��޹��� HttpServletRequest. form processing�� ���Ͽ� ����Ѵ�.
- * @param res servlet���� ��޹��� HttpServletResponse. result redirect�� ���Ͽ� ����Ѵ�.
+ * DBaseServlet을 상속받은 servlet들의 entry-point. main()역할을 하는 함수.
+ * <BR> DBaseServlet를 상속받으면 반드시 구현하여야 한다. 실제로 servlet에서 할 일에 관련된 logic을 구성한다.
+ * <BR> 대부분 form processing을 위한 준비작업 / 실제 logic 호출 / result page로 redirect정도의 로직으로 구성된다.
+ * @param req servlet에서 전달받은 HttpServletRequest. form processing을 위하여 사용한다.
+ * @param res servlet에서 전달받은 HttpServletResponse. result redirect을 위하여 사용한다.
  * @return void
  */
 protected void catchService(HttpServletRequest req, HttpServletResponse res) {
@@ -104,11 +103,11 @@ protected void catchService(HttpServletRequest req, HttpServletResponse res) {
     }
 }
 /**
- * MultipartRequest�� �м��Ͽ� command class�� ã�´�.
- * <BR> form���� target_command�� ������ command Ŭ������ package������ class �̸��� ��޹޾� �̸� �̿��Ͽ� ������ command class ã�� �� instance�� ��ȯ�Ѵ�.
- * <BR> debug=true�� �����Ȱ��� target_command�� �������� �ʰ� webApp.conf�� "com.solupia.jfound.servlet.channel.BaseMultipartShowGpcCommand" �� �����Ǿ� �ִ� showGpc�� command�� instance�� ��ȯ�Ѵ�.
- * @param mReq �м��� MultipartRequest
- * @return ã���� command class�� instance
+ * MultipartRequest를 분석하여 command class를 찾는다.
+ * <BR> form에서 target_command의 값으로 command 클래스의 package포함한 class 이름을 전달받아 이를 이용하여 지정된 command class 찾고 그 instance를 반환한다.
+ * <BR> debug=true로 지정된경우는 target_command에 의존하지 않고 webApp.conf에 "com.solupia.jfound.servlet.channel.BaseMultipartShowGpcCommand" 로 지정되어 있는 showGpc용 command의 instance를 반환한다.
+ * @param mReq 분석할 MultipartRequest
+ * @return 찾아진 command class의 instance
  */
 
 protected BaseMultipartCommand getCommand(MultipartRequest mReq) throws CommandException {
@@ -138,10 +137,10 @@ protected BaseMultipartCommand getCommand(MultipartRequest mReq) throws CommandE
     return (BaseMultipartCommand)cmd;
 }
 /**
- * multipart�� ��۵� HttpServletRequest�� �м��Ͽ� upload�� file�� �����ϰ�, form data���� MultipartRequest�� ��ȯ�Ѵ�.
- * <BR> upload�� ������ ����� directory�� webApp.conf�� "webApp.upload.dir"�μ� �����Ǿ� �־�� �Ѵ�.
- * @param req �м��� HttpServletRequest
- * @return ��ȯ�� MultipartRequest
+ * multipart로 전송된 HttpServletRequest를 분석하여 upload된 file을 저장하고, form data들을 MultipartRequest로 변환한다.
+ * <BR> upload된 파일이 저장될 directory는 webApp.conf에 "webApp.upload.dir"로서 지정되어 있어야 한다.
+ * @param req 분석할 HttpServletRequest
+ * @return 변환된 MultipartRequest
  */
 protected MultipartRequest saveFiles(javax.servlet.http.HttpServletRequest req) throws CommandException, ContentTypeException{
     String targetDir = "";

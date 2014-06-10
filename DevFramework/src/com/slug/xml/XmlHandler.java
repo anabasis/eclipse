@@ -14,12 +14,12 @@ import org.jdom.output.XMLOutputter;
 
 /**
  * @(#) XmlLibraryInterface.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 

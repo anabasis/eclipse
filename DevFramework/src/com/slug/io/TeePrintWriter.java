@@ -2,21 +2,21 @@ package com.slug.io;
 
 /**
  * @(#) TeePrintWriter.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
 import java.io.*;
 
 /**
- * �� ���� ����Ʈ�ϸ� �� ������ ����ϴ� Class�� Unix�� 'tee'���α׷���
- * java version�̴�.  TeePrintWriter�� ���� �� �ΰ��� PrintWriter��
- * parameter�� �ָ� �־��� �ΰ��� PrintWriter�� ���ÿ� ����ϴ� Class��.
+ * 한 곳에 프린트하면 두 곳으로 출력하는 Class로 Unix의 'tee'프로그램의
+ * java version이다.  TeePrintWriter를 생성할 때 두개의 PrintWriter을
+ * parameter로 주면 주어진 두개의 PrintWriter에 동시에 출력하는 Class다.
  *
  */
 public class TeePrintWriter extends PrintWriter {
@@ -31,8 +31,8 @@ public class TeePrintWriter extends PrintWriter {
     private PrintWriter out2;
 
     /**
-     * PrintWriter�� ���� ��� constructor�� ��� ������ ���Ƿ�
-     * super( new DNullWriter() )�� ȣ�����ְ� parameter�� �����Ѵ�.
+     * PrintWriter에 인자 없는 constructor가 없기 때문에 임의로
+     * super( new DNullWriter() )을 호출해주고 parameter를 셋팅한다.
      *
      * @param out1 PrintWriter 1.
      * @param out2 PrintWriter 2.
@@ -43,23 +43,23 @@ public class TeePrintWriter extends PrintWriter {
         this.out2 = out2;
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� error state�� üũ�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 error state를 체크한다.
      *
-     * @return PrintWriter 1�� error state Ȥ��
-     * PrintWriter 2�� error state.
+     * @return PrintWriter 1의 error state 혹은
+     * PrintWriter 2의 error state.
      */
     public boolean checkError() {
         return out1.checkError() || out2.checkError();
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� close()��Ų��.
+     * PrintWriter 1과 PrintWriter 2를 close()시킨다.
      */
     public synchronized void close() {
         out1.close();
         out2.close();
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� flush�ϰ� close�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2를 flush하고 close한다.
      */
     public void finalize() {
         if ( out1 != null ) {
@@ -74,237 +74,237 @@ public class TeePrintWriter extends PrintWriter {
         }
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� ���� flush() ���ش�.
+     * PrintWriter 1과 PrintWriter 2를 각각 flush() 해준다.
      */
     public synchronized void flush() {
         out1.flush();
         out2.flush();
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� char�迭�� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 char배열을 print한다.
      *
-     * @param s print�ϰ��� �ϴ� char�迭.
+     * @param s print하고자 하는 char배열.
      */
     public synchronized void print(char[] s) {
         out1.print( s );
         out2.print( s );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� char�� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 char를 print한다.
      *
-     * @param c print�ϰ��� �ϴ� char.
+     * @param c print하고자 하는 char.
      */
     public synchronized void print(char c) {
         out1.print( c );
         out2.print( c );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� double�� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 double를 print한다.
      *
-     * @param d print�ϰ��� �ϴ� double.
+     * @param d print하고자 하는 double.
      */
     public synchronized void print(double d) {
         out1.print( d );
         out2.print( d );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� float�� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 float를 print한다.
      *
-     * @param f print�ϰ��� �ϴ� float.
+     * @param f print하고자 하는 float.
      */
     public synchronized void print(float f) {
         out1.print( f );
         out2.print( f );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� int�� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 int를 print한다.
      *
-     * @param i print�ϰ��� �ϴ� int.
+     * @param i print하고자 하는 int.
      */
     public synchronized void print(int i) {
         out1.print( i );
         out2.print( i );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� long�� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 long를 print한다.
      *
-     * @param l print�ϰ��� �ϴ� long.
+     * @param l print하고자 하는 long.
      */
     public synchronized void print(long l) {
         out1.print( l );
         out2.print( l );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� Object�� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 Object를 print한다.
      *
-     * @param obj print�ϰ��� �ϴ� Object.
+     * @param obj print하고자 하는 Object.
      */
     public synchronized void print(Object obj) {
         out1.print( obj );
         out2.print( obj );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� String���ڿ��� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 String문자열을 print한다.
      *
-     * @param s print�ϰ��� �ϴ� String���ڿ�.
+     * @param s print하고자 하는 String문자열.
      */
     public synchronized void print(String s) {
         out1.print( s );
         out2.print( s );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� boolean�� print�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 boolean을 print한다.
      *
-     * @param b print�ϰ��� �ϴ� boolean.
+     * @param b print하고자 하는 boolean.
      */
     public synchronized void print(boolean b) {
         out1.print( b );
         out2.print( b );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� print�ϰ�
-     * line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2를 print하고
+     * line을 마친다.
      */
     public synchronized void println() {
         out1.println();
         out2.println();
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� char�迭��
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 char배열을
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� char�迭.
+     * @param x print하고자 하는 char배열.
      */
     public synchronized void println(char[] x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� char��
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 char을
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� char.
+     * @param x print하고자 하는 char.
      */
     public synchronized void println(char x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� double��
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 double을
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� double.
+     * @param x print하고자 하는 double.
      */
     public synchronized void println(double x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� float��
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 float을
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� float.
+     * @param x print하고자 하는 float.
      */
     public synchronized void println(float x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� int��
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 int을
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� int.
+     * @param x print하고자 하는 int.
      */
     public synchronized void println(int x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� long��
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 long을
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� long.
+     * @param x print하고자 하는 long.
      */
     public synchronized void println(long x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� Object��
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 Object를
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� Object.
+     * @param x print하고자 하는 Object.
      */
     public synchronized void println(Object x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� String���ڿ���
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 String문자열을
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� String���ڿ�.
+     * @param x print하고자 하는 String문자열.
      */
     public synchronized void println(String x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� boolean��
-     * print�ϰ� line�� ��ģ��.
+     * PrintWriter 1과 PrintWriter 2의 boolean을
+     * print하고 line을 마친다.
      *
-     * @param x print�ϰ��� �ϴ� boolean.
+     * @param x print하고자 하는 boolean.
      */
     public synchronized void println(boolean x) {
         out1.println( x );
         out2.println( x );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� char�迭�� write�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 char배열을 write한다.
      *
-     * @param buf writer�ϰ��� �ϴ� char�迭.
+     * @param buf writer하고자 하는 char배열.
      */
     public synchronized void write(char[] buf) {
         out1.write( buf );
         out2.write( buf );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� char�迭�� ����
-     * ��ġ���� write�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 char배열을 일정
+     * 위치에서 write한다.
      *
-     * @param buf writer�ϰ��� �ϴ� char�迭.
-     * @param off char�迭 ���۽��������� offset.
-     * @param len char�迭 ����.
+     * @param buf writer하고자 하는 char배열.
+     * @param off char배열 시작시점에서의 offset.
+     * @param len char배열 길이.
      */
     public synchronized void write(char[] buf, int off, int len) {
         out1.write( buf, off, len );
         out2.write( buf, off, len );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� single���ڸ� write�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 single문자를 write한다.
      *
-     * @param b writer�ϰ��� �ϴ� ����.
+     * @param b writer하고자 하는 문자.
      */
     public synchronized void write(int b) {
         out1.write( b );
         out2.write( b );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� String���ڿ��� write�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 String문자열을 write한다.
      *
-     * @param s writer�ϰ��� �ϴ� String���ڿ�.
+     * @param s writer하고자 하는 String문자열.
      */
     public synchronized void write(String s) {
         out1.write( s );
         out2.write( s );
     }
     /**
-     * PrintWriter 1�� PrintWriter 2�� String���ڿ��� ����
-     * ��ġ���� write�Ѵ�.
+     * PrintWriter 1과 PrintWriter 2의 String문자열을 일정
+     * 위치에서 write한다.
      *
-     * @param s writer�ϰ��� �ϴ� String���ڿ�.
-     * @param off ���ڿ� ���۽��������� offset.
-     * @param len ���ڿ� ����.
+     * @param s writer하고자 하는 String문자열.
+     * @param off 문자열 시작시점에서의 offset.
+     * @param len 문자열 길이.
      */
     public synchronized void write(String s, int off, int len) {
         out1.write( s, off, len );

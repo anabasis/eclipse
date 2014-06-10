@@ -2,68 +2,68 @@ package com.slug.io;
 
 /**
  * @(#) NullWriter.java
- * @version KDSKIT
+ * @version
  * Copyright
  * All rights reserved.
- * �ۼ� :
- * @author �赿��, dongskim@solupia.co.kr
- *         SOLUPIA e-Biz Team
+ * 작성 :
+ * @author
+ *         
  *
  */
 
 import java.io.*;
 
 /**
- * abstract class�� Writer�� ��ӹ޾� �ƹ��͵� write�����ʴ�
+ * abstract class인 Writer를 상속받아 아무것도 write하지않는
  * null Writer.
  *
  */
 public class NullWriter extends Writer {
 
     /**
-     * Default Constructor�� �ƹ��͵� �������� �ʴ´�.
+     * Default Constructor로 아무것도 수행하지 않는다.
      */
     public NullWriter() { }
     /**
-     * �ƹ��͵� �������� �ʴ´�.
+     * 아무것도 수행하지 않는다.
      */
     public void close() { }
     /**
-     * �ƹ��͵� �������� �ʴ´�.
+     * 아무것도 수행하지 않는다.
      */
     public void flush() { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
-     * @param cbuf char�迭.
+     * @param cbuf char배열.
      */
     public void write(char[] cbuf) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
-     * @param cbuf char�迭.
-     * @param off char�迭 ���۽��������� offset.
-     * @param len char�迭 ����.
+     * @param cbuf char배열.
+     * @param off char배열 시작시점에서의 offset.
+     * @param len char배열 길이.
      */
     public void write(char[] cbuf, int off, int len) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
      * @param c int.
      */
     public void write(int c) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
-     * @param str String���ڿ�.
+     * @param str String문자열.
      */
     public void write(String str) { }
     /**
-     * �ƹ��͵� write���� �ʴ´�.
+     * 아무것도 write하지 않는다.
      *
-     * @param str String���ڿ�.
-     * @param off String���ڿ� ���۽��������� offset.
-     * @param len String���ڿ� ����.
+     * @param str String문자열.
+     * @param off String문자열 시작시점에서의 offset.
+     * @param len String문자열 길이.
      */
     public void write(String str, int off, int len) { }
 }
