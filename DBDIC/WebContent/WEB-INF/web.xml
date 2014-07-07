@@ -10,6 +10,21 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <context-param>
+		<param-name>webApp.config.file</param-name>
+		<param-value>/Users/junseongjo/git/eclipse_workspace/DBDIC/src/app_config/webApp.conf</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.slug.login.LoginAdopter</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+
   <servlet>
   	<servlet-name>testJavaServlet</servlet-name>
   	<servlet-class>test.TestJavaServlet</servlet-class>

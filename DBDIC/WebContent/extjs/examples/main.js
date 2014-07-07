@@ -55,11 +55,11 @@ window.onload = function() {
             
         ++groupIndex;
     }
-    alert(html);
+    //alert(html);
     bodyEl.innerHTML = html;
     
     addListener(document.body, 'click', function(e) {
-    	alert("click !!");
+    	//alert("click !!");
         var target = e.target || e.srcElement,
             groupHeaderClicked = false,
             expander, className, expanderClassName;
@@ -73,7 +73,7 @@ window.onload = function() {
         }
         
         if (groupHeaderClicked) {
-        	alert("groupHeaderClicked !!");
+        	//alert("groupHeaderClicked !!");
             className = target.className;
             expander = target.querySelector('.group-action-icon');
             expanderClassName = expander.className;
