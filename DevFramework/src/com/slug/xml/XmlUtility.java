@@ -40,7 +40,9 @@ public class XmlUtility{
     public static Document getXmlDoc(String path) throws PException{
         
     	String R_PATH = AppConfigManager.getAbsoluteRootPath();
-        SAXBuilder builder;
+    	R_PATH = "";
+    	
+    	SAXBuilder builder;
         Document doc;
 
         try {
