@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Jun 10 15:33:35 KST 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.3.0 - (1405108): instance a816c00e-0146-847b-5a50-0000065a44a8 
+on database directory /Users/junseongjo/git/eclipse_workspace/DBDIC/DB_SQL/DBDIC.dat  with class loader sun.misc.Launcher$AppClassLoader@6471d768 
+Loaded from file:/Users/junseongjo/git/eclipse_workspace/DevFramework/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_51-b13
+user.dir=/Users/junseongjo/git/eclipse_workspace/DBDIC
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.9.3
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

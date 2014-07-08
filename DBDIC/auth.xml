@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<book id="javanut4">
+	<chapter>
+		<title>Chapter 1</title>
+		<para />
+	</chapter>
+	<chapter>
+		<title>Chapter 2</title>
+		<para />
+	</chapter>
+	<chapter>
+		<title>Chapter 3</title>
+		<para />
+	</chapter>
+</book>
