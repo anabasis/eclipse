@@ -66,8 +66,8 @@ public class FlowComponent implements FlowComponentImpl{
  			
  	    	/*
  			
-			Class[] param_type = {Class.forName("com.tg.jfound.vo.box.Box")};
-			CtClass[] pt = {child_pool.get("com.tg.jfound.vo.box.Box")};
+			Class[] param_type = {Class.forName("com.slug.vo.box.Box")};
+			CtClass[] pt = {child_pool.get("com.slug.vo.box.Box")};
  			CtClass cc = child_pool.get(className);
  			Logging.dev.println(child_pool.toString());
  			CtMethod cm = cc.getDeclaredMethod(methodName);
@@ -107,7 +107,7 @@ public class FlowComponent implements FlowComponentImpl{
 			/**
 			 * Case000: ������ reflet �� �̿��� ���
 			 */
-			Class[] param_type = {Class.forName("com.tg.jfound.vo.box.Box")};	
+			Class[] param_type = {Class.forName("com.slug.vo.box.Box")};	
 			Class c = Class.forName(className);
 			Method method = c.getDeclaredMethod(methodName,param_type);
 			obj  = method.invoke(c.newInstance(), new Object[] {ibox});

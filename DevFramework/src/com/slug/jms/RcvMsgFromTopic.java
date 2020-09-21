@@ -15,12 +15,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-//import com.tg.jfound.config.AppConfig;
-
-
-
-
-
 import com.slug.config.AppConfigManager;
 import com.slug.exception.PException;
 import com.slug.logging.Logging;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name="jdbc/mysql" auth="Container" type="javax.sql.DataSource"
+		username="raradb" password="raradb" driverClassName="com.mysql.jdbc.Driver" 
+		factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" 
+		url="jdbc:mysql://localhost:3306/RARA_DB" 
+		logintimeout="100" 
+		maxActive="500" 
+		maxIdle="100" 
+		/>
+		 <!--  Oracle DB라면 driverClassName="oracle.jdbc.driver.OracleDriver"  -->
+		 <!-- Oracle DB라면 url="jdbc.oracle:thin:@localhost:1521:DB이름"  --> 
+</Context>

@@ -15,10 +15,6 @@ import java.io.PrintWriter;
 import java.util.Observable;
 import java.util.Observer;
 
-//import com.tg.jfound.config.AppConfig;
-
-
-
 import com.slug.config.AppConfigManager;
 import com.slug.io.NullPrintWriter;
 import com.slug.io.TeePrintWriter;

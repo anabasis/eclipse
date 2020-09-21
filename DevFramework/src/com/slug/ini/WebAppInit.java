@@ -4,13 +4,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-//import com.tg.jfound.config.AppConfig;
-
-
-
-
-
-
 import com.slug.config.AppConfigException;
 import com.slug.config.AppConfigManager;
 import com.slug.exception.PException;
@@ -35,10 +28,7 @@ public class WebAppInit implements ServletContextListener{
     public void contextInitialized(ServletContextEvent evt)
     {
 
-        System.out.println("*****************************  TimeGate jfound Frame-Work Initialized  **********************************************");
-
-//        Logger logger = Logger.getLogger(	"");
-//        logger.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        System.out.println("*****************************  Slug Frame-Work Initialized  **********************************************");
 
         ServletContext sc = evt.getServletContext();
         

@@ -109,12 +109,12 @@ public class LifecycleManager implements Lifecycle
              lifecycles = new ArrayList();
              ///*
              LifecycleVO vo1 = new LifecycleVO();
-             vo1.setLifecycleClass("com.tg.jfound.config.AppConfigManager");
+             vo1.setLifecycleClass("com.slug.config.AppConfigManager");
              vo1.setLoadSequence(100);
              vo1.setLifeCyclUseDstcd("System Applcation Configuration Loader");
   
              LifecycleVO vo2 = new LifecycleVO();
-             vo2.setLifecycleClass("com.tg.jfound.dao.sql.StatementManager");
+             vo2.setLifecycleClass("com.slug.dao.sql.StatementManager");
              vo2.setLoadSequence(101);
              vo2.setLifeCyclUseDstcd("SQL Statement Configuration Loader");
 
@@ -169,7 +169,7 @@ public class LifecycleManager implements Lifecycle
                              //Logging.dev.println("RDCEAICLC205");
                              continue;
                          }
-
+                         System.out.println("#########################>>>>>>>>>  "+vo.getLifecycleClass());
                          Class cl = Class.forName(vo.getLifecycleClass());
                          Method m = cl.getDeclaredMethod("getInstance",new Class[]{});
                          Object obj  = m.invoke(null,new Object[]{});
@@ -328,7 +328,6 @@ public class LifecycleManager implements Lifecycle
                 break search;
             }
         }
-
     }
 
     /**

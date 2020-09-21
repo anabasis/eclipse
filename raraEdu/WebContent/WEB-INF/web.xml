@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>raraEdu</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<listener>
+		<listener-class>com.slug.ini.AppInitializer</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>webApp.config.file</param-name>
+		<param-value>D:\WORK\APPS\raraEduApp\app_config\webApp.conf</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>XAsync</servlet-name>
+		<servlet-class>com.raraedu.adopter.XAsyncWebAdopter</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>XAsync</servlet-name>
+		<url-pattern>/XAsync</url-pattern>
+	</servlet-mapping>
+
+	<resource-ref>
+		<description>Connection</description>
+		<!--  다음이 바로 리소스의 이름  -->
+		<res-ref-name>jdbc/mysql</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+</web-app>

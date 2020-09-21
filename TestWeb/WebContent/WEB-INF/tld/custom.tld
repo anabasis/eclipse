@@ -1,0 +1,16 @@
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>2.0</jsp-version>
+  <short-name>Example TLD</short-name>
+  <tag>
+    <name>GuGuDan</name>
+    <tag-class>example.taglib.TagSample</tag-class>
+    <body-content>empty</body-content>
+  </tag>
+  
+  <tag>
+    <name>BodyGuGuDan</name>
+    <tag-class>example.taglib.BodyTagSample</tag-class>
+    <body-content>scriptless</body-content>
+  </tag>
+</taglib>

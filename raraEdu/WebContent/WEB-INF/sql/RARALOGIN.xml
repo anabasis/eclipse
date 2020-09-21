@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+type: return value type(box,dom,json)
+ -->
+<querys module="RARALOGIN" >
+  <sql id="getLogin" type="json">
+    <query>
+<![CDATA[
+select cp_contents_id,
+	   cp_id,
+	   cp_contents_name,
+	   cp_contents_passno,
+	   cp_scontents,
+	   cp_contents,
+	   file_group_id,
+	   cp_contents_root_id,
+	   cp_contents_creator_id,
+	   cp_contents_updator_id,
+	   cp_contents_create_date,
+	   cp_contents_update_date,
+	   old_cp_id
+  from tgcs_cp_contents t
+ where cp_id = ?
+]]>
+    </query>
+    <description>Customer Company List Search</description>
+  </sql>
+</querys>

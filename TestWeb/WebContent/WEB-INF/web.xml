@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>TestWeb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- Servlet Setting -->
+	<servlet>
+		<servlet-name>GuGuDanServlet</servlet-name>
+		<servlet-class>example.servlet.GuGuDanServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GuGuDanServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- Abstract Servlet Setting -->
+	<servlet>
+		<servlet-name>AbstractGuGuDanServlet</servlet-name>
+		<servlet-class>example.framework.AbstractGuGuDanServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AbstractGuGuDanServlet</servlet-name>
+		<url-pattern>*.tg</url-pattern>
+	</servlet-mapping>
+
+	<!-- Filter 처리 -->
+<!-- 
+	<servlet>
+		<servlet-name>FilterGuGuDanServlet</servlet-name>
+		<servlet-class>example.servlet.GuGuDanServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>FilterGuGuDanServlet</servlet-name>
+		<url-pattern>FilterGuGuDanServlet.filter</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>sampleFilter</filter-name>
+		<filter-class>example.filter.SampleFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sampleFilter</filter-name>
+		<url-pattern>FilterGuGuDanServlet.filter</url-pattern>
+	</filter-mapping>
+ -->
+	<!-- Tag Library Setting -->
+
+
+</web-app>
