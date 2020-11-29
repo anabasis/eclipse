@@ -5,10 +5,10 @@
 <%@ page import="test.ejb.*"%>
 
 <%
-int servercnt = 40;
+	int servercnt = 40;
 int callcnt   = 10;
 
-TestEjbClient4 client =new TestEjbClient4();
+TestEjbClient client =new TestEjbClient();
 
 
 System.out.println("EJB NoCache Start >>>>>>>>>");		

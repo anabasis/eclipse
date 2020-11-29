@@ -89,7 +89,7 @@ public class RcvMsgFromTopic
 	}
 
 	public String onGetRcvMsgFromTopic(String chkParam, int from, int to) throws JMSException{
-		TextMessage msg;
+		TextMessage msg = null;
 		String rtnStr = "";
 		String key = "";
 		Logging.dev.println("Wait Message");
@@ -98,7 +98,7 @@ public class RcvMsgFromTopic
 
 			Logging.dev.println("< RcvMsgFromTopic > onGetRcvMsgFromTopic Wait Time Recevied Message ["+this.LAST_OUT_TIME+"] Secs");
 			msg = (TextMessage) tsubscriber.receive(this.LAST_OUT_TIME);
-			if(msg == null || msg.equals("")){
+			if(msg == null || "".equals(msg)){
                 close();
 				throw new JMSException("< RcvMsgFromTopic > onGetRcvMsgFromTopic Normal Time Out ["+this.INI_OUT_TIME+"] Secs");
 			}else{

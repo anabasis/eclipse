@@ -23,7 +23,7 @@ public class callEJB {
 		//System.out.println("EJB Cache Start >>>>>>>>>");	
 		//for(int i=1;i<=servercnt;i++)   client.callEJBCache(i, callcnt);		
 		System.out.println("EJB NoCache Start >>>>>>>>>");		
-		TestEjbClient4 client =new TestEjbClient4();
+		TestEjbClient client =new TestEjbClient();
 		for(int i=1;i<=servercnt;i++) 	client.callEJB(i, callcnt);
 
 		

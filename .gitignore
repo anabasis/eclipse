@@ -1,1 +1,6 @@
 **/WEB-INF/lib/
+**/WEB-INF/classes/
+/.metadata/
+**/bin/
+**/target/
+**/*.class
