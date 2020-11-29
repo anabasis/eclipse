@@ -6,8 +6,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
-import example.ejb.GuGuDanHome;
-import example.ejb.GuGuDanRemote;
+// EJB »ý·«
+//import example.ejb.GuGuDanHome;
+//import example.ejb.GuGuDanRemote;
 
 public class TestEjbClient {
 
@@ -109,18 +110,19 @@ public class TestEjbClient {
 				// EJB specification.
 				long lookuptime = System.currentTimeMillis();
 
-				GuGuDanHome ejbHome = (GuGuDanHome) PortableRemoteObject
-						.narrow(obj, GuGuDanHome.class);
+				//GuGuDanHome ejbHome = (GuGuDanHome) PortableRemoteObject.narrow(obj, GuGuDanHome.class);
 				long hometime = System.currentTimeMillis();
 
 				// Use the HelloHome to create a HelloObject
-				GuGuDanRemote ejbRemote = ejbHome.create();
+				//GuGuDanRemote ejbRemote = ejbHome.create();
 				long initetime = System.currentTimeMillis();
+				/*
 				System.out.print(ejbRemote.getServerName() + "("
 						+ (ctxtime - initstime) + "+" + (lookuptime - ctxtime)
 						+ "+" + (hometime - lookuptime) + "+"
 						+ (initetime - hometime) + "="
 						+ (initetime - initstime) + "),");
+					*/
 
 				// ctx = null;ejbHome=null;ejbRemote=null;obj = null;
 			}
@@ -204,16 +206,14 @@ public class TestEjbClient {
 			Object obj = (Object) ctx.lookup("GuGuDan");
 			// Be good and use RMI remote object narrowing as required by the
 			// EJB specification.
-			GuGuDanHome ejbHome = (GuGuDanHome) PortableRemoteObject.narrow(
-					obj, GuGuDanHome.class);
+			//GuGuDanHome ejbHome = (GuGuDanHome) PortableRemoteObject.narrow(obj, GuGuDanHome.class);
 
 			// Use the HelloHome to create a HelloObject
-			GuGuDanRemote ejbRemote = ejbHome.create();
-
+			//GuGuDanRemote ejbRemote = ejbHome.create();
 			System.out.print("call Server Name :");
 			for (int i = 0; i < callcnt; i++) {
 
-				System.out.print(ejbRemote.getServerName() + ",");
+				//System.out.print(ejbRemote.getServerName() + ",");
 
 			}
 

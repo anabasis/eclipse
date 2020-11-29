@@ -4,6 +4,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/slug"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/project"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <property name="context-root" value="raraEdu"/>
         <property name="java-output-path" value="/raraEdu/build/classes"/>
     </wb-module>

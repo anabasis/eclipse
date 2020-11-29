@@ -13,7 +13,6 @@ import java.sql.Types;
 import org.jdom.Document;
 import org.jdom.Element;
 
-
 import com.slug.exception.PException;
 import com.slug.logging.Logging;
 import com.slug.util.cmnUtil;
@@ -48,8 +47,8 @@ public class DaoHandler extends DAOSqlHandler{
 	}
 
 	/**
-	 * selectListObject 실 수행 Method
-	 * Vector 형태의 Data Set을 얻어 오기 위한 메소드
+	 * selectListObject �떎 �닔�뻾 Method
+	 * Vector �삎�깭�쓽 Data Set�쓣 �뼸�뼱 �삤湲� �쐞�븳 硫붿냼�뱶
 	 * 
 	 * @param conn
 	 * @param ubox
@@ -385,7 +384,7 @@ public class DaoHandler extends DAOSqlHandler{
 		String cflag = cmnUtil.checkNull2Value(ubox.getString("cflag"),"N");
 		
 		String trxResultCode = "Y";
-		String trxResultMsg  ="정상 처리 되었습니다.";
+		String trxResultMsg  ="�젙�긽 泥섎━ �릺�뿀�뒿�땲�떎.";
 	       
 		int txRs = 0;
 
@@ -456,7 +455,7 @@ public class DaoHandler extends DAOSqlHandler{
 		PreparedStatement pstmt = null;
 
 		String trxResultCode = "SUCCESS";
-		String trxResultMsg  = "정상 처리 되었습니다.";
+		String trxResultMsg  = "�젙�긽 泥섎━ �릺�뿀�뒿�땲�떎.";
 	       
 		int txRs = 0;
 
@@ -465,7 +464,7 @@ public class DaoHandler extends DAOSqlHandler{
 
 		try
 		{
-		    pstmt = new LoggableStatement(conn,query);//CLAB 처리를 위한 LaggableStatement 사용
+		    pstmt = new LoggableStatement(conn,query);//CLAB 泥섎━瑜� �쐞�븳 LaggableStatement �궗�슜
 		    //pstmt = conn.prepareStatement(query);
 
 		    for ( int input = 0 ; input < input_value.length ; input++ )
@@ -562,13 +561,13 @@ public class DaoHandler extends DAOSqlHandler{
 
 
 	//------------------------------------------------------------------------------
-	//   Method명    : callStdProcedureObject)_
+	//   Method紐�    : callStdProcedureObject)_
 	//
-	//   DESC        : stored procedure등의 data base object에 대한 실행 메소드이다
-	//               input_value[]: object의 in 값을 정의한 배열
-	//               outcnt      : out되는 요소수를 정의 한다.
-	//   참조 Method  :
-	//   참조 변수명  :
+	//   DESC        : stored procedure�벑�쓽 data base object�뿉 ���븳 �떎�뻾 硫붿냼�뱶�씠�떎
+	//               input_value[]: object�쓽 in 媛믪쓣 �젙�쓽�븳 諛곗뿴
+	//               outcnt      : out�릺�뒗 �슂�냼�닔瑜� �젙�쓽 �븳�떎.
+	//   李몄“ Method  :
+	//   李몄“ 蹂��닔紐�  :
 	//
 	//
 	//------------------------------------------------------------------------------
@@ -629,14 +628,14 @@ public class DaoHandler extends DAOSqlHandler{
 	
 
     //------------------------------------------------------------------------------
-	//   Method명    : callStdProcedureObject)_
+	//   Method紐�    : callStdProcedureObject)_
 	//
-	//   DESC        : stored procedure등의 data base object에 대한 실행 메소드이다
-	//               input_value[]: object의 in 값을 정의한 배열
+	//   DESC        : stored procedure�벑�쓽 data base object�뿉 ���븳 �떎�뻾 硫붿냼�뱶�씠�떎
+	//               input_value[]: object�쓽 in 媛믪쓣 �젙�쓽�븳 諛곗뿴
 	//               argcnt      : total argument
-	//               outcnt      : out되는 요소수를 정의 한다.
-	//   참조 Method  :
-	//   참조 변수명  :
+	//               outcnt      : out�릺�뒗 �슂�냼�닔瑜� �젙�쓽 �븳�떎.
+	//   李몄“ Method  :
+	//   李몄“ 蹂��닔紐�  :
 	//
 	//
 	//------------------------------------------------------------------------------

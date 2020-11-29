@@ -19,7 +19,7 @@
 
 	<context-param>
 		<param-name>webApp.config.file</param-name>
-		<param-value>D:\WORK\APPS\raraEduApp\app_config\webApp.conf</param-value>
+		<param-value>E:\WORK\workspace_java\raraEdu\src\app_config\webApp.conf</param-value>
 	</context-param>
 
 	<servlet>

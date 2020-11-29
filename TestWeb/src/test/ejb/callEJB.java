@@ -5,8 +5,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.rmi.PortableRemoteObject;
 
-import example.ejb.GuGuDanHome;
-import example.ejb.GuGuDanRemote;
+// »ý·«
+//import example.ejb.GuGuDanHome;
+//import example.ejb.GuGuDanRemote;
 
 public class callEJB {
 
