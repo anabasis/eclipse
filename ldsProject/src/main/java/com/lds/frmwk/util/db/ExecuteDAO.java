@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.lds.frmwk.util.CommUtil;
 import com.lds.frmwk.util.DbUtil;
+import com.lds.frmwk.util.vo.AgentDbVO;
 
 public class ExecuteDAO extends AbstractDB {
 
@@ -29,18 +30,18 @@ public class ExecuteDAO extends AbstractDB {
 
 		// logger.debug("ExcuteQueryRealTimeData start");
 
-		Connection conn = null; // ?—°ê²°ë?
-		PreparedStatement psmt = null; // ì¿¼ë¦¬ë¶??— ê°’ì„ ì£¼ê¸° ?œ„?•´ PrepareStatement?‚¬?š©
-		ResultSet rs = null; // ë¦¬ì‹œë²?
+		Connection conn = null; 
+		PreparedStatement psmt = null; 
+		ResultSet rs = null; 
 		StringBuffer queryString = new StringBuffer();
 		int ret = 0;
 
 		SqlMapClient sqlMap = MySqlMapClient.getSqlMapInstance();
 
-		int res = 1; // ?ŒŒ?¼?ƒ?„± ê²°ê³¼ ì¶œë ¥?š© 0?´ë©? ?‹¤?Œ¨, -1?´ë©? ?ŒŒ?¼?ƒ?„±?´?™¸?˜ ?—?Ÿ¬, 1?´ë©? ? •?ƒì¶œë ¥?„
+		int res = 1; // ÆÄÀÏ»ı¼º °á°ú Ãâ·Â¿ë 0ÀÌ¸é ½ÇÆĞ, -1ÀÌ¸é ÆÄÀÏ»ı¼ºÀÌ¿ÜÀÇ ¿¡·¯, 1ÀÌ¸é Á¤»óÃâ·ÂÀÓ
 		String endDate = CommUtil.getCurrentTimeStamp();
 
-		// ê²°ê³¼ê²©ë‚©?š© ?°ëª? ?‹¤?–‰ ë¡œê·¸ë¥? ?¸?„œ?Š¸ ?•¨. (ê²°ê³¼?Š” N?œ¼ë¡? ê³ ì •)
+		// °á°ú°İ³³¿ë µ¥¸ó ½ÇÇà ·Î±×¸¦ ÀÎ¼­Æ® ÇÔ. (°á°ú´Â NÀ¸·Î °íÁ¤)
 		HashMap<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("file_name", fileName);
 		paramMap.put("daemon_type", adv.getDaemonType());
@@ -61,7 +62,7 @@ public class ExecuteDAO extends AbstractDB {
 			DbUtil dbu = new DbUtil(adv.getDbSid(), adv.getDbUrl(), adv.getDbType(), adv.getProcDay(), adv.getDbOption());
 			String nUrl = dbu.getUrl();
 
-			// ?‹¹?¼ì²˜ë¦¬ ê¸°ë¡?´?ˆ?Š”ì§?ë§? ì²´í¬?•´?„œ ì²˜ë¦¬
+			// ´çÀÏÃ³¸® ±â·ÏÀÌÀÖ´ÂÁö¸¸ Ã¼Å©ÇØ¼­ Ã³¸®
 
 			//HashMap<String, String> logMap = new HashMap<String, String>();
 			//logMap.put("daemon_type", adv.getDaemonType());
@@ -73,7 +74,6 @@ public class ExecuteDAO extends AbstractDB {
 			
 			String startDate = null;
 
-			// ê¸ˆì¼ ?‹¤?–‰ ?´? ¥?´ ?ˆ?„ ê²½ìš° enddateë¶??„° ?‹¤?‹œ ?°?´?„°ë¥? ê°?? ¸?˜¨?‹¤.
 			if (paramMap != null && paramMap.size() > 0) {
 				startDate = String.valueOf(paramMap.get("write_date")).replace(".0", "");
 				// logger.debug("startDate =========write_date==== : " + startDate);
@@ -87,7 +87,7 @@ public class ExecuteDAO extends AbstractDB {
 					int systemHR = Integer.parseInt(systemHour);
 					String maxHour = adv.getDaemonMaxHour();
 					if (maxHour != null) {
-						// db_daemon_max_hour ë³´ë‹¤ ì²˜ë¦¬ ?‹œê°„ì´ ì§??—°?œê²½ìš° 1?‹œê°? ? „ ?°?´?„° ì²˜ë¦¬
+						// db_daemon_max_hour º¸´Ù Ã³¸® ½Ã°£ÀÌ Áö¿¬µÈ°æ¿ì 1½Ã°£ Àü µ¥ÀÌÅÍ Ã³¸®
 						if (systemHR - startHR > adv.getDaemonMaxHourInt()) {
 							startDate = CommUtil.getCurrentMinusSecond(currentTime, (adv.getRunDelayInt() + 600));
 						}
@@ -95,16 +95,15 @@ public class ExecuteDAO extends AbstractDB {
 				}
 			} else {
 				paramMap = new HashMap<String, String>();
-				// ?‹¤?–‰?•œ ?˜„?¬?‹œê°„ì—?„œ -?„œë²„ê°„ ?‹œê°? ì°¨ì´ë¥? ê³ ë ¤?•´?„œ 10ë¶„ì „ ?°?´?„° ì¡°íšŒ
 				startDate = CommUtil.getCurrentMinusSecond(currentTime, (adv.getRunDelayInt() + 600));
 			}
 			logger.debug("######################   HASH : " + paramMap.toString());
 
-			// ?°?´?„° ?ƒ?„± ?‹œê°? log ?ƒ?„±
+			// µ¥ÀÌÅÍ »ı¼º ½Ã°£ log »ı¼º
 			paramMap.put("write_date", endDate);
 
 			if ("N".equals(adv.getDaemonProcedure())) {
-				// Procudure ?•„?‹Œ ê²½ìš°
+				// Procudure ¾Æ´Ñ °æ¿ì
 				// ////////////////////////////////////////////////////////////////////////
 
 				String query_table = adv.getQueryTable();
