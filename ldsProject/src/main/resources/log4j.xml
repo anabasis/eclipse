@@ -10,12 +10,66 @@
 		</layout>
 	</appender>
 	
+	 <appender name="LOGFILE-DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+    	<param name="file" value="./log/debug.log"/>
+    	<param name="Append" value="true"/>
+    	<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	 <layout class="org.apache.log4j.PatternLayout">
+    		<!-- <param name="ConversionPattern" value="%d %5p [%c] %m%n" /> -->
+    		<param name="ConversionPattern" value="[%d{HH:mm:ss}][%-5p](%F:%L) - %m%n" />
+    	</layout>
+    </appender>
+    
+    <appender name="LOGFILE-ERROR" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="./log/error.log"/>
+    	<param name="Append" value="true"/>
+    	<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    	 <layout class="org.apache.log4j.PatternLayout">
+    		<!-- <param name="ConversionPattern" value="%d %5p [%c] %m%n" /> -->
+    		<param name="ConversionPattern" value="[%d{HH:mm:ss}][%-5p](%F:%L) - %m%n" />
+    	</layout>
+	    <filter class="org.apache.log4j.filter.LevelRangeFilter" >
+	        <param name="LevelMin"  value="ERROR" />
+	    </filter>
+    </appender>
+    
+    <!-- 로그 파일 100KB마다 새로 남기기  -->
+    <appender name="LOGFILE-SIZE" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="./log/error-ratate100K.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="100KB"/>
+        <param name="MaxBackupIndex" value="5"/>  
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %-17c{2} (%13F:%L) %3x - %m%n"/>
+        </layout>
+    </appender>
+    
+    <logger name="com.ibatis">
+    	<level value="error"/>
+        <appender-ref ref="console"/> 
+    </logger>
+    <logger name="java.sql">
+    	<level value="error"/>
+        <appender-ref ref="console"/> 
+    </logger>
+	<logger name="org.apache.commons">
+		<level value="debug" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	
 	<!-- Application Loggers -->
 	<logger name="com.lds.framework">
 		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework" additivity="false">
+		<level value="info" />
+		<appender-ref ref="console" />
+	</logger>
+	
+	
 	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
@@ -36,5 +90,7 @@
 	<root>
 		<priority value="debug" />
 		<appender-ref ref="console" />
+		<appender-ref ref="LOGFILE-DEBUG" />
+		<appender-ref ref="LOGFILE-ERROR" />
 	</root>
 </log4j:configuration>
