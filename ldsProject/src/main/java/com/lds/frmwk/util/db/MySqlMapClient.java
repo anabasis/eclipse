@@ -14,7 +14,7 @@ public class MySqlMapClient {
 	private static volatile SqlMapClient sqlMap;
 	private static final Logger logger = LoggerFactory.getLogger(MySqlMapClient.class);
 	private static int no;
-	private final static String resource = "com/splunk/siemdb/db/xml/sqlmap-config.xml";
+	private final static String resource = "com/lds/frmwk/db/xml/sqlmap-config.xml";
 	
 
 	public static SqlMapClient getSqlMapInstance() {

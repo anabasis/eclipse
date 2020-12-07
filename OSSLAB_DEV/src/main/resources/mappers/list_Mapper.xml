@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.osslab.mapper.List_Mapper">
+        
+    <select id="boardList" parameterType="com.osslab.vo.list.ListVO" resultType="com.osslab.vo.list.ListVO">
+         SELECT
+            *
+        FROM tb_board
+    </select>
+    <insert id="insert_list" parameterType="com.osslab.vo.list.ListVO">
+	     INSERT INTO
+	        tb_board (TITLE,CONTENT,WRITER,INSERT_TIME)
+	     VALUES(#{title},#{content},#{writer},now())
+    </insert>
+</mapper>
