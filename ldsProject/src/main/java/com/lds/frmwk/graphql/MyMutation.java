@@ -1,20 +1,20 @@
 package com.lds.frmwk.graphql;
 
-import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import lombok.RequiredArgsConstructor;
 import com.lds.frmwk.graphql.domain.Post;
+import com.lds.frmwk.graphql.dto.PostResponse;
 import com.lds.frmwk.graphql.repository.AuthorRepository;
 import com.lds.frmwk.graphql.repository.PostRepository;
-
-import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class MyMutation implements GraphQLMutationResolver {
     
-	private final PostRepository postRepository = null;
-    private final AuthorRepository authorRepository = null;
+	private final PostRepository postRepository;
+    private final AuthorRepository authorRepository;
 
     public PostResponse writePost(String title, String text, String category) {
         Post post = new Post();

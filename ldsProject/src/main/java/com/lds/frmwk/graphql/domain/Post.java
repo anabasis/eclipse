@@ -20,5 +20,4 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "author_id")
     private Author author;
-
 }

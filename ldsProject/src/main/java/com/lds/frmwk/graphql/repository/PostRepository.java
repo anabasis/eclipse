@@ -1,11 +1,10 @@
 package com.lds.frmwk.graphql.repository;
 
 
+import com.lds.frmwk.graphql.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import com.lds.frmwk.graphql.domain.Post;
 
 import java.util.List;
 
