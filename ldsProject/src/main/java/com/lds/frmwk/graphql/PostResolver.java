@@ -1,17 +1,20 @@
 package com.lds.frmwk.graphql;
 
-import org.springframework.stereotype.Component;
-
 import com.coxautodev.graphql.tools.GraphQLResolver;
+import com.lds.frmwk.graphql.domain.Author;
+import com.lds.frmwk.graphql.PostResponse;
+import com.lds.frmwk.graphql.repository.AuthorRepository;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class PostResolver implements GraphQLResolver<PostResponse> {
-    private final AuthorRepository authorRepository;
+    
+	private AuthorRepository authorRepository;
 
     public Author getAuthor(PostResponse postResponse) {
-        return authorRepository.findById(postResponse
-				.getAuthor().getId())
-				.orElseThrow(NullPointerException::new);
+        return authorRepository.findById(postResponse.getAuthor().getId()).orElseThrow(NullPointerException::new);
     }
 }

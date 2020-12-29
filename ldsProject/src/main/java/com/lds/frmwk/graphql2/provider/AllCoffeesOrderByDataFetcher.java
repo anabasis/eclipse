@@ -22,6 +22,7 @@ public class AllCoffeesOrderByDataFetcher implements DataFetcher<List<Coffee>> {
     @Override
     public List<Coffee> get(DataFetchingEnvironment environment) {
         //TODO:리팩토링 필요
-        return coffeeRepository.findAll(new Sort(Sort.Direction.fromString(environment.getArgument("sortOrder")), ((String)environment.getArgument("sortBy"))));
+        //return coffeeRepository.findAll(new Sort(Sort.Direction.fromString(environment.getArgument("sortOrder")), ((String)environment.getArgument("sortBy"))));
+        return coffeeRepository.findAll();
     }
 }

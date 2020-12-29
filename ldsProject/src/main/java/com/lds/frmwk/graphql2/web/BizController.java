@@ -16,6 +16,7 @@ public class BizController {
 
     private final BizService bizservice;
 
+    // 서비스 초기화
     public BizController(BizService bizservice) {
         this.bizservice = bizservice;
     }
