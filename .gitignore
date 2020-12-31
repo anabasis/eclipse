@@ -7,3 +7,5 @@
 **/bin/
 **/target/
 **/*.class
+/.settings/
+/Servers/
