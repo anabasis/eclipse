@@ -1,4 +1,4 @@
-package com.lds.frmwk.graphql2.core;
+package com.lds.frmwk.rest.vo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,6 +14,7 @@ public class Coffee {
 	@Id
 	private String cid;
 	private String name;
+	
 	public Coffee(String cid, String name) {
 		this.cid = cid;
 		this.name = name;
