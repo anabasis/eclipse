@@ -8,10 +8,12 @@ import com.app.EmployeeVO;
 
 @Service
 public class EmployeeManagerImpl implements EmployeeManager {
+	
 	@Autowired
 	EmployeeDAO dao;
 
 	public List<EmployeeVO> getAllEmployees() {
 		return dao.getAllEmployees();
 	}
+	
 }
