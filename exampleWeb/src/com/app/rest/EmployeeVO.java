@@ -1,4 +1,4 @@
-package com.app;
+package com.app.rest;
 
 import java.io.Serializable;
 

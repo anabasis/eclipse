@@ -1,10 +1,11 @@
-package com.app;
+package com.app.rest;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.app.EmployeeDAO;
-import com.app.EmployeeVO;
+
+import com.app.rest.EmployeeDAO;
+import com.app.rest.EmployeeVO;
 
 @Service
 public class EmployeeManagerImpl implements EmployeeManager {
