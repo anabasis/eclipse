@@ -1,11 +1,61 @@
-*.tar
-*.jar
+### Java template
 *.class
+**/*.class
+ 
+# Package Files #
+*.jar
+*.war
+*.ear
+*.tar
+*.db
+ 
+### macOS template
+*.DS_Store
+.DS_Store
+.AppleDouble
+.LSOverride
+ 
+# IntelliJ project files
+.idea
+.idea/*.xml
+*.iml
+out
+gen
+build
+rebel.xml
+ 
+# Compliled files
+/target/
+**/target
+ 
+# Gradle
+.gradle
+/build/
+.gradletasknamecache
+
+# Eclipse IDE Setting
+.project
+.metadata
+.classpath
+.settings/
+.loadpath
 **/WEB-INF/lib/
 **/WEB-INF/classes/
-/.metadata/
+
+# Directories #
+/build/
+/bin/
 **/bin/
+target/
 **/target/
-**/*.class
-/.settings/
 /Servers/
+/.metadata/
+/.settings/
+
+# ETC
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+local.properties
+/src/main/resources/rebel.xml
