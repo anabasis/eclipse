@@ -1,4 +1,4 @@
-package com.app.rest;
+package com.app.rest.vo;
 
 import java.io.Serializable;
 

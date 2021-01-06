@@ -1,17 +1,17 @@
-package com.app.rest;
+package com.app.rest.simple;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.rest.EmployeeDAO;
-import com.app.rest.EmployeeVO;
+import com.app.rest.vo.EmployeeVO;
 
 @Service
-public class EmployeeManagerImpl implements EmployeeManager {
+public class EmpManager{
 	
 	@Autowired
-	EmployeeDAO dao;
+	EmpDAO dao;
 
 	public List<EmployeeVO> getAllEmployees() {
 		return dao.getAllEmployees();

@@ -1,10 +1,10 @@
-package com.app.rest;
+package com.app.rest.full;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
-import com.app.rest.EmployeeVO;
+import com.app.rest.vo.EmployeeVO;
 
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {

@@ -14,17 +14,15 @@ import graphql.ExecutionResult;
 @RequestMapping("/graphcoffees")
 public class GraphQLController {
 
-    private final CoffeeUseCase coffeeUseCase;
+    //private final CoffeeUseCase coffeeUseCase;
 
-    public GraphQLController(CoffeeUseCase coffeeUseCase) {
-        this.coffeeUseCase = coffeeUseCase;
-    }
+    //public GraphQLController(CoffeeUseCase coffeeUseCase) {
+    //    this.coffeeUseCase = coffeeUseCase;
+    //}
 
-    @PostMapping
-    public ResponseEntity<Object> getCoffeeByQuery(@RequestBody String query){
-    	ExecutionResult execute = coffeeUseCase.execute(query);
-    	return new ResponseEntity<>(execute, HttpStatus.OK);
-    }
-    
-    
+    //@PostMapping
+    //public ResponseEntity<Object> getCoffeeByQuery(@RequestBody String query){
+    	//ExecutionResult execute = coffeeUseCase.execute(query);
+    	//return new ResponseEntity<>(execute, HttpStatus.OK);
+    //}
 }

@@ -1,4 +1,4 @@
-package com.app.rest;
+package com.app.rest.simple;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/employee-module")
-public class EmployeeController {
+@RequestMapping("/employee")
+public class EmpController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmpController.class);
 	
 	@Autowired
-	EmployeeManager manager;
+	EmpManager manager;
 
 	@RequestMapping(value = "/getAllEmployees", method = RequestMethod.GET) 
 	public String getAllEmployees(Model model) { 

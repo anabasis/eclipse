@@ -1,8 +1,8 @@
-package com.app.rest;
+package com.app.rest.full;
 
 import java.util.List;
 
-import com.app.rest.EmployeeVO;
+import com.app.rest.vo.EmployeeVO;
 
 public interface EmployeeDAO {
 	
